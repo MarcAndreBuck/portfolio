@@ -1,0 +1,12 @@
+:root {
+    --font-base: "Karla", system-ui, sans-serif;
+    --font-secondary: "Fira Code", monospace;
+
+    --color-bg-dark: #1c1c1c;
+    --color-accent-yellow: #ffca1b;
+
+    --gradient-accent: linear-gradient(to right,
+            var(--color-bg-dark) 23%,
+            var(--color-accent-yellow) 100%);
+
+}
