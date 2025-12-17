@@ -1,0 +1,13 @@
+.hero {
+    position: relative;
+    background: var(--color-bg-dark);
+    overflow: hidden;
+    height: 100vh;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--gradient-accent);
+    }
+}

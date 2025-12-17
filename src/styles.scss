@@ -1,6 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@use "./styles/fonts";
+@use "./styles/tokens";
+
 html,
 body {
     margin: 0;
     background-color: #1c1c1c;
+    font-family: var(--font-base);
 }
