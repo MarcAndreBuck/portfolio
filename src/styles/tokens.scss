@@ -5,8 +5,25 @@
     --color-bg-dark: #1c1c1c;
 
     --color-primary: #ffca1b;
-    --color-primary-rgb-gardient: 8, 70, 59, 1;
+    --color-skill-glow-rgb: 8, 70, 59;
+    --color-mouse-glow-rgba: 61, 207, 182;
 
-    --gardient-accent: linear-gradient(to top right, var(--color-bg-dark)30%, rgba(var(--color-primary-rgb-gardient))100%);
-    ;
+    --gradient-accent: linear-gradient(to top right,
+            var(--color-bg-dark) 30%,
+            rgba(var(--color-skill-glow-rgb), 1) 100%);
+
+    --gradient-skills: radial-gradient(40% 70% at left center,
+            rgba(var(--color-skill-glow-rgb), 0.40) 0%,
+            rgba(var(--color-skill-glow-rgb), 0.35) 30%,
+            rgba(var(--color-skill-glow-rgb), 0.06) 45%,
+            transparent 80%);
+
+    --gradient-mouse: radial-gradient(170px 170px at var(--mouse-x) var(--mouse-y),
+            rgba(61, 207, 182, 0.2),
+            rgba(var(--color-mouse-glow-rgba), 0.2) 0%,
+            rgba(var(--color-mouse-glow-rgba), 0.17) 18%,
+            rgba(var(--color-mouse-glow-rgba), 0.10) 30%,
+            rgba(var(--color-mouse-glow-rgba), 0.06) 45%,
+
+            transparent 60%);
 }

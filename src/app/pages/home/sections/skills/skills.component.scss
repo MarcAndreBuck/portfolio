@@ -1,6 +1,7 @@
-.hero {
+.skills {
     position: relative;
-    background: var(--color-bg-dark);
+    padding: 6rem 0;
+    background-color: var(--color-bg-dark);
     overflow: hidden;
     height: 100vh;
 
@@ -8,6 +9,9 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: var(--gradient-accent);
+
+        background: var(--gradient-skills);
+
+        pointer-events: none;
     }
 }
