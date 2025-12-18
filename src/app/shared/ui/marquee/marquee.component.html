@@ -1,0 +1,21 @@
+<p class="sr-only">{{ a11yText }}</p>
+
+<div #container class="marquee" aria-hidden="true" role="presentation">
+    <div class="marquee__track" [style.--duration]="duration + 's'" [style.--shift]="shiftPx + 'px'">
+        <div class="marquee__group" #measureGroup>
+            @for (item of items; track item) {
+            <span class="marquee__item">{{ item }}</span>
+            <span class="marquee__sep">•</span>
+            }
+        </div>
+
+        @for (_ of [].constructor(repeats - 1); track $index) {
+        <div class="marquee__group" aria-hidden="true">
+            @for (item of items; track item + '-' + $index) {
+            <span class="marquee__item">{{ item }}</span>
+            <span class="marquee__sep">•</span>
+            }
+        </div>
+        }
+    </div>
+</div>
