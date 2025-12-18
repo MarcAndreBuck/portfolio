@@ -1,17 +1,7 @@
 .skills {
     position: relative;
     padding: 6rem 0;
-    background-color: var(--color-bg-dark);
     overflow: hidden;
     height: 100vh;
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-
-        background: var(--gradient-skills);
-
-        pointer-events: none;
-    }
+    background: var(--gradient-skills);
 }

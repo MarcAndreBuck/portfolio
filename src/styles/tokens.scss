@@ -1,29 +1,29 @@
 :root {
-    --font-base: "Karla", system-ui, sans-serif;
-    --font-secondary: "Fira Code", monospace;
+        --font-base: "Karla", system-ui, sans-serif;
+        --font-secondary: "Fira Code", monospace;
 
-    --color-bg-dark: #1c1c1c;
+        --color-bg-dark: #1c1c1c;
 
-    --color-primary: #ffca1b;
-    --color-skill-glow-rgb: 8, 70, 59;
-    --color-mouse-glow-rgba: 61, 207, 182;
+        --color-primary: #ffca1b;
+        --color-skill-glow-rgb: 8, 70, 59;
+        --color-mouse-glow-rgba: 61, 207, 182;
+        --color-default: rgba(255, 255, 255, 1);
 
-    --gradient-accent: linear-gradient(to top right,
-            var(--color-bg-dark) 30%,
-            rgba(var(--color-skill-glow-rgb), 1) 100%);
+        --gradient-accent: linear-gradient(to top right,
+                        var(--color-bg-dark) 30%,
+                        rgba(var(--color-skill-glow-rgb), 1) 100%,
+                        transparent 80%);
 
-    --gradient-skills: radial-gradient(40% 70% at left center,
-            rgba(var(--color-skill-glow-rgb), 0.40) 0%,
-            rgba(var(--color-skill-glow-rgb), 0.35) 30%,
-            rgba(var(--color-skill-glow-rgb), 0.06) 45%,
-            transparent 80%);
+        --gradient-skills: radial-gradient(40% 70% at left center,
+                        rgba(var(--color-skill-glow-rgb), 0.40) 0%,
+                        rgba(var(--color-skill-glow-rgb), 0.35) 30%,
+                        rgba(var(--color-skill-glow-rgb), 0.06) 45%,
+                        transparent 80%);
 
-    --gradient-mouse: radial-gradient(170px 170px at var(--mouse-x) var(--mouse-y),
-            rgba(61, 207, 182, 0.2),
-            rgba(var(--color-mouse-glow-rgba), 0.2) 0%,
-            rgba(var(--color-mouse-glow-rgba), 0.17) 18%,
-            rgba(var(--color-mouse-glow-rgba), 0.10) 30%,
-            rgba(var(--color-mouse-glow-rgba), 0.06) 45%,
-
-            transparent 60%);
+        --gradient-mouse: radial-gradient(180px 180px at var(--mouse-x) var(--mouse-y),
+                        rgba(var(--color-mouse-glow-rgba), 0.25) 0%,
+                        rgba(var(--color-mouse-glow-rgba), 0.18) 12%,
+                        rgba(var(--color-mouse-glow-rgba), 0.10) 28%,
+                        rgba(var(--color-mouse-glow-rgba), 0.05) 42%,
+                        transparent 60%);
 }

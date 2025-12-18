@@ -1,0 +1,15 @@
+@mixin dflex($dir: row, $justify: center, $align: center, $gap: 0, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+    flex-wrap: $wrap;
+}
+
+$breakpoints: (
+    sm: 480px,
+    md: 768px,
+    lg: 1024px,
+    xl: 1280px
+);

@@ -3,14 +3,13 @@
   display: flex;
   flex-direction: column;
 
+
   &::before {
     content: "";
     position: fixed;
-
+    z-index: 1;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
-
     background: var(--gradient-mouse);
   }
 }
