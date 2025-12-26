@@ -1,9 +1,65 @@
+@use "./src/styles/mixins.scss" as *;
+
 .hero {
     position: relative;
     overflow: hidden;
+    @include dflex($gap: 12px, $dir: column);
     height: 100vh;
-    background:
-        var(--gradient-accent),
-        var(--color-bg-dark);
+    background: var(--gradient-accent), var(--color-bg-dark);
 
+    .container {
+        flex: 1;
+        @include dflex($gap: 10px, $dir: column);
+        max-width: 1440px;
+
+        h1 {
+            font-weight: 700;
+            font-size: 8rem;
+            letter-spacing: -2%;
+        }
+
+        h2 {
+            font-family: var(--font-secondary);
+            font-weight: 400;
+            font-size: 2.5rem;
+        }
+    }
+
+    .marquee {
+        position: relative;
+        padding-bottom: 2.5%;
+    }
+
+    &-btn-section {
+        @include dflex($gap: 3rem, $align: space-between);
+    }
+
+    .lateral {
+        position: absolute;
+        left: 6rem;
+        right: 6rem;
+        bottom: 0;
+
+        @include dflex($justify: space-between, $align: center);
+
+
+        .left {
+            height: 312px;
+        }
+
+        .right {
+            height: 312px;
+            width: 20px;
+        }
+
+        .scroll-down {
+            width: 30px;
+        }
+
+        .line {
+            background-color: var(--color-primary);
+            height: 100%;
+            width: 1px;
+        }
+    }
 }

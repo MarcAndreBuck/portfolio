@@ -1,6 +1,24 @@
 <section class="hero">
   <div class="container">
-    <h1>Hero works</h1>
-    <app-marquee [items]="lang.heroMarquee()" [duration]="28"></app-marquee>
+    <h2>Frontend Developer</h2>
+    <h1>Marc-André Buck</h1>
+
+    <div class="hero-btn-section">
+      <a href="#projects" class="main-btn"><span>Check my work</span></a>
+      <a href="#contact" class="main-btn"><span>Contact me</span></a>
+    </div>
   </div>
+
+  <div class="lateral">
+    <div class="left">
+      <div class="scroll-down"></div>
+      <div class="line"></div>
+    </div>
+
+    <div class="right">
+      <div class="scroll-down"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+  <app-marquee [items]="lang.heroMarquee()" [duration]="28" class="marquee"></app-marquee>
 </section>

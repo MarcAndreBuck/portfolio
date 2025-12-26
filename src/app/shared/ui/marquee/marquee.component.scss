@@ -1,15 +1,21 @@
+:host {
+    display: block;
+    width: 100%;
+    transform: rotate(-3deg);
+}
+
 .marquee {
     position: relative;
     width: 100%;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.12);
-    transform: rotate(-3deg);
+
 
     &::before {
         content: '';
         position: absolute;
         inset: 0;
-        backdrop-filter: blur(5.3);
+        backdrop-filter: blur(5.3px);
         pointer-events: none;
         z-index: 0;
     }
