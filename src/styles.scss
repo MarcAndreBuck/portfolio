@@ -3,18 +3,24 @@
 @use "./styles/a11y.scss";
 @use "./styles/mixins.scss" as *;
 
+* {
+    margin: 0;
+    font-family: var(--font-base);
+    color: var(--color-default);
+    transition: all 100ms;
+}
+
+
 html,
 body {
-    margin: 0;
     background-color: #1c1c1c;
-    font-family: var(--font-base);
 }
 
 .main-btn {
     all: unset;
     cursor: pointer;
-    @include dflex($gap: 10px, );
-    padding: 0 24px;
+    @include dflex($gap: 10px);
+    padding: 1rem 1.5rem;
     border: 1px solid var(--color-default);
     border-radius: 100px;
     font-size: 1rem;
@@ -23,4 +29,8 @@ body {
     &:hover {
         border-color: var(--color-primary);
     }
+}
+
+.container {
+    max-width: 1440px;
 }
