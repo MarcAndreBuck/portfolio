@@ -1,9 +1,21 @@
-.lang-switch {
-    position: relative;
-    display: inline-flex;
-    // padding: -2px;
-    border-radius: 100px;
-    border: 1px solid #ebebeb;
+@use "./src/styles/mixins.scss" as *;
+
+.site-header {
+    position: absolute;
+    @include dflex($dir: column, $align: space-between);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6rem;
+
+    // background-color: red;
+    z-index: 100;
+    background: var(--gradient-header);
+    overflow: hidden;
+
+    &>* {
+        padding: 0 6rem;
+    }
 }
 
 .lang-btn {
@@ -23,7 +35,7 @@
 }
 
 .lang-indicator {
-    position: absolute;
+    position: relative;
     width: 44px;
     height: 28px;
     border-radius: 100px;
@@ -34,4 +46,3 @@
 .lang-indicator.is-de {
     transform: translateX(44px);
 }
-

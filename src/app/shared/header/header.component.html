@@ -1,13 +1,15 @@
-<div class="lang-switch" role="group" aria-label="Language">
-    <span class="lang-indicator" [class.is-de]="lang.isDe()"></span>
+<header class="site-header">
+    <div class="lang-switch" role="group" aria-label="Language">
+        <span class="lang-indicator" [class.is-de]="lang.isDe()"></span>
 
-    <button type="button" class="lang-btn" [class.is-active]="lang.isEn()" (click)="setLang('en')"
-        [attr.aria-pressed]="lang.isEn()">
-        EN
-    </button>
+        <button type="button" class="lang-btn" [class.is-active]="lang.isEn()" (click)="setLang('en')"
+            [attr.aria-pressed]="lang.isEn()">
+            EN
+        </button>
 
-    <button type="button" class="lang-btn" [class.is-active]="lang.isDe()" (click)="setLang('de')"
-        [attr.aria-pressed]="lang.isDe()">
-        DE
-    </button>
-</div>
+        <button type="button" class="lang-btn" [class.is-active]="lang.isDe()" (click)="setLang('de')"
+            [attr.aria-pressed]="lang.isDe()">
+            DE
+        </button>
+    </div>
+</header>

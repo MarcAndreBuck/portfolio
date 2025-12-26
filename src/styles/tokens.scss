@@ -26,4 +26,6 @@
                         rgba(var(--color-mouse-glow-rgba), 0.10) 28%,
                         rgba(var(--color-mouse-glow-rgba), 0.05) 42%,
                         transparent 60%);
+
+        --gradient-header: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 }
