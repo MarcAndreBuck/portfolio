@@ -32,6 +32,7 @@
 
     &-btn-section {
         @include dflex($gap: 3rem, $align: space-between);
+        z-index: 1;
     }
 
     .lateral {
@@ -51,7 +52,6 @@
         .right {
             height: 450px;
             width: 20px;
-            gap: 1.5rem;
             @include dflex($dir: column, $gap: 1.5rem);
 
             .social {
@@ -60,6 +60,37 @@
                 .icons {
                     width: 32px;
                     height: 32px;
+                    color: var(--color-primary);
+                    display: flex;
+                    align-items: center;
+
+                    &:hover{
+                        color: var(--color-default);
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+
+                        right: -20px;
+                        transform: scale(0);
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+
+                        background-color: var(--color-primary);
+
+                        transition: ease;
+                    }
+
+                    &:hover::after,
+                    &:focus-visible::after {
+                        transform: scale(1);
+                    }
+                }
+
+                .mail {
+                    display: none;
                 }
             }
 
@@ -69,6 +100,14 @@
                 transform: rotate(180deg);
                 white-space: nowrap;
                 text-decoration: none;
+
+                &:hover{
+                    color: var(--color-primary);
+                }
+            }
+
+            .line {
+                background-color: var(--color-default);
             }
         }
 

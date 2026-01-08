@@ -1,12 +1,26 @@
 <section class="hero">
+
   <div class="container">
+
     <h2>Frontend Developer</h2>
     <h1>Marc-André Buck</h1>
 
     <div class="hero-btn-section">
-      <a href="#projects" class="main-btn"><span>Check my work</span></a>
-      <a href="#contact" class="main-btn"><span>Contact me</span></a>
+
+      <a class="main-btn" href="#contact">
+        <span class="button_inner" [attr.data-text]="lang.dict().hero.buttons.contact">
+          {{ lang.dict().hero.buttons.contact }}
+        </span>
+      </a>
+
+      <a href="#contact" class="main-btn">
+        <span class="button_inner" [attr.data-text]="lang.dict().hero.buttons.contact">
+          {{lang.dict().hero.buttons.contact }}
+        </span>
+      </a>
+
     </div>
+
   </div>
 
   <div class="lateral">
@@ -24,13 +38,18 @@
       </a>
 
       <div class="social">
+        <a class="mail" [href]="'mailto:' + lang.dict().hero.contact.email" rel="noopener noreferrer"
+          aria-label="mail to " + lang.dict().hero.contact.email>
+          <app-icon name="mail" class="icons"></app-icon>
+        </a>
+
         <a href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer"
           aria-label="Open GitHub profile in new tab">
           <app-icon name="git" class="icons"></app-icon>
         </a>
 
         <a href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank" rel="noopener noreferrer"
-          aria-label="Open GitHub profile in new tab">
+          aria-label="Open linkedIn profile in new tab">
           <app-icon name="linkedIn" class="icons"></app-icon>
         </a>
       </div>

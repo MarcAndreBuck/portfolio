@@ -1,5 +1,9 @@
 export const DE = {
     hero: {
+        buttons: {
+            projects: 'Check my work',
+            contact: 'Contact me',
+        },
         marquee: [
             'Remote verfügbar',
             'Frontend Developer',

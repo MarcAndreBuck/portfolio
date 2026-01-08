@@ -6,15 +6,19 @@
 * {
     margin: 0;
     font-family: var(--font-base);
-    color: var(--color-default);
-    transition: all 100ms;
+    transition: all 150ms;
+    text-decoration: none;
 }
 
 
 html,
 body {
     background-color: #1c1c1c;
-    text-decoration: none;
+    color: var(--color-default);
+}
+
+a {
+    color: var(--color-default);
 }
 
 .main-btn {
@@ -26,9 +30,42 @@ body {
     border-radius: 100px;
     font-size: 1rem;
     color: var(--color-default);
+    overflow: hidden; 
+    position: relative; 
+    display: inline-flex; 
+    align-items: center;
 
     &:hover {
         border-color: var(--color-primary);
+    }
+}
+
+.button_inner {
+    position: relative; 
+    display: inline-flex;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.button_inner::after {
+    // content: attr(data-text);
+    position: absolute;
+    left: 100%;
+    padding-left: 24px; 
+    top: 0;
+}
+
+.main-btn:hover .button_inner {
+    animation: marqueeAnim 1.5s linear infinite;
+}
+
+@keyframes marqueeAnim {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-130%);
     }
 }
 
