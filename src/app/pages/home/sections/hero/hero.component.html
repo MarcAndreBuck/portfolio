@@ -11,12 +11,30 @@
 
   <div class="lateral">
     <div class="left">
-      <div class="scroll-down"></div>
+      <div class="scroll-down">
+        <app-icon name="arrow-down" class="scroll-down-icon"></app-icon>
+      </div>
       <div class="line"></div>
     </div>
 
     <div class="right">
-      <div class="scroll-down"></div>
+
+      <a class="email" [href]="'mailto:' + lang.dict().hero.contact.email">
+        {{ lang.dict().hero.contact.email }}
+      </a>
+
+      <div class="social">
+        <a href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer"
+          aria-label="Open GitHub profile in new tab">
+          <app-icon name="git" class="icons"></app-icon>
+        </a>
+
+        <a href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank" rel="noopener noreferrer"
+          aria-label="Open GitHub profile in new tab">
+          <app-icon name="linkedIn" class="icons"></app-icon>
+        </a>
+      </div>
+
       <div class="line"></div>
     </div>
   </div>

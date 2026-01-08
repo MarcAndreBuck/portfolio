@@ -39,27 +39,73 @@
         left: 6rem;
         right: 6rem;
         bottom: 0;
-
-        @include dflex($justify: space-between, $align: center);
+        @include dflex($justify: space-between, $align: end);
 
 
         .left {
+            display: flex;
             height: 312px;
+            @include dflex($dir: column, $gap: 1.5rem);
         }
 
         .right {
-            height: 312px;
+            height: 450px;
             width: 20px;
+            gap: 1.5rem;
+            @include dflex($dir: column, $gap: 1.5rem);
+
+            .social {
+                @include dflex($dir: column, $gap: 0.75rem);
+
+                .icons {
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+
+            .email {
+                font-family: var(--font-base);
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                white-space: nowrap;
+                text-decoration: none;
+            }
         }
 
         .scroll-down {
             width: 30px;
+            height: 50px;
+            border: 1px solid var(--color-primary);
+            border-radius: 2rem;
+            @include dflex($dir: column);
+
+            .scroll-down-icon {
+                height: 12px;
+                animation: floatY 1.8s ease-in-out infinite;
+            }
         }
 
         .line {
             background-color: var(--color-primary);
             height: 100%;
             width: 1px;
+        }
+
+
+    }
+
+
+    @keyframes floatY {
+        0% {
+            transform: translateY(-2px);
+        }
+
+        33% {
+            transform: translateY(8px);
+        }
+
+        100% {
+            transform: translateY(-2px);
         }
     }
 }
