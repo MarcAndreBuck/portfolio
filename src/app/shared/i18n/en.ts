@@ -6,5 +6,8 @@ export const EN = {
             'Based in Germany',
             'Open to work',
         ],
+        contact: {
+            email: 'kontakt@marc-buck.de'
+        }
     },
 } as const;

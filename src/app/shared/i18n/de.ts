@@ -6,5 +6,8 @@ export const DE = {
             'Wohnhaft in Deutschland',
             'Offen für Angebote',
         ],
+        contact: {
+            email: 'kontakt@marc-buck.de'
+        }
     },
 } as const;

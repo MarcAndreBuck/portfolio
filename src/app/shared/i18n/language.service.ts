@@ -11,6 +11,7 @@ export class LanguageService {
   readonly isDe = computed(() => this._lang() === 'de');
   readonly isEn = computed(() => this._lang() === 'en');
   readonly heroMarquee = computed(() => I18N[this._lang()].hero.marquee);
+  readonly dict = computed(() => I18N[this._lang()]);
 
   setLang(lang: Lang): void {
     this._lang.set(lang);
