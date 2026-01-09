@@ -1,0 +1,45 @@
+@use "./src/styles/mixins.scss" as *;
+
+:host {
+
+    // padding-top: var(--height-header);
+    // padding-bottom: var(--height-footer);
+    position: relative;
+    overflow: hidden;
+    @include dflex($gap: 24px, $dir: column);
+    min-height: 100vh;
+    background: var(--gradient-accent), var(--color-bg-dark);
+    color: var(--color-primary);
+    padding: var(--height-header) 50px var(--height-footer) 50px;
+}
+
+span,
+h2{
+    color: var(--color-default);
+}
+
+h1 {
+    font-size: 64px;
+    color: var(--color-primary);
+}
+
+h2 {
+    font-size: 20px;
+}
+
+span,
+p {
+    font-size: 1rem;
+}
+
+.imprint{
+    padding-bottom: 1rem;
+}
+
+.content {
+    @include dflex($gap: 24px, $dir: column, $align: start);
+}
+
+// .legal-notice__text{
+//     background-color: red;
+// }
