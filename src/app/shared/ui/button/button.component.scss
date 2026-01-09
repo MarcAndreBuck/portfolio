@@ -1,0 +1,81 @@
+@use "@/styles/mixins.scss" as *;
+
+.main-btn {
+    all: unset;
+    cursor: pointer;
+
+    @include dflex($gap: 10px);
+    padding: 1rem 1.5rem;
+
+    border: 1px solid var(--color-default);
+    border-radius: 100px;
+
+    font-size: 1rem;
+    color: var(--color-default);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    transition: border-color 150ms, color 150ms;
+
+    &:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+}
+
+.button_inner {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
+
+.main-btn.is-marquee .button_inner.is-marquee {
+    animation: marqueeWrap 2s linear infinite;
+}
+
+@keyframes marqueeWrap {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+
+    40% {
+        transform: translateX(-130%);
+        opacity: 1;
+    }
+
+    45% {
+        transform: translateX(-130%);
+        opacity: 0;
+    }
+
+    46% {
+        transform: translateX(130%);
+        opacity: 0;
+    }
+
+    47% {
+        transform: translateX(130%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-btn.is-marquee .button_inner.is-marquee {
+        animation: none;
+    }
+}

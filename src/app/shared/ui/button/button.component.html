@@ -1,0 +1,12 @@
+<a
+  class="main-btn"
+  [class.is-marquee]="variant === 'marquee'"
+  [attr.href]="href || null"
+  [attr.aria-label]="ariaLabel || null"
+  [attr.target]="target"
+  [attr.rel]="rel || null"
+>
+  <span #buttonText class="button_inner">
+    <ng-content></ng-content>
+  </span>
+</a>
