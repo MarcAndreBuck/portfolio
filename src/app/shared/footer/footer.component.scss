@@ -1,0 +1,27 @@
+@use "./src/styles/mixins.scss" as *;
+
+:host {
+    @include dflex($dir: row, $justify: space-between);
+    width: 100%;
+    max-width: 1440px;
+    // position: absolute;
+}
+
+.footer-left {
+    @include dflex($dir: column, $justify: space-between);
+
+    img {
+        width: 200px;
+        height: 140px;
+    }
+}
+
+.footer-right {
+    @include dflex($dir: column, $gap: 0.5rem, $align: start);
+
+    a{
+        &:hover{
+color: var(--color-primary);
+        }
+    }
+}

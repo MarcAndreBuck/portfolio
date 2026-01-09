@@ -17,3 +17,13 @@
 .content {
   flex: 1;
 }
+
+footer {
+  height: var(--height-footer);
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  margin-top: calc(var(--height-footer)* -1);
+}
