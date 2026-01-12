@@ -2,7 +2,7 @@
 
 :host {
     position: absolute;
-    @include dflex($dir: column, $align: space-between);
+    @include dflex($dir: row, $justify: space-between, $align: center);
     top: 0;
     left: 0;
     width: 100%;
@@ -17,31 +17,84 @@
     }
 }
 
-.lang-btn {
-    position: relative;
-    z-index: 1;
-    width: 44px;
-    height: 28px;
+.lang-switch {
+    @include dflex();
+}
+
+.lang-en,
+.lang-de {
     border: 0;
     background: transparent;
-    color: rgba(80, 255, 220, 0.6);
-    font-weight: 800;
     cursor: pointer;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
 }
 
-.lang-btn.is-active {
-    color: #ffffff;
+.lang-de {
+    border-radius: 0 50px 50px 0;
 }
 
-.lang-indicator {
-    position: relative;
-    width: 44px;
-    height: 28px;
-    border-radius: 100px;
-    background: #35e0c2;
-    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+.lang-en {
+    border-radius: 50px 0 0 50px;
+
 }
 
-.lang-indicator.is-de {
-    transform: translateX(44px);
+.lang-de,
+.lang-en {
+    &.is-active {
+        background-color: var(--color-primary);
+        color: var(--color-default);
+    }
+}
+
+
+nav {
+    @include dflex($dir: row, $gap: 24px);
+
+    a {
+        position: relative;
+        @include dflex($dir: row);
+
+        &:active {
+            color: var(--color-primary);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+
+            bottom: -16px;
+            transform: scale(0);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+
+            background-color: var(--color-primary);
+
+            transition: ease;
+        }
+
+        &:hover::after,
+        &:active::after,
+        &:focus-visible::after {
+            transform: scale(1);
+        }
+
+        &.is-active {
+            color: var(--color-primary);
+
+            &::after {
+                transform: translateX(0) scale(1);
+            }
+        }
+
+
+    }
+}
+
+img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }

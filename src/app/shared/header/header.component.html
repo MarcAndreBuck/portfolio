@@ -1,13 +1,29 @@
-<div class="lang-switch" role="group" aria-label="Language">
-    <span class="lang-indicator" [class.is-de]="lang.isDe()"></span>
+<nav>
+    <div class="lang-switch" role="group" aria-label="Language">
 
-    <button type="button" class="lang-btn" [class.is-active]="lang.isEn()" (click)="setLang('en')"
-        [attr.aria-pressed]="lang.isEn()">
-        EN
-    </button>
+        <button type="button" class="lang-en" [class.is-active]="lang.isEn()" (click)="setLang('en')"
+            [attr.aria-pressed]="lang.isEn()">
+            EN
+        </button>
 
-    <button type="button" class="lang-btn" [class.is-active]="lang.isDe()" (click)="setLang('de')"
-        [attr.aria-pressed]="lang.isDe()">
-        DE
-    </button>
-</div>
+        <button type="button" class="lang-de" [class.is-active]="lang.isDe()" (click)="setLang('de')"
+            [attr.aria-pressed]="lang.isDe()">
+            DE
+        </button>
+    </div>
+
+
+    <a [routerLink]="['/']" fragment="about" [class.is-active]="activeFragment === 'about'">
+        About me
+    </a>
+
+    <a [routerLink]="['/']" fragment="skills" [class.is-active]="activeFragment === 'skills'">
+        Skills
+    </a>
+
+    <a [routerLink]="['/']" fragment="projects" [class.is-active]="activeFragment === 'projects'">
+        Projects
+    </a>
+</nav>
+
+<img src="../../../assets/img/logo-green.png" alt="logo">
