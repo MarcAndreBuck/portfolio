@@ -18,6 +18,32 @@ export const EN = {
         street: 'Rosenweg 5'
     },
 
+    referencesTitle: 'What my colleagues say about me',
+    
+    references: [
+        {
+            name: 'Thomas Schulz',
+            position: 'Senior Frontend Developer · Project Colleague',
+            text: 'Marc works in a highly structured way and consistently thinks problems through to the end. His ability to translate complex requirements into clean, maintainable code is impressive.',
+        },
+        {
+            name: 'Lisa Becker',
+            position: 'UX/UI Designer · Team Project',
+            text: 'Working with Marc was a great experience. He has a strong sense for clean interfaces and implements designs precisely while keeping technical quality high.',
+        },
+        {
+            name: 'Daniel Hoffmann',
+            position: 'Product Owner · Developer Academy',
+            text: 'Marc shows a very high level of intrinsic motivation. He challenges requirements in a constructive way and often contributes valuable improvements to the overall product.',
+        },
+        {
+            name: 'Sarah Klein',
+            position: 'Fullstack Developer · Pair Programming',
+            text: 'Marc is a very reliable partner in pair programming. He explains things calmly, thinks logically and stays focused even when debugging complex issues.',
+        },
+    ]
+    ,
+
     legalNotice: {
         title: 'Impressum',
         imprintTitle: 'Impressum',
