@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CarouselComponent } from './carousel/carousel.component';
+
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 @Component({
   selector: 'app-reference',
   standalone: true,
-  imports: [CarouselComponent],
+  imports: [TestimonialsComponent],
   templateUrl: './reference.component.html',
   styleUrl: './reference.component.scss'
 })
