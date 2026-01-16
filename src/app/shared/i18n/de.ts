@@ -11,7 +11,7 @@ export const DE = {
             'Offen für Angebote',
         ],
     },
-    contact: {
+    identity: {
         email: 'kontakt@marc-buck.de',
         name: 'Marc-André Buck',
         postcode: '19230 Hagenow',
@@ -51,6 +51,36 @@ export const DE = {
             goto: (index: number) => `Go to testimonial ${index}`,
             card: 'Activate testimonial',
         },
+    },
+
+    contact: {
+        labels: {
+            name: 'Wie ist dein Name?',
+            email: 'Wie lautet deine E-Mail?',
+            message: 'Wie kann ich dir helfen?',
+            privacyTextA: 'Ich habe die ',
+            privacyLink: 'Datenschutzerklärung',
+            privacyTextB: ' gelesen und stimme der Verarbeitung meiner Daten zu.',
+            submit: 'Nachricht senden',
+        },
+
+        placeholders: {
+            name: 'Dein Name',
+            email: 'deine@email.de',
+            message: 'Hallo Marc, ich interessiere mich für …',
+        },
+
+        errors: {
+            nameRequired: 'Bitte gib deinen Namen ein.',
+            nameMin: 'Bitte mindestens 2 Zeichen eingeben.',
+            emailRequired: 'Bitte gib deine E-Mail-Adresse ein.',
+            emailInvalid: 'Bitte gib eine gültige E-Mail-Adresse ein.',
+            messageRequired: 'Bitte gib eine Nachricht ein.',
+            messageMin: 'Bitte mindestens 10 Zeichen eingeben.',
+            privacyRequired: 'Bitte akzeptiere die Datenschutzerklärung.',
+        }
+
+
     },
 
     legalNotice: {

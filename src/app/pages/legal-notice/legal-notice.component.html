@@ -10,9 +10,9 @@
         <h2 id="imprint-title" class="imprint">Imprint</h2>
 
         <ul class="legal-notice__list">
-            <li>{{ lang.dict().contact.name }}</li>
-            <li>{{ lang.dict().contact.street }}</li>
-            <li>{{ lang.dict().contact.postcode }}</li>
+            <li>{{ lang.dict().identity.name }}</li>
+            <li>{{ lang.dict().identity.street }}</li>
+            <li>{{ lang.dict().identity.postcode }}</li>
         </ul>
         <br>
 
@@ -22,8 +22,8 @@
         <h2 id="exploring-title">Exploring the Board</h2>
         <p>
             Email:
-            <a class="email" [href]="'mailto:' + lang.dict().contact.email">
-                {{ lang.dict().contact.email }}
+            <a class="email" [href]="'mailto:' + lang.dict().identity.email">
+                {{ lang.dict().identity.email }}
             </a>
         </p>
 
@@ -112,8 +112,8 @@
         <br>
         <p>
             For any questions or notices, please contact us at
-            <a class="email" [href]="'mailto:' + lang.dict().contact.email">
-                {{ lang.dict().contact.email }}
+            <a class="email" [href]="'mailto:' + lang.dict().identity.email">
+                {{ lang.dict().identity.email }}
             </a>.
         </p>
         <br>
@@ -135,17 +135,17 @@
     <h2 id="imprint-title" class="legal-notice__subtitle">Angaben gemäß § 5 TMG</h2>
 
     <ul class="legal-notice__list">
-        <li>{{ lang.dict().contact.name }}</li>
-        <li>{{ lang.dict().contact.street }}</li>
-        <li>{{ lang.dict().contact.postcode }}</li>
+        <li>{{ lang.dict().identity.name }}</li>
+        <li>{{ lang.dict().identity.street }}</li>
+        <li>{{ lang.dict().identity.postcode }}</li>
     </ul>
 
     <!-- Contact -->
     <h2 id="exploring-title" class="legal-notice__subtitle">Kontakt</h2>
     <p class="legal-notice__text">
         E-Mail:
-        <a class="email" [href]="'mailto:' + lang.dict().contact.email">
-            {{ lang.dict().contact.email }}
+        <a class="email" [href]="'mailto:' + lang.dict().identity.email">
+            {{ lang.dict().identity.email }}
         </a>
     </p>
 
@@ -243,6 +243,3 @@
 </div>
 
 }
-
-
-<!-- </section> -->

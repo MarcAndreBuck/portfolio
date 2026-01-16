@@ -12,7 +12,7 @@ export const EN = {
         ],
     },
 
-    contact: {
+    identity: {
         email: 'kontakt@marc-buck.de',
         name: 'Marc-André Buck',
         postcode: '19230 Hagenow',
@@ -53,6 +53,34 @@ export const EN = {
             card: 'Activate testimonial',
         },
     },
+    contact: {
+        labels: {
+            name: "What's your name?",
+            email: "What's your email?",
+            message: 'How can I help you?',
+            privacyTextA: "I've read the ",
+            privacyLink: 'privacy policy',
+            privacyTextB: ' and agree to the processing of my data.',
+            submit: 'Say Hello ;)',
+        },
+
+        placeholders: {
+            name: 'Your name',
+            email: 'youremail@email.com',
+            message: 'Hello Marc, I am interested in...',
+        },
+
+        errors: {
+            nameRequired: 'Please enter your name.',
+            nameMin: 'Please enter at least 2 characters.',
+            emailRequired: 'Please enter your email address.',
+            emailInvalid: 'Please enter a valid email address.',
+            messageRequired: 'Please enter a message.',
+            messageMin: 'Please enter at least 10 characters.',
+            privacyRequired: 'You must accept the privacy policy.',
+        }
+    },
+
 
     legalNotice: {
         title: 'Impressum',
@@ -65,9 +93,9 @@ export const EN = {
         termsAfterPortfolio: `  <h2 id="imprint-title" class="legal-notice__subtitle">Imprint</h2>
 
             <ul class="legal-notice__list">
-                <li>{{ lang.dict().contact.name }}</li>
-                <li>{{ lang.dict().contact.street }}</li>
-                <li>{{ lang.dict().contact.postcode }}</li>
+                <li>{{ lang.dict().identity.name }}</li>
+                <li>{{ lang.dict().identity.street }}</li>
+                <li>{{ lang.dict().identity.postcode }}</li>
             </ul>
 
 
@@ -80,8 +108,8 @@ export const EN = {
             <h2 id="exploring-title" class="legal-notice__subtitle">Exploring the Board</h2>
             <p class="legal-notice__text">
                 Email:
-                <a class="email" [href]="'mailto:' + lang.dict().contact.email">
-                    {{ lang.dict().contact.email }}
+                <a class="email" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
                 </a>
             </p>
 
@@ -169,8 +197,8 @@ export const EN = {
 
             <p class="legal-notice__text">
                 For any questions or notices, please contact us at
-                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().contact.email">
-                    {{ lang.dict().contact.email }}
+                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
                 </a>
             </p>
 
