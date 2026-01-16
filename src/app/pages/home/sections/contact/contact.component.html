@@ -1,2 +1,84 @@
-<div id="contact"></div>
-<p>contact works!</p>
+<section id="contact" class="contact">
+  <div class="contact__left">
+    <p class="contact__kicker">Contact me</p>
+    <h2 class="contact__headline">Let&apos;s work<br />together</h2>
+
+    <h3 class="contact__subheadline">Got a problem to solve?</h3>
+    <p class="contact__text">
+      You’re working on an exciting project and looking for a motivated Junior Developer
+      who thinks ahead, codes clean, and wants to grow?<br /><br />
+
+      I’m a Junior Frontend Developer with a strong interest in becoming a Fullstack
+      Developer. I enjoy turning ideas into clean, structured, and user-friendly
+      solutions while continuously learning and improving my skills.<br /><br />
+
+      I add value through clean and readable code, a strong eye for UI/UX details,
+      and a reliable, hands-on mindset. I’m not afraid to ask questions, take
+      responsibility, and grow with the project.
+    </p>
+
+    <p class="contact__cta">
+      Sounds like a fit?
+      <a class="contact__link" href="#contact">Let’s talk!</a>
+    </p>
+  </div>
+
+  <form class="contact__form" [formGroup]="form" (ngSubmit)="submit()" autocomplete="on" novalidate>
+
+    <div class="field" [ngClass]="{ 'is-error': showError('name') }">
+      <label class="field__label" for="name">{{ lang.dict().contact.labels.name }}</label>
+
+      <p class="field__error" *ngIf="showError('name')">
+        {{ errorText('name') }}
+      </p>
+
+      <input class="field__control" id="name" type="text" formControlName="name"
+        [placeholder]="lang.dict().contact.placeholders.name" />
+    </div>
+
+
+    <div class="field" [ngClass]="{ 'is-error': showError('email') }">
+      <label class="field__label" for="email">{{ lang.dict().contact.labels.email }}</label>
+
+      <p class="field__error" *ngIf="showError('email')">
+        {{ errorText('email') }}
+      </p>
+
+      <input class="field__control" id="email" type="email" formControlName="email"
+        [placeholder]="lang.dict().contact.placeholders.email" />
+    </div>
+
+    <div class="field" [ngClass]="{ 'is-error': showError('message') }">
+      <label class="field__label" for="message">{{ lang.dict().contact.labels.message }}</label>
+
+      <p class="field__error" *ngIf="showError('message')">
+        {{ errorText('message') }}
+      </p>
+
+      <textarea class="field__control field__control--textarea" id="message" rows="4" formControlName="message"
+        [placeholder]="lang.dict().contact.placeholders.message"></textarea>
+    </div>
+
+    <!-- Privacy -->
+    <div class="privacy-wrap" [ngClass]="{ 'is-error': showError('privacy') }">
+      <label class="check">
+        <input class="check__box" type="checkbox" formControlName="privacy" />
+        <span class="check__text">
+          {{ lang.dict().contact.labels.privacyTextA }}
+          <a class="contact__link" routerLink="/legal-notice">{{ lang.dict().contact.labels.privacyLink }}</a>
+          {{ lang.dict().contact.labels.privacyTextB }}
+        </span>
+      </label>
+
+      <p class="field__error field__error--privacy" *ngIf="showError('privacy')">
+        {{ errorText('privacy') }}
+      </p>
+    </div>
+
+    <button class="contact__submit" type="submit" [disabled]="!canClickSubmit">
+      {{ lang.dict().contact.labels.submit }}
+    </button>
+  </form>
+
+
+</section>
