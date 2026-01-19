@@ -14,15 +14,53 @@
 html,
 body {
     background-color: #1c1c1c;
-    color: var(--color-default);
+    color: rgb(var(--color-default)/1);
     scroll-behavior: smooth;
+    cursor: default;
+}
+
+a,
+button,
+[role="button"],
+select {
+    cursor: pointer;
+}
+
+input,
+textarea {
+    cursor: text;
+}
+
+h2 {
+    font-family: var(--font-secondary);
+    color: rgb(var(--color-primary-rgb)/1);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin: 0;
 }
 
 a {
-    color: var(--color-default);
+    color: rgb(var(--color-default)/1);
 }
 
 
 .container {
     max-width: 1440px;
+}
+
+
+.eyebrow {
+    font-size: 24px;
+    color: rgb(var(--color-primary-rgb));
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    margin: 0;
+    font-weight: 500;
+}
+
+.eyebrow--bold {
+    font-weight: 700;
 }

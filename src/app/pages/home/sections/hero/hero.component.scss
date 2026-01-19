@@ -65,7 +65,7 @@
                     align-items: center;
 
                     &:hover{
-                        color: var(--color-default);
+                        color: rgb(var(--color-default)/1);
                     }
 
                     &::after {
@@ -107,7 +107,7 @@
             }
 
             .line {
-                background-color: var(--color-default);
+                background-color: rgb(var(--color-default)/1);
             }
         }
 

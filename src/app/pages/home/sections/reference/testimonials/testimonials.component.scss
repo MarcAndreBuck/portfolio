@@ -41,8 +41,8 @@
 
     padding: 28px 32px;
     border-radius: 22px;
-    border: 1px solid rgba(var(--color-primary-rgb), 1);
-    background: rgba(var(--color-primary-rgb), 0.30);
+    border: 1px solid rgb(var(--color-primary-rgb)/ 1);
+    background: rgb(var(--color-primary-rgb)/ 0.30);
 
     opacity: 0;
     transform: translateX(0) scale(0.92);
@@ -83,7 +83,7 @@
     &__text {
         font-size: 1.125rem;
         line-height: 120%;
-        color: var(--color-default);
+        color: rgb(var(--color-default)/1);
     }
 
     &__footer {
@@ -92,14 +92,14 @@
         right: 32px;
         bottom: 22px;
         @include dflex($gap: 14px);
-        color: var(--color-default);
+        color: rgb(var(--color-default)/1);
     }
 
 
     .line {
         flex: 1;
         height: 2px;
-        background: var(--color-default);
+        background: rgb(var(--color-default)/1);
         opacity: 0.8;
         border-radius: 99px;
     }
@@ -144,7 +144,7 @@
     width: 8px;
     height: 8px;
     border-radius: 999px;
-    background: var(--color-default);
+    background: rgb(var(--color-default)/1);
     cursor: pointer;
     transition: transform 150ms ease, background 150ms ease;
 

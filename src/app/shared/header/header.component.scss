@@ -43,7 +43,7 @@
 .lang-en {
     &.is-active {
         background-color: var(--color-primary);
-        color: var(--color-default);
+        color: rgb(var(--color-default)/1);
     }
 }
 
