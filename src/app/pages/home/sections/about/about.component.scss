@@ -1,0 +1,129 @@
+@use "./src/styles/mixins.scss" as *;
+
+:host {
+  @include dflex($dir: column);
+}
+
+.about {
+  position: relative;
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  @include dflex($gap: 12px);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.about__media {
+  position: relative;
+  width: 568px;
+  aspect-ratio: 1 / 1;
+  border-radius: 30px;
+}
+
+.about__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  transform: translate3d(-14px, 14px, 0);
+  opacity: 0;
+
+  background: repeating-linear-gradient(-135deg,
+      rgb(var(--color-primary-rgb) / 1) 0 2px,
+      transparent 2px 24px);
+
+  will-change: transform, opacity;
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.about__media:hover::before {
+  opacity: 1;
+  transform: translate3d(-46px, 30px, 0);
+}
+
+.about__img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  border-radius: inherit;
+  filter: grayscale(100%);
+}
+
+.about__content {
+  @include dflex($gap: 20px, $align: start, $dir: column);
+  position: relative;
+  width: 568px;
+  aspect-ratio: 1 / 1;
+  padding-top: 98px;
+}
+
+.about__card {
+  position: relative;
+  @include dflex($gap: 32px, $align: start, $dir: column);
+
+  border-radius: 30px;
+  padding: 32px;
+
+  border: 1px solid rgb(var(--color-primary-rgb) / 1);
+  background: rgb(var(--color-primary-rgb) / 0.10);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.about__title {
+  margin-bottom: 8px;
+}
+
+.about__text {
+  font-size: 18px;
+  line-height: 1.2;
+  color: rgb(var(--color-default)/1);
+  text-align: justify;
+
+}
+
+.about__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 -12px;
+  display: grid;
+  gap: 16px;
+}
+
+.about__item {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about__icon {
+  width: 32px;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  color: rgb(var(--color-primary-rgb) / 1);
+}
+
+.about__item-text {
+  font-size: 18px;
+  line-height: 1.2;
+  color: rgb(var(--color-default)/0.8);
+  cursor: default;
+
+  &:hover {
+    color: rgb(var(--color-default)/1);
+  }
+}
