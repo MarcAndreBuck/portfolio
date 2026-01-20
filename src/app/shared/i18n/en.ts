@@ -19,6 +19,31 @@ export const EN = {
         street: 'Rosenweg 5',
     },
 
+    skills: {
+        eyebrow: 'Technologies',
+        title: 'Skill Set',
+        intro: `My skills focus on modern front-end development using HTML, CSS/SCSS, JavaScript, and Angular, with a strong emphasis on clean, maintainable code, responsive design, and accessible user interfaces. I continuously expand my skill set by keeping up with new technologies, tools, and best practices, and I’m always open to learning and adapting in a fast-evolving web development landscape.`,
+        needAnother: 'You need',
+        needAnotherAccent: 'another skill?',
+        outro: 'Feel free to contact me. I look forward to expanding on my previous knowledge.',
+        cta: "Let’s talk",
+        labels: {
+            html: 'HTML',
+            css: 'CSS',
+            js: 'JavaScript',
+            ts: 'TypeScript',
+            angular: 'Angular',
+            firebase: 'Firebase',
+            git: 'Git',
+            restApi: 'REST-API',
+            scrum: 'Scrum',
+            growthMindset: 'Growth mindset',
+        },
+        growthTip: {
+            title: 'I have a special interest in learning'
+        }
+    },
+
     references: {
         title: 'What my colleagues say about me',
 

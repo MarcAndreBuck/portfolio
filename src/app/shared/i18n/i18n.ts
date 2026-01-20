@@ -1,3 +1,4 @@
+import { SkillKey } from '@/app/pages/home/sections/skills/skills.data';
 import { DE } from './de';
 import { EN } from './en';
 
@@ -14,3 +15,5 @@ export const I18N = {
 export function isLang(value: string | null): value is Lang {
     return value === 'en' || value === 'de';
 }
+
+export type SkillsLabels = Record<SkillKey, string>;

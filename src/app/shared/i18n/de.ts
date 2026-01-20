@@ -18,6 +18,30 @@ export const DE = {
         street: 'Rosenweg 5'
     },
 
+    skills: {
+        eyebrow: 'Technologies',
+        title: 'Skill Set',
+        intro: 'I work with modern web technologies...',
+        needAnother: 'You need',
+        needAnotherAccent: 'another skill?',
+        outro: 'I’m always open to learning...',
+        cta: "Let’s talk",
+        labels: {
+            html: 'HTML',
+            css: 'CSS',
+            js: 'JavaScript',
+            ts: 'TypeScript',
+            angular: 'Angular',
+            firebase: 'Firebase',
+            git: 'Git',
+            restApi: 'REST API',
+            scrum: 'Scrum',
+            growthMindset: 'Growth mindset',
+        },
+        growthTip: {
+            title: 'Ich habe ein besonderes Interesse daran, zu lernen'
+        }
+    },
 
     references: {
         title: 'What my colleagues say about me',
