@@ -1,5 +1,53 @@
 <section id="skills" class="skills">
-  <div class="container">
-    <h1>skills works</h1>
+  <p class="eyebrow eyebrow--bold">{{ lang.dict().skills.eyebrow }}</p>
+  <div class="skills__grid">
+
+    <div class="skills__card">
+      <h2 class="skills__title">{{ lang.dict().skills.title }}</h2>
+
+      <p class="skills__text">{{ lang.dict().skills.intro }}</p>
+
+
+      <div class="skills__invite">
+        <h3 class="skills__sub">
+          {{ lang.dict().skills.needAnother }}
+          <span class="skills__sub--accent">{{ lang.dict().skills.needAnotherAccent }}</span>
+        </h3>
+
+        <p class="skills__text--outro">{{ lang.dict().skills.outro }}</p>
+      </div>
+
+      <app-button variant="marquee" href="#contact">
+        {{ lang.dict().skills.cta }}
+      </app-button>
+
+    </div>
+
+    <div class="skills-cloud">
+      <div class="skill" *ngFor="let s of skills; trackBy: trackByKey" [class.is-growth]="s.key === 'growthMindset'"
+        tabindex="0">
+        <app-icon class="skill__icon" [name]="s.icon"></app-icon>
+        <span class="skill__name">{{ getSkillLabel(s.key) }}</span>
+
+        <div class="growth-tip" *ngIf="s.key === 'growthMindset'">
+          <p class="growth-tip__title">{{ lang.dict().skills.growthTip.title }}</p>
+
+          <div class="growth-tip__row">
+            <div class="growth-tip__item">
+              <app-icon class="growth-tip__miniIcon" name="react-color"></app-icon>
+              <span class="growth-tip__item--text">React</span>
+            </div>
+
+            <div class="growth-tip__item">
+              <app-icon class="growth-tip__miniIcon" name="vue-color"></app-icon>
+              <span>Vue.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
+
 </section>
