@@ -7,6 +7,18 @@
     flex-wrap: $wrap;
 }
 
+@mixin surface-glass($rgb, $bgA: 0.10, $borderA: 1, $blur: 8px, $padding: 32px, $radius: 30px) {
+    position: relative;
+    padding: $padding;
+    border-radius: $radius;
+
+    background: rgb(#{$rgb} / #{$bgA});
+    border: 1px solid rgb(#{$rgb} / #{$borderA});
+
+    backdrop-filter: blur($blur);
+    -webkit-backdrop-filter: blur($blur);
+}
+
 $breakpoints: (
     sm: 480px,
     md: 768px,
