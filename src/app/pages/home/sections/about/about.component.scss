@@ -69,17 +69,8 @@
 }
 
 .about__card {
-  position: relative;
-  @include dflex($gap: 32px, $align: start, $dir: column);
-
-  border-radius: 30px;
-  padding: 32px;
-
-  border: 1px solid rgb(var(--color-primary-rgb) / 1);
-  background: rgb(var(--color-primary-rgb) / 0.10);
-
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  @include surface-glass(var(--color-primary-rgb));
+  @include dflex($dir: column, $align: flex-start, $gap: 32px);
 }
 
 .about__title {
