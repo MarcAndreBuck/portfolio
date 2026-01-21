@@ -4,10 +4,10 @@ export type ButtonVariant = 'simple' | 'marquee';
 export type ButtonTarget = '_self' | '_blank' | '_parent' | '_top';
 
 @Component({
-  selector: 'app-button',
+  selector: 'app-link-button',
   standalone: true,
-  templateUrl: './button.component.html',
-  styleUrl: './button.component.scss',
+  templateUrl: './link-button.component.html',
+  styleUrl: './link-button.component.scss',
 })
 export class ButtonComponent implements AfterViewInit {
   @Input() variant: ButtonVariant = 'simple';
