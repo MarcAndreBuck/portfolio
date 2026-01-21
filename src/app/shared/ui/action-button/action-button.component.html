@@ -1,0 +1,6 @@
+<button class="main-btn" [class.is-marquee]="variant === 'marquee'" [attr.type]="type" [disabled]="disabled"
+    [attr.aria-label]="ariaLabel || null">
+    <span class="button_inner">
+        <ng-content></ng-content>
+    </span>
+</button>
