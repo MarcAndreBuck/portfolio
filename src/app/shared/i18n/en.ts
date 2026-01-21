@@ -22,11 +22,11 @@ export const EN = {
     skills: {
         eyebrow: 'Technologies',
         title: 'Skill Set',
-        intro: `My skills focus on modern front-end development using HTML, CSS/SCSS, JavaScript, and Angular, with a strong emphasis on clean, maintainable code, responsive design, and accessible user interfaces. I continuously expand my skill set by keeping up with new technologies, tools, and best practices, and I’m always open to learning and adapting in a fast-evolving web development landscape.`,
+        intro: `My skills focus on modern front-end development using HTML, CSS/SCSS, JavaScript, and Angular, with a strong emphasis on clean, maintainable code, responsive design, and accessible user interfaces. I continuously expand my skill set by keeping up with new technologies, tools, and best practices, and I'm always open to learning and adapting in a fast-evolving web development landscape.`,
         needAnother: 'You need',
         needAnotherAccent: 'another skill?',
         outro: 'Feel free to contact me. I look forward to expanding on my previous knowledge.',
-        cta: "Let’s talk",
+        cta: `Let's talk`,
         labels: {
             html: 'HTML',
             css: 'CSS',
@@ -42,6 +42,25 @@ export const EN = {
         growthTip: {
             title: 'I have a special interest in learning'
         }
+    },
+
+    projects: {
+        intro: 'Explore a selection of my work here - interact with projects to see my skills in action.',
+        actions: { live: 'Live', github: 'GitHub' },
+        items: {
+            join: {
+                description: 'A Kanban-style task manager with authentication and realtime sync.',
+                highlights: ['Auth + Firestore', 'Drag & drop workflow', 'Responsive UI'],
+            },
+            pollo: {
+                description: 'A 2D browser game with animations, collisions and game-loop logic.',
+                highlights: ['Canvas rendering', 'Basic enemy AI', 'Mobile controls'],
+            },
+            bubble: {
+                description: 'Realtime app built with Angular + Firebase (auth/db).',
+                highlights: ['Realtime data', 'Auth flow', 'Clean UI'],
+            },
+        },
     },
 
     references: {
@@ -82,28 +101,28 @@ export const EN = {
         labels: {
             name: "What's your name?",
             email: "What's your email?",
-            message: 'How can I help you?',
+            message: "How can I help you?",
+
             privacyTextA: "I've read the ",
-            privacyLink: 'privacy policy',
-            privacyTextB: ' and agree to the processing of my data.',
-            submit: 'Say Hello ;)',
+            privacyLink: "privacy policy",
+            privacyTextB: " and agree to the processing of my data.",
+
+            submit: "Say Hello :)",
         },
 
         placeholders: {
-            name: 'Your name',
-            email: 'youremail@email.com',
-            message: 'Hello Marc, I am interested in...',
+            name: "Your name goes here",
+            email: "youremail@email.com",
+            message: "Hello Marc, I am interested in…",
         },
 
         errors: {
-            nameRequired: 'Please enter your name.',
-            nameMin: 'Please enter at least 2 characters.',
-            emailRequired: 'Please enter your email address.',
-            emailInvalid: 'Please enter a valid email address.',
-            messageRequired: 'Please enter a message.',
-            messageMin: 'Please enter at least 10 characters.',
-            privacyRequired: 'You must accept the privacy policy.',
-        }
+            required: "Oops! It seems this field is missing.",
+            email: "Please enter a valid email address.",
+            minlength: "Please enter a bit more.",
+            requiredTrue: "Please accept the privacy policy.",
+            generic: "Please check your input.",
+        },
     },
 
 

@@ -1,281 +1,213 @@
 @use "./src/styles/mixins.scss" as *;
 
-.contact {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 96px 0;
+:host {
+  @include dflex();
+}
 
-    @media (max-width: 900px) {
-        grid-template-columns: 1fr;
-        gap: 44px;
-        padding: 72px 16px;
-    }
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1440px;
+  width: 100%;
+  align-items: start;
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .contact__left {
-    max-width: 520px;
-
-    @media (max-width: 900px) {
-        max-width: 100%;
-    }
+  max-width: 520px;
+  @include dflex($gap: 40px, $dir: column, $align: start, $justify: start);
 }
 
-.contact__kicker {
-    color: var(--color-primary);
-    margin: 0 0 18px;
+.contact__header {
+  @include dflex($gap: 20px, $dir: column, $align: start, $justify: start);
 }
 
 .contact__headline {
-    margin: 0 0 36px;
-    font-size: clamp(2.6rem, 5vw, 4.5rem);
-    line-height: 0.95;
-    color: var(--color-primary);
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 64px;
+  letter-spacing: -3%;
+}
+
+.contact__content {
+  @include dflex($gap: 16px, $dir: column, $align: start, $justify: start);
 }
 
 .contact__subheadline {
-    margin: 0 0 12px;
-    color: var(--color-primary);
+  color: rgb(var(--color-primary-rgb) / 1);
+  font-family: var(--font-secondary);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .contact__text {
-    margin: 0 0 18px;
-    color: rgb(var(--color-default)/1);
-    opacity: 0.85;
-    max-width: 60ch;
-}
+  font-size: 16px;
+  line-height: 1.2;
 
-.contact__cta {
-    margin: 0;
-    color: rgb(var(--color-default)/1);
-}
-
-.contact__link {
-    color: var(--color-primary);
-    text-decoration: none;
-    border-bottom: 1px solid rgb(var(--color-primary-rgb)/ 0.6);
+  span {
+    color: rgb(var(--color-primary-rgb) / 1);
+    font-weight: 700;
+  }
 }
 
 .contact__form {
-    display: grid;
-    gap: 28px;
-    min-width: 0;
+  display: grid;
+  gap: 40px;
 }
 
-
-.field {
-    padding-top: 18px;
-    padding-bottom: 22px; 
-    border-top: 1px solid rgb(var(--color-primary-rgb)/ 0.35);
-    transition: border-color 150ms ease;
-
-    .field__label {
-        display: block;
-        margin: 0 0 10px;
-        color: var(--color-primary);
-        font-size: 1.35rem;
-        transition: color 150ms ease;
-    }
-
-    .field__control {
-        width: 100%;
-        border: 0;
-        outline: 0;
-        background: transparent;
-        color: rgb(var(--color-default)/1);
-        opacity: 0.9;
-        padding: 6px 0 18px;
-        border-bottom: 1px solid rgb(var(--color-primary-rgb)/ 0.35);
-        transition: border-color 150ms ease;
-
-        &--textarea {
-            resize: vertical;
-            padding-bottom: 6px;
-        }
-    }
-
-    &:hover,
-    &:focus-within {
-        border-top-color: rgb(var(--color-primary-rgb)/ 0.8);
-
-        .field__control {
-            border-bottom-color: rgb(var(--color-primary-rgb)/ 0.8);
-        }
-    }
-
-
-    &.is-error {
-        border-top-color: rgba(255, 77, 77, 0.9);
-
-        .field__label {
-            color: rgba(255, 77, 77, 0.95);
-        }
-
-        .field__control {
-            border-bottom-color: rgba(255, 77, 77, 0.9);
-        }
-    }
-}
-
-.field__control-wrap {
-    position: relative;
-}
-
-.field__error-overlay {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    margin-top: 6px;
-    z-index: 5;
-
-    max-width: 100%;
-    padding: 6px 10px;
-    border-radius: 10px;
-
-    font-size: 0.75rem;
-    line-height: 1.2;
-
-    background: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-
-    pointer-events: none;
-    white-space: normal;
-}
-
-.field__error-overlay::before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 14px;
-    border-width: 0 6px 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
-}
-
-/* Privacy Block */
-.privacy-wrap {
-    position: relative;
-    padding-bottom: 22px;
-
-    &.is-error .check__text {
-        color: rgba(255, 77, 77, 0.95);
-        opacity: 1;
-    }
-}
-
-.field__error-overlay--privacy {
-    top: 100%;
-    left: 0;
-}
-
-.check {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 12px;
-    align-items: start;
-    color: rgb(var(--color-default)/1);
-    opacity: 0.85;
-}
-
-.check__box {
-    margin-top: 4px;
-    accent-color: var(--color-primary);
-}
-
-.contact__submit {
-    justify-self: center;
-    border: 1px solid rgba(var(--color-default-rgb, 255, 255, 255), 0.35);
-    border-radius: 999px;
-    background: transparent;
-    color: rgb(var(--color-default)/1);
-    padding: 12px 26px;
-    cursor: pointer;
-    transition: transform 150ms ease, border-color 150ms ease;
-
-    &:hover {
-        transform: scale(1.04);
-        border-color: rgb(var(--color-primary-rgb)/ 0.7);
-    }
-
-    &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        transform: none;
-    }
+.contact__fields {
+  border-top: 1px solid rgb(var(--color-primary-rgb) / 0.5);
+  border-bottom: 1px solid rgb(var(--color-primary-rgb) / 0.5);
 }
 
 .field {
-    padding-top: 18px;
-    border-top: 1px solid rgb(var(--color-primary-rgb)/ 0.35);
+  position: relative;
+  @include dflex($gap: 1rem, $dir: column, $align: start, $justify: start);
+  padding: 2rem;
+  transition: border-color 150ms ease;
 
-    .field__label {
-        display: block;
-        margin: 0 0 10px;
-        color: var(--color-primary);
-        font-size: 1.35rem;
-    }
+  border-top: 1px solid rgb(var(--color-primary-rgb) / 0.5);
+  border-bottom: 1px solid rgb(var(--color-primary-rgb) / 0.5);
 
-    .field__control {
-        width: 100%;
-        border: 0;
-        outline: 0;
-        background: transparent;
-        color: rgb(var(--color-default)/1);
-        opacity: 0.9;
-
-        padding: 6px 0 18px;
-        border-bottom: 1px solid rgb(var(--color-primary-rgb)/ 0.35);
-
-        &--textarea {
-            resize: vertical;
-            padding-bottom: 6px;
-        }
-    }
-
-
-    &:hover,
-    &:focus-within {
-        border-top-color: rgb(var(--color-primary-rgb)/ 0.8);
-
-        .field__control {
-            border-bottom-color: rgb(var(--color-primary-rgb)/ 0.8);
-        }
-    }
+  &:first-child {
+    border-top: none;
+  }
 }
 
+.field__label {
+  font-family: var(--font-secondary);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: rgb(var(--color-primary-rgb) / 1);
+}
+
+.field__control {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: rgb(var(--color-default) / 1);
+
+  &::placeholder {
+    color: rgb(var(--color-default) / 0.8);
+    transition: color 150ms ease;
+  }
+
+  &:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.field.is-error .field__control::placeholder {
+  color: rgb(var(--color-warn) / 0.8);
+}
 
 .field__error {
-    margin: -2px 0 10px;
-    font-size: 0.95rem;
-    line-height: 1.2;
-    color: #ff6b6b;
-    opacity: 0.95;
+  position: absolute;
+  left: 2rem;
+  bottom: 0.9rem;
+
+  font-size: 0.875rem;
+  color: rgb(var(--color-warn) / 0.9);
+  line-height: 1.2;
+  white-space: nowrap;
+
+  &--check{
+    bottom: -1rem;
+  }
 }
-
-
 
 .privacy-wrap {
-    position: relative;
-    margin-top: 6px;
-}
-
-.field__error--privacy {
-    margin: 10px 0 0;
+  @include dflex($gap: 0.5rem, $justify: start);
+  position: relative;
 }
 
 .check {
-    display: grid;
-    grid-template-columns: 18px 1fr;
-    gap: 12px;
-    align-items: start;
-    color: rgb(var(--color-default)/1);
-    opacity: 0.85;
+  @include dflex($gap: 0.5rem, $justify: start);
+}
+
+.check__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
 }
 
 .check__box {
-    margin-top: 4px;
-    accent-color: var(--color-primary);
+  width: 24px;
+  height: 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  color: rgb(var(--color-primary-rgb) / 1);
+  cursor: pointer;
+}
+
+.check__img {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.check__box:hover {
+  background-color: rgb(var(--color-primary-rgb) / 0.3);
+}
+
+.check__input:focus-visible+.check__box {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.check__text {
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+
+  a {
+    position: relative;
+    color: rgb(var(--color-primary-rgb) / 1);
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -5px;
+      height: 1px;
+      background-color: rgb(var(--color-primary-rgb) / 1);
+      opacity: 1;
+
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 150ms ease;
+    }
+
+    &:hover {
+      color: rgb(var(--color-default-rgb) / 1);
+    }
+
+    &:hover::after {
+      transform: scaleX(1.05);
+    }
+  }
+}
+
+.submit {
+  width: 100%;
+  @include dflex();
 }

@@ -24,8 +24,8 @@ export const DE = {
         intro: 'I work with modern web technologies...',
         needAnother: 'You need',
         needAnotherAccent: 'another skill?',
-        outro: 'I’m always open to learning...',
-        cta: "Let’s talk",
+        outro: `I'm always open to learning...`,
+        cta: `Let's talk`,
         labels: {
             html: 'HTML',
             css: 'CSS',
@@ -42,6 +42,26 @@ export const DE = {
             title: 'Ich habe ein besonderes Interesse daran, zu lernen'
         }
     },
+
+    projects: {
+        intro: 'Entdecke eine Auswahl meiner Arbeiten – interagiere mit den Projekten, um meine Skills in Aktion zu sehen.',
+        actions: { live: 'Live', github: 'GitHub' }, // optional; kannst du auch hardcoden
+        items: {
+            join: {
+                description: 'Ein Kanban-Taskmanager mit Auth und Realtime-Sync.',
+                highlights: ['Auth + Firestore', 'Drag & Drop Workflow', 'Responsive UI'],
+            },
+            pollo: {
+                description: 'Ein 2D-Browsergame mit Animationen, Kollisionen und Game-Loop.',
+                highlights: ['Canvas Rendering', 'Basic Enemy AI', 'Mobile Controls'],
+            },
+            bubble: {
+                description: 'Realtime App mit Angular + Firebase (Auth/DB).',
+                highlights: ['Realtime Daten', 'Auth Flow', 'Clean UI'],
+            },
+        },
+    },
+
 
     references: {
         title: 'What my colleagues say about me',
@@ -79,32 +99,30 @@ export const DE = {
 
     contact: {
         labels: {
-            name: 'Wie ist dein Name?',
-            email: 'Wie lautet deine E-Mail?',
-            message: 'Wie kann ich dir helfen?',
-            privacyTextA: 'Ich habe die ',
-            privacyLink: 'Datenschutzerklärung',
-            privacyTextB: ' gelesen und stimme der Verarbeitung meiner Daten zu.',
-            submit: 'Nachricht senden',
+            name: "Wie ist dein Name?",
+            email: "Wie lautet deine E-Mail?",
+            message: "Wie kann ich dir helfen?",
+
+            privacyTextA: "Ich habe die ",
+            privacyLink: "Datenschutzerklärung",
+            privacyTextB: " gelesen und stimme der Verarbeitung meiner Daten zu.",
+
+            submit: "Absenden",
         },
 
         placeholders: {
-            name: 'Dein Name',
-            email: 'deine@email.de',
-            message: 'Hallo Marc, ich interessiere mich für …',
+            name: "Dein Name kommt hier rein",
+            email: "deinemail@email.de",
+            message: "Hallo Marc, ich interessiere mich für…",
         },
 
         errors: {
-            nameRequired: 'Bitte gib deinen Namen ein.',
-            nameMin: 'Bitte mindestens 2 Zeichen eingeben.',
-            emailRequired: 'Bitte gib deine E-Mail-Adresse ein.',
-            emailInvalid: 'Bitte gib eine gültige E-Mail-Adresse ein.',
-            messageRequired: 'Bitte gib eine Nachricht ein.',
-            messageMin: 'Bitte mindestens 10 Zeichen eingeben.',
-            privacyRequired: 'Bitte akzeptiere die Datenschutzerklärung.',
-        }
-
-
+            required: "Ups! Dieses Feld fehlt noch.",
+            email: "Bitte gib eine gültige E-Mail-Adresse ein.",
+            minlength: "Bitte gib etwas mehr ein.",
+            requiredTrue: "Bitte akzeptiere die Datenschutzerklärung.",
+            generic: "Bitte prüfe deine Eingabe.",
+        },
     },
 
     legalNotice: {
