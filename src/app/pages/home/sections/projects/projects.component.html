@@ -1,3 +1,37 @@
-<div id="projects"></div>
+<section class="projects" id="projects">
 
-<p>projects works!</p>
+    <div class="projects__header">
+        <span class="eyebrow eyebrow--bold">Projects</span>
+        <h2>Featured Projects</h2>
+    </div>
+
+    <p class="projects__intro">
+        {{ lang.dict().projects.intro }}
+    </p>
+
+    <div class="projects__stage">
+        <div class="projects__list" role="list">
+            <button class="project-row" type="button" role="listitem"
+                *ngFor="let project of projects; trackBy: trackByProjectKey" (mouseenter)="onProjectHover(project.key)"
+                (mouseleave)="onProjectHoverEnd()" (click)="openProject(project)">
+                <span class="project-row__title">{{ project.title }}</span>
+
+                <span class="project-row__stack">
+                    <ng-container *ngFor="let tech of project.stack; let last = last">
+                        <span class="tech">{{ tech }}</span>
+                        <span class="sep" *ngIf="!last"></span>
+                    </ng-container>
+                </span>
+            </button>
+        </div>
+
+        <div class="projects__preview" aria-hidden="true">
+            <div *ngFor="let project of projects; trackBy: trackByProjectKey" class="projects__preview-media"
+                [class.is-active]="project.key === previewProjectKey" [ngClass]="getPreviewPos(project.key)">
+                <img class="projects__preview-img" [src]="getPreviewSrc(project.key)" alt="" loading="lazy" />
+            </div>
+        </div>
+    </div>
+
+
+</section>
