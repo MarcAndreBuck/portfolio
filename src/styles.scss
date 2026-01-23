@@ -19,6 +19,10 @@ body {
     cursor: default;
 }
 
+body.is-modal-open {
+    overflow: hidden;
+}
+
 a,
 button,
 [role="button"],
@@ -68,7 +72,7 @@ a {
 
 .check__box .cb__check {
     opacity: 0;
-    transition: opacity 150ms ;
+    transition: opacity 150ms;
 }
 
 /* show check when checked */
