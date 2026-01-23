@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { LanguageService } from '@/app/shared/i18n/language.service';
 import { IconComponent } from '@/app/shared/icons/icon.component';
-import { SKILLS, SkillItem, SkillKey } from './skills.data';
+import { SKILLS, SkillItem, SkillKey } from '@/app/shared/skills/skills.data';
 import { ButtonComponent } from '@/app/shared/ui/link-button/link-button.component';
 
 @Component({
