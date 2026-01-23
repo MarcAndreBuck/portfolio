@@ -13,12 +13,12 @@
         <div class="projects__list" role="list">
             <button class="project-row" type="button" role="listitem"
                 *ngFor="let project of projects; trackBy: trackByProjectKey" (mouseenter)="onProjectHover(project.key)"
-                (mouseleave)="onProjectHoverEnd()" (click)="openProject(project)">
+                (mouseleave)="onProjectHoverEnd()" (click)="openProject(project, $event)">
                 <span class="project-row__title">{{ project.title }}</span>
 
                 <span class="project-row__stack">
                     <ng-container *ngFor="let tech of project.stack; let last = last">
-                        <span class="tech">{{ tech }}</span>
+                        <span class="tech">{{ lang.dict().skills.labels[tech] }}</span>
                         <span class="sep" *ngIf="!last"></span>
                     </ng-container>
                 </span>
@@ -34,4 +34,7 @@
     </div>
 
 
+    <app-project-modal *ngIf="activeModalVm() as vm" [vm]="vm" [returnFocusTo]="returnFocusTo" (close)="close()"
+        (next)="goToNextProject($event)">
+    </app-project-modal>
 </section>
