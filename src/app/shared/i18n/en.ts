@@ -35,7 +35,7 @@ export const EN = {
             angular: 'Angular',
             firebase: 'Firebase',
             git: 'Git',
-            restApi: 'REST-API',
+            restApi: 'REST API',
             scrum: 'Scrum',
             growthMindset: 'Growth mindset',
         },
@@ -131,8 +131,6 @@ export const EN = {
         imprintTitle: 'Impressum',
         exploringTitle: 'Board erkunden',
         emailLabel: 'E-Mail:',
-        // den Rest kannst du 1:1 später übersetzen
-        // (oder erstmal EN drin lassen, wenn du willst)
         termsTitle: 'Nutzungsbedingungen',
         termsAfterPortfolio: `  <h2 id="imprint-title" class="legal-notice__subtitle">Imprint</h2>
 

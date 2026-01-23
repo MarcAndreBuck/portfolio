@@ -34,7 +34,7 @@ export const DE = {
             angular: 'Angular',
             firebase: 'Firebase',
             git: 'Git',
-            restApi: 'REST API',
+            restApi: 'REST-API',
             scrum: 'Scrum',
             growthMindset: 'Growth mindset',
         },
@@ -45,7 +45,6 @@ export const DE = {
 
     projects: {
         intro: 'Entdecke eine Auswahl meiner Arbeiten – interagiere mit den Projekten, um meine Skills in Aktion zu sehen.',
-        actions: { live: 'Live', github: 'GitHub' }, // optional; kannst du auch hardcoden
         items: {
             join: {
                 description: 'Ein Kanban-Taskmanager mit Auth und Realtime-Sync.',
