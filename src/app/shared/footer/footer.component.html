@@ -1,37 +1,21 @@
-<footer class="footer">
-    <div class="container footer__inner">
-        <!-- LEFT -->
-        <div class="footer__left">
-            <img class="footer__logo" src="assets/img/logo-green.png" alt="Logo Marc-André Buck" width="40" height="40"
-                loading="lazy" />
+<div class="footer-left">
+    <img src="/assets/img/logo-green.png" alt="Logo Marc-André Buck">
+    <span>{{ identity.role }}</span>
+    <span>{{ identity.location }}</span>
+</div>
 
-            <div class="footer__meta">
-                <span class="footer__role">Frontend Developer</span>
-                <span class="footer__location">Hagenow, Germany</span>
-            </div>
-        </div>
+<span>©  {{ identity.name }} {{ identity.yearOfConstruct }}</span>
 
-        <!-- CENTER -->
-        <p class="footer__copy">© {{ lang.dict().identity.name }}</p>
+<div class="footer-right">
+    <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer">
+        {{ link.label }}
+        <span class="sr-only">(opens in a new tab)</span>
+    </a>
 
-        <!-- RIGHT -->
-        <nav class="footer__right" aria-label="Footer links">
-            <a class="footer__link" href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer">
-                GitHub <span class="sr-only">(opens in a new tab)</span>
-            </a>
+    <a [attr.href]="'mailto:' + identity.email">
+        Email
+        <span class="sr-only">(opens email client)</span>
+    </a>
 
-            <a class="footer__link" href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank"
-                rel="noopener noreferrer">
-                LinkedIn <span class="sr-only">(opens in a new tab)</span>
-            </a>
-
-            <a class="footer__link" [attr.href]="'mailto:' + lang.dict().identity.email">
-                Email <span class="sr-only">(opens email client)</span>
-            </a>
-
-            <a class="footer__link" routerLink="/legal-notice">
-                Legal Notice
-            </a>
-        </nav>
-    </div>
-</footer>
+    <a routerLink="/legal-notice">Legal Notice</a>
+</div>

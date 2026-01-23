@@ -11,7 +11,7 @@
         {{ lang.dict().hero.buttons.projects }}
       </app-link-button>
 
-        <app-link-button variant="marquee" href="#contact">
+      <app-link-button variant="marquee" href="#contact">
         {{ lang.dict().hero.buttons.contact }}
       </app-link-button>
 
@@ -29,29 +29,26 @@
 
     <div class="right">
 
-      <a class="email" [href]="'mailto:' + lang.dict().identity.email">
-        {{ lang.dict().identity.email }}
+      <a class="email" [href]="'mailto:' + identity.email">
+        {{ identity.email }}
       </a>
 
       <div class="social">
-        <a class="mail" [href]="'mailto:' + lang.dict().identity.email" rel="noopener noreferrer"
-          aria-label="mail to " + lang.dict().hero.identity.email>
+        <a *ngFor="let link of socialLinks" class="social-link" [href]="link.label === 'GitHub' ? link.url : 'mailto:' + identity.email"
+          [attr.aria-label]="link.ariaLabel"
+          [target]="link.label !== 'Mail' ? '_blank' : undefined"
+          [rel]="link.label !== 'Mail' ? 'noopener noreferrer' : undefined">
+          <app-icon [name]="link.icon" class="icons"></app-icon>
+        </a>
+
+        <a class="mail" [attr.href]="'mailto:' + identity.email" rel="noopener noreferrer"
+          [attr.aria-label]="'Mail to ' + identity.email">
           <app-icon name="mail" class="icons"></app-icon>
-        </a>
-
-        <a href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer"
-          aria-label="Open GitHub profile in new tab">
-          <app-icon name="git" class="icons"></app-icon>
-        </a>
-
-        <a href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank" rel="noopener noreferrer"
-          aria-label="Open linkedIn profile in new tab">
-          <app-icon name="linkedIn" class="icons"></app-icon>
         </a>
       </div>
 
       <div class="line"></div>
     </div>
   </div>
-  <app-marquee [items]="lang.heroMarquee()" [duration]="28" class="marquee"></app-marquee>
+  <app-marquee [items]="lang.heroMarquee()" [duration]="marqueeDuration" class="marquee"></app-marquee>
 </section>
