@@ -1,14 +1,37 @@
-<div class="footer-left">
-    <img src="../../../assets/img/logo-green.png" alt="Logo Marc-André Buck">
-    <span>Frontend Developer</span>
-    <span>Hagenow Germany</span>
-</div>
+<footer class="footer">
+    <div class="container footer__inner">
+        <!-- LEFT -->
+        <div class="footer__left">
+            <img class="footer__logo" src="assets/img/logo-green.png" alt="Logo Marc-André Buck" width="40" height="40"
+                loading="lazy" />
 
-<span>© Marc-André Buck</span>
+            <div class="footer__meta">
+                <span class="footer__role">Frontend Developer</span>
+                <span class="footer__location">Hagenow, Germany</span>
+            </div>
+        </div>
 
-<div class="footer-right">
-    <a href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href='mailto:' + lang.dict().hero.identity.email>Email</a>
-    <a routerLink="/legal-notice">Legal Notice</a>
-</div>
+        <!-- CENTER -->
+        <p class="footer__copy">© {{ lang.dict().identity.name }}</p>
+
+        <!-- RIGHT -->
+        <nav class="footer__right" aria-label="Footer links">
+            <a class="footer__link" href="https://github.com/MarcAndreBuck" target="_blank" rel="noopener noreferrer">
+                GitHub <span class="sr-only">(opens in a new tab)</span>
+            </a>
+
+            <a class="footer__link" href="https://de.linkedin.com/in/marc-andr%C3%A9-buck-b921431aa" target="_blank"
+                rel="noopener noreferrer">
+                LinkedIn <span class="sr-only">(opens in a new tab)</span>
+            </a>
+
+            <a class="footer__link" [attr.href]="'mailto:' + lang.dict().identity.email">
+                Email <span class="sr-only">(opens email client)</span>
+            </a>
+
+            <a class="footer__link" routerLink="/legal-notice">
+                Legal Notice
+            </a>
+        </nav>
+    </div>
+</footer>
