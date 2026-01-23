@@ -1,0 +1,204 @@
+@use "./src/styles/mixins.scss" as *;
+
+.project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    padding: 24px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+}
+
+.project-modal__card {
+    position: relative;
+    overflow: auto;
+
+    border-radius: 24px;
+    padding: 4rem;
+
+    background: var(--gradient-accent);
+    border: 1px solid rgb(var(--color-primary-rgb) / 1);
+}
+
+.project-modal__close {
+    all: unset;
+    position: absolute;
+    top: 3.5rem;
+    right: 3.5rem;
+
+    width: 18px;
+    height: 18px;
+
+    color: rgb(var(--color-default) / 1);
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 150ms ease, color 150ms ease;
+
+    &:hover {
+        transform: scale(1.15);
+        color: rgb(var(--color-primary-rgb) / 1);
+    }
+
+    &:focus-visible {
+        outline: 2px solid rgb(var(--color-primary-rgb) / 1);
+        outline-offset: 4px;
+    }
+}
+
+.project-modal__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    align-items: center;
+}
+
+.project-modal__left {
+    @include dflex($gap: 40px, $align: start, $dir: column);
+}
+
+.project-modal__header {
+    @include dflex($gap: 1.5rem, $align: start, $dir: column);
+}
+
+.project-modal__index {
+    color: rgb(var(--color-primary-rgb) / 1);
+    font-size: 8rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.project-modal__title {
+    color: rgb(var(--color-default) / 1);
+    font-family: var(--font-secondary);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+}
+
+.project-modal__content {
+    @include dflex($gap: 2rem, $align: start, $dir: column);
+}
+
+.project-modal__description {
+    @include dflex($gap: 1.25rem, $align: start, $dir: column);
+}
+
+.project-modal__subtitle {
+    color: rgb(var(--color-primary-rgb) / 1);
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.project-modal__desc {
+    color: rgb(var(--color-default) / 1);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.project-modal__tech {
+    @include dflex($gap: 1rem);
+    flex-wrap: wrap;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.project-modal__tech-item {
+    @include dflex($gap: 0.25rem);
+}
+
+.project-modal__tech-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    color: rgb(var(--color-primary-rgb) / 1);
+}
+
+.project-modal__tech-label {
+    color: rgb(var(--color-default) / 1);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.project-modal__actions {
+    @include dflex($gap: 2rem);
+}
+
+.project-modal__action .outward {
+    position: relative;
+    height: 1em;
+    color: rgb(var(--color-primary-rgb) / 1);
+    transition: transform 150ms ease, color 150ms ease;
+}
+
+.project-modal__action:hover .outward {
+    transform: translate(4px, -4px);
+}
+
+.project-modal__right {
+    align-self: center;
+}
+
+.project-modal__preview {
+    width: 32.5rem;
+    aspect-ratio: 16 / 10;
+    border-radius: 30px;
+    display: block;
+}
+
+.project-modal__next {
+    all: unset;
+    @include dflex($gap: 0.5rem);
+
+    position: absolute;
+    bottom: 3rem;
+    right: 4rem;
+
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+    color: rgb(var(--color-primary-rgb) / 1);
+    cursor: pointer;
+
+    transition: color 150ms ease;
+
+    &:focus-visible {
+        outline: 2px solid rgb(var(--color-primary-rgb) / 1);
+        outline-offset: 4px;
+    }
+
+    .arrow-forward {
+        height: 1em;
+        aspect-ratio: 1 / 1;
+        transition: transform 150ms ease;
+    }
+
+    &:hover {
+        color: rgb(var(--color-default) / 1);
+
+        .arrow-forward {
+            transform: scale(1.2);
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .project-modal__grid {
+        grid-template-columns: 1fr;
+    }
+}
