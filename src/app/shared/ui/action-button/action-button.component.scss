@@ -1,4 +1,4 @@
-@use "./src/styles/mixins.scss" as *;
+@use "@/styles/mixins.scss" as *;
 
 .main-btn {
     all: unset;
@@ -37,7 +37,7 @@
 }
 
 .button_inner {
-    display: inline-block;
+    @include dflex($gap: 4px);
     white-space: nowrap;
     will-change: transform, opacity;
 }

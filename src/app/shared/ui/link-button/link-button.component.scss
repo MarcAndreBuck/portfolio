@@ -32,7 +32,7 @@
 }
 
 .button_inner {
-    display: inline-block;
+    @include dflex($gap: 4px);
     white-space: nowrap;
     will-change: transform, opacity;
 }
