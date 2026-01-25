@@ -9,13 +9,8 @@
             <article *ngFor="let t of references(); let i = index; trackBy: trackByIndex" class="card"
                 [class.is-active]="getCardState(i) === 'active'" [class.is-prev]="getCardState(i) === 'prev'"
                 [class.is-next]="getCardState(i) === 'next'" [class.is-hidden]="getCardState(i) === 'hidden'"
-                role="button" [attr.tabindex]="getCardState(i) === 'active' ? 0 : -1"
                 [attr.aria-hidden]="getCardState(i) !== 'active' ? 'true' : null"
-                [attr.aria-current]="getCardState(i) === 'active' ? 'true' : null"
-                [attr.aria-label]="lang.dict().references.aria.card"
-                (click)="getCardState(i) !== 'active' && onCardClick(i)"
-                (keydown.enter)="getCardState(i) !== 'active' && onCardClick(i)"
-                (keydown.space)="getCardState(i) !== 'active' && onCardClick(i)">
+                [attr.aria-current]="getCardState(i) === 'active' ? 'true' : null">
                 <p class="card__text">
                     {{ t.text }}
                 </p>
