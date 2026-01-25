@@ -1,1 +1,49 @@
-<app-testimonials></app-testimonials>
+<section class="testimonials">
+    <h2 class="testimonials__title" id="testimonials-title">
+        {{ lang.dict().references.title }}
+    </h2>
+
+    <div class="carousel">
+        <div class="stage" aria-live="polite" aria-atomic="true" aria-roledescription="carousel"
+            aria-labelledby="testimonials-title">
+            <article *ngFor="let t of references(); let i = index; trackBy: trackByIndex" class="card"
+                [class.is-active]="getCardState(i) === 'active'" [class.is-prev]="getCardState(i) === 'prev'"
+                [class.is-next]="getCardState(i) === 'next'" [class.is-hidden]="getCardState(i) === 'hidden'"
+                role="button" [attr.tabindex]="getCardState(i) === 'active' ? 0 : -1"
+                [attr.aria-hidden]="getCardState(i) !== 'active' ? 'true' : null"
+                [attr.aria-current]="getCardState(i) === 'active' ? 'true' : null"
+                [attr.aria-label]="lang.dict().references.aria.card"
+                (click)="getCardState(i) !== 'active' && onCardClick(i)"
+                (keydown.enter)="getCardState(i) !== 'active' && onCardClick(i)"
+                (keydown.space)="getCardState(i) !== 'active' && onCardClick(i)">
+                <p class="card__text">
+                    {{ t.text }}
+                </p>
+
+                <div class="card__footer">
+                    <span class="line" aria-hidden="true"></span>
+                    <span class="sig">
+                        {{ t.author }} - {{ t.role }}
+                    </span>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="dots" [attr.aria-label]="lang.dict().references.aria.list">
+        <button class="nav nav--left" type="button" (click)="prev()"
+            [attr.aria-label]="lang.dict().references.aria.prev">
+            <app-icon name="arrow-back" class="icons" aria-hidden="true"></app-icon>
+        </button>
+
+        <button *ngFor="let _ of references(); let i = index" type="button" class="dot"
+            [class.is-active]="i === activeIndex" (click)="goTo(i)"
+            [attr.aria-label]="lang.dict().references.aria.goto(i + 1)"
+            [attr.aria-current]="i === activeIndex ? 'true' : null"></button>
+
+        <button class="nav nav--right" type="button" (click)="next()"
+            [attr.aria-label]="lang.dict().references.aria.next">
+            <app-icon name="arrow-next" class="icons" aria-hidden="true"></app-icon>
+        </button>
+    </div>
+</section>
