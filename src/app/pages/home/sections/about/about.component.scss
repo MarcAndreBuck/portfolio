@@ -1,27 +1,30 @@
 @use "./src/styles/mixins.scss" as *;
 
 :host {
-  @include dflex($dir: column);
+  @include dflex($dir: unset);
 }
 
 .about {
+  box-sizing: border-box;
   position: relative;
-  max-width: 1440px;
+  max-width: var(--container-max);
   width: 100%;
-  height: 100vh;
-  @include dflex($gap: 12px);
+  @include dflex($gap: var(--space-3));
+  padding-inline: var(--container-pad);
 }
 
 .about__grid {
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: minmax(0, 35.5rem) minmax(0, 35.5rem);
   justify-content: space-between;
+  gap: var(--space-8);
   width: 100%;
 }
 
 .about__media {
   position: relative;
-  width: 568px;
+  width: 100%;
+  max-width: clamp(18rem, 70vw, 35.5rem);
   aspect-ratio: 1 / 1;
   border-radius: 30px;
 }
@@ -32,12 +35,12 @@
   inset: 0;
   border-radius: inherit;
 
-  transform: translate3d(-14px, 14px, 0);
+  transform: translate(-0.875rem, 0.875rem);
   opacity: 0;
 
   background: repeating-linear-gradient(-135deg,
-      rgb(var(--color-primary-rgb) / 1) 0 2px,
-      transparent 2px 24px);
+      rgb(var(--color-primary-rgb) / 1) 0 0.125rem,
+      transparent 0.125rem 1.5rem);
 
   will-change: transform, opacity;
   transition: opacity 150ms ease, transform 150ms ease;
@@ -45,7 +48,7 @@
 
 .about__media:hover::before {
   opacity: 1;
-  transform: translate3d(-46px, 30px, 0);
+  transform: translate(-2.875rem, 1.875rem);
 }
 
 .about__img {
@@ -61,24 +64,25 @@
 }
 
 .about__content {
-  @include dflex($gap: 20px, $align: start, $dir: column);
+  @include dflex($gap: var(--space-5), $align: start, $dir: column);
   position: relative;
-  width: 568px;
+  width: 100%;
+  max-width: clamp(18rem, 70vw, 35.5rem);
   aspect-ratio: 1 / 1;
-  padding-top: 98px;
+  padding-top: 6.125rem;
 }
 
 .about__card {
   @include surface-glass(var(--color-primary-rgb));
-  @include dflex($dir: column, $align: flex-start, $gap: 32px);
+  @include dflex($dir: column, $align: flex-start, $gap: var(--space-7));
 }
 
 .about__title {
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
 }
 
 .about__text {
-  font-size: 18px;
+  font-size: var(--fs-md);
   line-height: 1.2;
   color: rgb(var(--color-default)/1);
   text-align: justify;
@@ -88,33 +92,104 @@
 .about__list {
   list-style: none;
   padding: 0;
-  margin: 0 -12px;
+  margin: 0 calc(var(--space-3) * -1);
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .about__item {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: 24px;
+  gap: var(--space-6);
   align-items: start;
+
+  &-text {
+    font-size: var(--fs-md);
+    line-height: 1.2;
+    color: rgb(var(--color-default)/0.8);
+    cursor: default;
+
+    &:hover {
+      color: rgb(var(--color-default)/1);
+    }
+  }
 }
 
 .about__icon {
-  width: 32px;
+  width: 2rem;
   aspect-ratio: 1/1;
   display: grid;
   place-items: center;
   color: rgb(var(--color-primary-rgb) / 1);
 }
 
-.about__item-text {
-  font-size: 18px;
-  line-height: 1.2;
-  color: rgb(var(--color-default)/0.8);
-  cursor: default;
+@media (max-width: 57.5rem) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    width: auto;
+  }
 
-  &:hover {
-    color: rgb(var(--color-default)/1);
+  .about__media,
+  .about__content {
+    max-width: clamp(18rem, 60vw, var(--about-card-max, 35.5rem));
+  }
+
+  .about__content {
+    aspect-ratio: auto;
+    padding: 0;
+  }
+}
+
+@media (max-width: 48rem) {
+
+  .about__list {
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  .about__card {
+    padding: 1rem;
+  }
+
+  .about__media:hover::before {
+    transform: translate(-1.5rem, 1rem);
+  }
+}
+
+
+@media (max-width: 30rem) {
+
+
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    width: auto;
+  }
+
+  .about__media,
+  .about__content {
+    width: auto;
+  }
+
+  .about__content {
+    aspect-ratio: auto;
+    padding: 0;
+  }
+
+  .about__text {
+    font-size: var(--fs-base);
+  }
+
+  .about__list {
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  .about__item {
+    gap: var(--space-6);
+
+    &-text {
+      font-size: var(--fs-base);
+    }
   }
 }
