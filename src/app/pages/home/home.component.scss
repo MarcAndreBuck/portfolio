@@ -2,3 +2,19 @@
     display: block;
     padding-bottom: var(--height-footer);
 }
+
+
+.section-spacing {
+    padding: var(--spacing-section) 0;
+
+    &--hero {
+        padding: 0;
+
+        margin-bottom: var(--spacing-section);
+    }
+
+    &--last {
+        padding: 0;
+        padding-top: var(--spacing-section);
+    }
+}
