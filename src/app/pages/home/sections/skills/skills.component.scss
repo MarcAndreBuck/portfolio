@@ -2,66 +2,65 @@
 
 :host {
     display: block;
-    min-height: 100vh;
     background: var(--gradient-skills);
-    @include dflex($gap: 20px, $dir: column);
+    @include dflex($gap: var(--space-5), $dir: unset);
 }
 
 .skills {
     position: relative;
-    padding: 6rem 0;
     overflow: hidden;
 
-    @include dflex($gap: 20px, $dir: column, $align: start);
-    max-width: 1440px;
+    @include dflex($gap: var(--space-5), $dir: column, $align: start);
+    max-width: var(--container-max);
+    padding-inline: var(--container-pad);
+
 }
 
 .skills__grid {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1.15fr;
-    gap: 72px;
+    gap: var(--space-11);
     align-items: start;
     z-index: 1;
 }
 
 .skills__panel {
     height: fit-content;
-    @include dflex($gap: 20px, $align: start, $dir: column);
+    @include dflex($gap: var(--space-5), $align: start, $dir: column);
 }
 
 .skills__card {
     @include surface-glass(var(--color-primary-rgb));
-    @include dflex($gap: 32px, $align: start, $dir: column);
+    @include dflex($gap: var(--space-7), $align: start, $dir: column);
 }
 
 .skills__title {
-    margin-bottom: 8px;
+    margin-bottom: var(--space-2);
 }
 
 .skills__text {
     height: auto;
-    font-size: 18px;
-    line-height: 1.2; 
+    font-size: var(--fs-md);
+    line-height: 1.2;
     letter-spacing: 0;
 
     text-align: justify;
 
     &--outro {
-        font-size: 16px;
+        font-size: var(--fs-base);
     }
 }
 
 .skills__invite {
-    @include dflex($gap: 16px, $align: start, $dir: column);
-    width: 332px;
+    @include dflex($gap: var(--space-4), $align: start, $dir: column);
 }
 
 .skills__sub {
     font-family: var(--font-secondary);
     font-weight: 700;
-    font-size: 24px;
-    line-height: 1.2; 
+    font-size: var(--fs-xl);
+    line-height: 1.2;
     letter-spacing: 0;
 
     &--accent {
@@ -71,8 +70,8 @@
 
 .skills-cloud {
     display: grid;
-    grid-template-columns: repeat(4, minmax(110px, 1fr));
-    gap: 72px 72px;
+    grid-template-columns: repeat(4, minmax(5rem, 1fr));
+    gap: clamp(1rem, 4vw, 4.5rem);
     align-items: start;
     justify-items: center;
 }
@@ -81,13 +80,13 @@
     position: relative;
     display: grid;
     justify-items: center;
-    gap: 8px;
+    gap: var(--space-2);
     text-align: center;
 }
 
 .skill__icon {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
     display: grid;
     place-items: center;
 
@@ -100,7 +99,7 @@
 
 .skill__name {
     font-family: var(--font-secondary);
-    font-size: 18px;
+    font-size: var(--fs-md);
     line-height: 1.2;
     letter-spacing: -0.03em;
     text-align: center;
@@ -116,17 +115,17 @@
     position: absolute;
     left: 50%;
     bottom: calc(100%);
-    transform: translateX(-35%) translateY(8px);
+    transform: translateX(-35%) translateY(0.5rem);
 
-    width: 188px;
-    padding: 14px 16px;
+    width: 11.75rem;
+    padding: 0.875rem 1rem;
     border-radius: 16px;
 
     background: rgb(var(--color-tooltip)/ 1);
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--space-2);
 
     opacity: 0;
     visibility: hidden;
@@ -140,9 +139,9 @@
     content: '';
     position: absolute;
     left: 35%;
-    bottom: -8px;
-    width: 16px;
-    height: 16px;
+    bottom: -0.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 4px;
     background: rgb(var(--color-tooltip)/ 1);
     transform: translateX(-50%) rotate(45deg);
@@ -150,7 +149,7 @@
 
 .growth-tip__title {
     font-weight: 400;
-    font-size: 16px;
+    font-size: var(--fs-base);
     line-height: 1;
     letter-spacing: 0;
     text-align: center;
@@ -161,22 +160,22 @@
 .growth-tip__row {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: var(--space-4);
 }
 
 .growth-tip__item {
     display: grid;
     justify-items: center;
-    gap: 6px;
+    gap: var(--space-1-5);
     font-size: 0.85rem;
 
     span {
 
-        font-family: var(--font-primary); 
+        font-family: var(--font-primary);
         font-weight: 700;
         font-style: normal;
 
-        font-size: 12px;
+        font-size: 0.75rem;
         line-height: 1.08;
         letter-spacing: 0;
         text-align: center;
@@ -187,8 +186,8 @@
 }
 
 .growth-tip__miniIcon {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
 }
 
 .skill.is-growth:hover .growth-tip,
@@ -196,4 +195,78 @@
     opacity: 1;
     visibility: visible;
     transform: translateX(-35%) translateY(0);
+}
+
+@media (max-width: 57.5rem) {
+    .skills {
+        max-width: clamp(18rem, 60vw, var(--about-card-max, 35.5rem));
+        padding-inline: var(--container-pad);
+    }
+
+    .skills__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .skills__card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    .skills-cloud {
+        grid-template-columns: repeat(3, minmax(5rem, 1fr));
+        gap: clamp(1rem, 4vw, 3rem);
+    }
+}
+
+@media (max-width: 30rem) {
+    .skills {
+
+        gap: 1.25rem;
+    }
+
+
+    .skills__grid {
+        align-items: center;
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+
+
+    }
+
+    .skills__card {
+        width: auto;
+    }
+
+    .skills__sub {
+        font-size: var(--fs-lg);
+    }
+
+    .skills__text {
+        font-size: var(--fs-base);
+    }
+
+    .skills__invite {
+        gap: var(--space-3);
+        width: auto;
+    }
+
+    .skills-cloud {
+        grid-template-columns: repeat(3, minmax(5rem, 1fr));
+        gap: 1rem;
+    }
+
+    .skill__name {
+        font-size: var(--fs-base);
+    }
+
+
+    .growth-tip {
+        left: 80%;
+    }
+
+    .growth-tip::after {
+        left: 22%;
+    }
 }
