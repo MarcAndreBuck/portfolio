@@ -25,7 +25,7 @@
 
     <div class="skills-cloud">
       <div class="skill" *ngFor="let s of skills; trackBy: trackByKey" [class.is-growth]="s.key === 'growthMindset'"
-        tabindex="0">
+        tabindex="0" role="button" [attr.aria-label]="getSkillLabel(s.key)">
         <app-icon class="skill__icon" [name]="s.icon"></app-icon>
         <span class="skill__name">{{ getSkillLabel(s.key) }}</span>
 
