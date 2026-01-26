@@ -24,7 +24,7 @@
                         rgba(var(--color-skill-glow-rgb), 0.06) 45%,
                         transparent 80%);
 
-        --gradient-mouse: radial-gradient(180px 180px at var(--mouse-x) var(--mouse-y),
+        --gradient-mouse: radial-gradient(11.25rem 11.25rem at var(--mouse-x) var(--mouse-y),
                         rgba(var(--color-mouse-glow-rgba), 0.25) 0%,
                         rgba(var(--color-mouse-glow-rgba), 0.18) 12%,
                         rgba(var(--color-mouse-glow-rgba), 0.10) 28%,
@@ -35,5 +35,63 @@
 
 
         --height-header: 6rem;
-        --height-footer: 200px;
+        --height-footer: 12.5rem;
+
+
+        --spacing-lateral: 6rem;
+        --spacing-gap-sm: 0.75rem;
+        --spacing-gap-md: 1.5rem;
+        --spacing-gap-lg: 3rem;
+        --spacing-section: 6rem;
+
+        --space-1: 0.25rem;
+        --space-1-25: 0.3125rem;
+        --space-1-5: 0.375rem;
+        --space-2: 0.5rem;
+        --space-2-5: 0.625rem;
+        --space-3: 0.75rem;
+        --space-3-5: 0.875rem;
+        --space-4: 1rem;
+        --space-5: 1.25rem;
+        --space-6: 1.5rem;
+        --space-7: 2rem;
+        --space-8: 2.5rem;
+        --space-9: 3rem;
+        --space-9-5: 3.5rem;
+        --space-10: 4rem;
+        --space-11: 4.5rem;
+
+
+        --radius-lg: 2rem;
+
+
+        --container-max: 90rem;
+        --container-pad: clamp(1rem, 4vw, 3rem);
+
+
+        --font-size-hero-title: 8rem;
+        --font-size-hero-subtitle: 2.5rem;
+
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.875rem;
+        --fs-base: 1rem;
+        --fs-md: 1.125rem;
+        --fs-lg: 1.25rem;
+        --fs-xl: 1.5rem;
+        --fs-2xl: 2rem;
+        --fs-3xl: 3.5rem;
+        --fs-4xl: 4rem;
+        --fs-5xl: 4.5rem;
+        --fs-6xl: 8rem;
+
+
+        --blur-md: 0.5rem;
+
+
+        --z-index-content: 1;
+        --z-index-modal: 1000;
+
+
+        --icon-size-md: 2rem;
+        --icon-size-sm: 0.75rem;
 }

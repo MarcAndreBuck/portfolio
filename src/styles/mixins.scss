@@ -7,7 +7,7 @@
     flex-wrap: $wrap;
 }
 
-@mixin surface-glass($rgb, $bgA: 0.10, $borderA: 1, $blur: 8px, $padding: 32px, $radius: 30px) {
+@mixin surface-glass($rgb, $bgA: 0.10, $borderA: 1, $blur: 0.5rem, $padding: 2rem, $radius: 30px) {
     position: relative;
     padding: $padding;
     border-radius: $radius;
