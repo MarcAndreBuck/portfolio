@@ -1,6 +1,7 @@
 @use "./styles/fonts";
 @use "./styles/tokens";
 @use "./styles/a11y.scss";
+@use "./styles/logo.scss";
 @use "./styles/mixins.scss" as *;
 
 * {
@@ -82,10 +83,11 @@ a {
 
 @media (max-width: 30rem) {
     .eyebrow {
-        font-size: 1.125rem; 
+        font-size: 1.125rem;
     }
 
     h2 {
-        font-size: 3.5rem; 
+        font-size: 3.5rem;
     }
 }
+

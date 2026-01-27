@@ -1,10 +1,12 @@
 <div class="footer-left">
-    <img src="/assets/img/logo-green.png" alt="Logo Marc-André Buck">
+    <a href="#" class="logo">
+        <app-icon name="logo"></app-icon>
+    </a>
     <span>{{ identity.role }}</span>
     <span>{{ identity.location }}</span>
 </div>
 
-<span>©  {{ identity.name }} {{ identity.yearOfConstruct }}</span>
+<span class="footer-copy">© {{ identity.name }} {{ identity.yearOfConstruct }}</span>
 
 <div class="footer-right">
     <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer">

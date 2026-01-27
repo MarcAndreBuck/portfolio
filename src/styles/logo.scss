@@ -1,0 +1,21 @@
+.initials {
+    fill: rgb(var(--color-primary-rgb)/1);
+    stroke: transparent;
+}
+
+.name {
+    fill: rgb(var(--color-default)/1);
+    stroke: transparent;
+}
+
+.logo:hover {
+    .initials {
+        stroke: rgb(var(--color-primary-rgb)/1);
+        fill: transparent;
+    }
+
+    .name {
+        stroke: rgb(var(--color-default)/1);
+        fill: transparent;
+    }
+}

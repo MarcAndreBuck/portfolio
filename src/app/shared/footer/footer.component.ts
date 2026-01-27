@@ -3,11 +3,12 @@ import { LanguageService } from '../i18n/language.service';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { IDENTITY, SOCIAL_LINKS } from '../identity.data';
+import { IconComponent } from '../icons/icon.component';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, IconComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
