@@ -1,34 +1,7 @@
-@use "@/styles/mixins.scss" as *;
+@use "@/styles/buttons.scss" as *;
 
 .main-btn {
-    all: unset;
-    cursor: pointer;
-
-    @include dflex($gap: 10px);
-    padding: 1rem 1.5rem;
-
-    border: 1px solid rgb(var(--color-default)/1);
-    border-radius: 100px;
-
-    font-size: 1rem;
-    color: rgb(var(--color-default)/1);
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-
-    transition: border-color 150ms, color 150ms;
-
-    &:hover {
-        border-color: var(--color-primary);
-        color: var(--color-primary);
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 3px;
-    }
+    @include main-button-base;
 
     &:disabled {
         opacity: 0.5;
@@ -37,7 +10,5 @@
 }
 
 .button_inner {
-    @include dflex($gap: 4px);
-    white-space: nowrap;
-    will-change: transform, opacity;
+    @include button-inner-base;
 }

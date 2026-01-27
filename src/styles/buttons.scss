@@ -1,0 +1,38 @@
+@use "@/styles/mixins.scss" as *;
+
+@mixin main-button-base {
+    all: unset;
+    cursor: pointer;
+
+    @include dflex($gap: var(--space-2-5));
+    padding: var(--space-4) var(--space-6);
+
+    border: 1px solid rgb(var(--color-default)/1);
+    border-radius: 100px;
+
+    font-size: var(--fs-base);
+    color: rgb(var(--color-default)/1);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    transition: border-color 150ms, color 150ms;
+
+    &:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+}
+
+@mixin button-inner-base {
+    @include dflex($gap: var(--space-1));
+    white-space: nowrap;
+    will-change: transform, opacity;
+}
