@@ -4,6 +4,10 @@
     @include dflex();
 }
 
+.testimonials {
+    width: 100%;
+}
+
 .testimonials__title {
     font-family: var(--font-secondary);
     font-weight: 700;
