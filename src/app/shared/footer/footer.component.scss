@@ -89,12 +89,14 @@
         gap: var(--space-4);
         margin-inline: auto;
     }
-}
 
+    .footer-copy {
+        padding-bottom: 1rem;
+    }
+}
 
 @media (max-width: 480px) {
     :host {
         grid-template-columns: 1.8fr 1fr;
-    
     }
 }
