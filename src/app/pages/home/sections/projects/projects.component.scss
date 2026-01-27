@@ -5,21 +5,21 @@
 }
 
 .projects {
-    max-width: 1440px;
+    max-width: var(--container-max);
     width: 100%;
-    padding: 6rem 0;
-    @include dflex($gap: 40px, $align: start, $dir: column);
+    @include dflex($gap: var(--space-8), $align: start, $dir: column);
+    padding-inline: var(--container-pad);
 }
 
 .projects__header {
-    @include dflex($gap: 20px, $align: start, $dir: column);
+    @include dflex($gap: var(--space-5), $align: start, $dir: column);
 }
 
 .projects__intro {
-    max-width: 500px;
+    max-width: 31.25rem;
 
     font-weight: 400;
-    font-size: 1.125rem;
+    font-size: var(--fs-md);
     line-height: 1.2;
     color: rgb(var(--color-default));
 }
@@ -27,14 +27,14 @@
 .projects__stage {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 48px;
+    gap: var(--space-9);
     align-items: start;
     width: 100%;
 }
 
 .projects__list {
-    border-top: 1px solid rgb(var(--color-primary-rgb)/1);
-    border-bottom: 1px solid rgb(var(--color-primary-rgb)/1);
+    border-top: 0.0625rem solid rgb(var(--color-primary-rgb)/1);
+    border-bottom: 0.0625rem solid rgb(var(--color-primary-rgb)/1);
 }
 
 .project-row {
@@ -50,11 +50,11 @@
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     align-items: center;
-    gap: 2rem;
+    gap: var(--space-7);
 
     padding: 2.5rem 2rem;
-    border-top: 1px solid rgb(var(--color-primary-rgb) / 1);
-    border-bottom: 1px solid rgb(var(--color-primary-rgb) / 1);
+    border-top: 0.0625rem solid rgb(var(--color-primary-rgb) / 1);
+    border-bottom: 0.0625rem solid rgb(var(--color-primary-rgb) / 1);
 
     transition: background-color 150ms ease;
 
@@ -67,18 +67,18 @@
     @include dflex($justify: start);
 
     font-family: var(--font-secondary);
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
     font-weight: 700;
     line-height: 1.2;
 }
 
 .project-row__stack {
-    @include dflex($gap: 4px, $justify: end, $dir: row);
-    font-size: 1.125rem;
+    @include dflex($gap: 0.25rem, $justify: end, $dir: row);
+    font-size: var(--fs-md);
 
     .sep {
         display: block;
-        width: 1px;
+        width: 0.0625rem;
         height: 1em;
         background-color: rgb(var(--color-primary-rgb)/1);
     }
@@ -93,7 +93,7 @@
     position: absolute;
     left: 50%;
 
-    width: 296px;
+    width: 18.5rem;
     aspect-ratio: 16 / 10;
     border-radius: 18px;
 
@@ -127,12 +127,12 @@
     inset: 0;
     border-radius: inherit;
 
-    transform: translate3d(14px, 14px, 0);
+    transform: translate(0.875rem, 0.875rem);
     opacity: 1;
 
     background: repeating-linear-gradient(135deg,
-            rgb(var(--color-primary-rgb) / 1) 0 2px,
-            transparent 2px 16px);
+            rgb(var(--color-primary-rgb) / 1) 0 0.125rem,
+            transparent 0.125rem 1rem);
 
     will-change: transform, opacity;
     transition: opacity 150ms ease, transform 150ms ease;
@@ -148,4 +148,77 @@
     object-fit: cover;
 
     border-radius: inherit;
+}
+
+@media (max-width: 64rem) {
+
+    .projects__stage {
+        grid-template-columns: 1.5fr / 1fr;
+    }
+
+    .projects__preview-media {
+        width: 15rem;
+    }
+}
+
+
+@media (max-width: 57.5rem) {
+
+    .projects__stage {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .projects__preview {
+        display: none;
+    }
+}
+
+
+@media (max-width: 40rem) {
+
+
+    .project-row {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+
+    .project-row__stack {
+        gap: var(--space-1-25);
+
+        justify-content: start;
+    }
+}
+
+@media (max-width: 30rem) {
+
+    .projects {
+        gap: var(--space-7);
+    }
+
+    .projects__header {
+        gap: var(--space-4);
+    }
+
+    .projects__intro {
+        font-size: var(--fs-base);
+    }
+
+    .project-row {
+        justify-content: space-between;
+        padding: 2rem 0;
+    }
+
+    .project-row__stack {
+        flex-wrap: wrap;
+
+    }
+
+    .project-row__title {
+        font-size: var(--fs-xl);
+    }
+
+    .projects__preview {
+        display: none;
+    }
 }

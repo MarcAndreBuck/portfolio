@@ -13,7 +13,8 @@
         <div class="projects__list" role="list">
             <button class="project-row" type="button" role="listitem"
                 *ngFor="let project of projects; trackBy: trackByProjectKey" (mouseenter)="onProjectHover(project.key)"
-                (mouseleave)="onProjectHoverEnd()" (click)="openProject(project, $event)">
+                (mouseleave)="onProjectHoverEnd()" (click)="openProject(project, $event)"
+                [attr.aria-label]="'View ' + project.title + ' project details'">
                 <span class="project-row__title">{{ project.title }}</span>
 
                 <span class="project-row__stack">
