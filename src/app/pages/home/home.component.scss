@@ -9,8 +9,7 @@
 
     &--hero {
         padding: 0;
-
-        margin-bottom: var(--spacing-section);
+        margin-bottom: clamp(6rem, 12vw, 10rem);
     }
 
     &--last {
