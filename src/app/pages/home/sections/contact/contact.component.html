@@ -36,7 +36,8 @@
         </label>
 
         <input id="name" class="field__control" type="text" formControlName="name"
-          [placeholder]="getPlaceholder('name')" (blur)="markFieldAsBlurred('name')" />
+          [placeholder]="getPlaceholder('name')" (blur)="markFieldAsBlurred('name')" aria-required="true"
+          [attr.aria-invalid]="hasFieldError('name')" />
 
         <p class="field__error" *ngIf="showInlineError('name')">
           {{ getErrorMessage('name') }}
@@ -49,7 +50,8 @@
         </label>
 
         <input id="email" class="field__control" type="email" formControlName="email"
-          [placeholder]="getPlaceholder('email')" (blur)="markFieldAsBlurred('email')" />
+          [placeholder]="getPlaceholder('email')" (blur)="markFieldAsBlurred('email')" aria-required="true"
+          [attr.aria-invalid]="hasFieldError('email')" />
 
         <p class="field__error" *ngIf="showInlineError('email')">
           {{ getErrorMessage('email') }}
@@ -63,7 +65,8 @@
         </label>
 
         <textarea id="message" class="field__control field__control--textarea" rows="4" formControlName="message"
-          [placeholder]="getPlaceholder('message')" (blur)="markFieldAsBlurred('message')"></textarea>
+          [placeholder]="getPlaceholder('message')" (blur)="markFieldAsBlurred('message')" aria-required="true"
+          [attr.aria-invalid]="hasFieldError('message')"></textarea>
 
         <p class="field__error" *ngIf="showInlineError('message')">
           {{ getErrorMessage('message') }}
@@ -75,8 +78,8 @@
 
     <div class="privacy-wrap" [class.is-error]="hasFieldError('privacy')">
       <label class="check">
-        <input class="check__input" type="checkbox" formControlName="privacy"
-          (change)="markFieldAsBlurred('privacy')" />
+        <input class="check__input" type="checkbox" formControlName="privacy" (change)="markFieldAsBlurred('privacy')"
+          [attr.aria-label]="language.dict().contact.labels.privacyTextA + ' ' + language.dict().contact.labels.privacyLink + ' ' + language.dict().contact.labels.privacyTextB" />
 
         <span class="check__box" aria-hidden="true">
           <app-icon name="checkbox" class="check__img"></app-icon>
@@ -92,7 +95,7 @@
 
       </span>
 
-      <p class="check__error field__error--check" *ngIf="hasFieldError('privacy')">
+      <p class="field__error field__error--check" *ngIf="hasFieldError('privacy')">
         {{ getErrorMessage('privacy') }}
       </p>
 
