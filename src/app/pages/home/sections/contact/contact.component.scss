@@ -216,6 +216,15 @@
   @include dflex();
 }
 
+@media (max-width: 80rem) {
+  .check__text {
+    a {
+      &::after {
+        bottom: -0.1rem;
+      }
+    }
+  }
+}
 
 @media(max-width: 30rem) {
   .contact {
