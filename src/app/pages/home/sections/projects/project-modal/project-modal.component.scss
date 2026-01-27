@@ -4,34 +4,62 @@
     position: fixed;
     inset: 0;
     z-index: 1000;
-    padding: 24px;
+    padding: 1.5rem;
 
     display: grid;
     place-items: center;
 
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(0.375rem);
 }
 
 .project-modal__card {
     position: relative;
-    overflow: auto;
 
     border-radius: 24px;
-    padding: 4rem;
+
+    max-height: calc(100vh - 3rem);
 
     background: var(--gradient-accent);
     border: 1px solid rgb(var(--color-primary-rgb) / 1);
+
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
 }
+
+.project-modal__top {
+    padding-top: 3.5rem;
+    padding-inline: 3.5rem;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.project-modal__body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+
+    padding-inline: 4rem;
+    padding-block: 0;
+}
+
+.project-modal__bottom {
+    padding-bottom: 3rem;
+    padding-inline: 4rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
 
 .project-modal__close {
     all: unset;
-    position: absolute;
-    top: 3.5rem;
-    right: 3.5rem;
 
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
 
     color: rgb(var(--color-default) / 1);
     cursor: pointer;
@@ -39,6 +67,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
+    margin-left: auto;
 
     transition: transform 150ms ease, color 150ms ease;
 
@@ -48,29 +78,34 @@
     }
 
     &:focus-visible {
-        outline: 2px solid rgb(var(--color-primary-rgb) / 1);
-        outline-offset: 4px;
+        outline: 0.125rem solid rgb(var(--color-primary-rgb) / 1);
+        outline-offset: 0.25rem;
     }
 }
 
 .project-modal__grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 28px;
+    grid-template-areas: "data preview";
+    gap: var(--space-7);
     align-items: center;
+
+    max-height: none;
+    overflow: visible;
 }
 
 .project-modal__left {
-    @include dflex($gap: 40px, $align: start, $dir: column);
+    grid-area: data;
+    @include dflex($gap: var(--space-8), $align: start, $dir: column);
 }
 
 .project-modal__header {
-    @include dflex($gap: 1.5rem, $align: start, $dir: column);
+    @include dflex($gap: var(--space-6), $align: start, $dir: column);
 }
 
 .project-modal__index {
     color: rgb(var(--color-primary-rgb) / 1);
-    font-size: 8rem;
+    font-size: var(--fs-6xl);
     font-weight: 700;
     letter-spacing: -0.02em;
 }
@@ -78,37 +113,37 @@
 .project-modal__title {
     color: rgb(var(--color-default) / 1);
     font-family: var(--font-secondary);
-    font-size: 4rem;
+    font-size: var(--fs-4xl);
     font-weight: 700;
     line-height: 0.8;
     letter-spacing: -0.02em;
 }
 
 .project-modal__content {
-    @include dflex($gap: 2rem, $align: start, $dir: column);
+    @include dflex($gap: var(--space-7), $align: start, $dir: column);
 }
 
 .project-modal__description {
-    @include dflex($gap: 1.25rem, $align: start, $dir: column);
+    @include dflex($gap: var(--space-5), $align: start, $dir: column);
 }
 
 .project-modal__subtitle {
     color: rgb(var(--color-primary-rgb) / 1);
     font-family: var(--font-secondary);
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
     font-weight: 700;
     line-height: 1.2;
 }
 
 .project-modal__desc {
     color: rgb(var(--color-default) / 1);
-    font-size: 1.125rem;
+    font-size: var(--fs-md);
     font-weight: 400;
     line-height: 1.2;
 }
 
 .project-modal__tech {
-    @include dflex($gap: 1rem);
+    @include dflex($gap: var(--space-4));
     flex-wrap: wrap;
 
     list-style: none;
@@ -117,7 +152,7 @@
 }
 
 .project-modal__tech-item {
-    @include dflex($gap: 0.25rem);
+    @include dflex($gap: var(--space-1));
 }
 
 .project-modal__tech-icon {
@@ -135,7 +170,7 @@
 }
 
 .project-modal__actions {
-    @include dflex($gap: 2rem);
+    @include dflex($gap: var(--space-7));
 }
 
 .project-modal__action .outward {
@@ -146,11 +181,14 @@
 }
 
 .project-modal__action:hover .outward {
-    transform: translate(4px, -4px);
+    transform: translate(0.25rem, -0.25rem);
 }
 
 .project-modal__right {
+    grid-area: preview;
     align-self: center;
+    justify-self: center;
+
 }
 
 .project-modal__preview {
@@ -160,13 +198,10 @@
     display: block;
 }
 
+
 .project-modal__next {
     all: unset;
-    @include dflex($gap: 0.5rem);
-
-    position: absolute;
-    bottom: 3rem;
-    right: 4rem;
+    @include dflex($gap: var(--space-2));
 
     font-size: 1rem;
     font-weight: 400;
@@ -178,8 +213,8 @@
     transition: color 150ms ease;
 
     &:focus-visible {
-        outline: 2px solid rgb(var(--color-primary-rgb) / 1);
-        outline-offset: 4px;
+        outline: 0.125rem solid rgb(var(--color-primary-rgb) / 1);
+        outline-offset: 0.25rem;
     }
 
     .arrow-forward {
@@ -197,8 +232,95 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 60rem) {
     .project-modal__grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "preview"
+            "data";
+    }
+
+    .project-modal__preview {
+        height: 100%;
+        width: auto;
+    }
+
+    .project-modal__index {
+        font-size: var(--fs-5xl);
+    }
+
+    .project-modal__title {
+        font-size: var(--fs-3xl);
+    }
+
+    .project-modal__content {
+        gap: var(--space-5);
+    }
+
+    .project-modal__description {
+        gap: var(--space-4);
+    }
+
+    .project-modal__subtitle {
+        font-size: var(--fs-xl);
+    }
+
+    .project-modal__desc {
+        font-size: var(--fs-base);
+    }
+
+    .project-modal__tech {
+        gap: var(--space-4);
+        flex-wrap: wrap;
+
+        &-item {
+            gap: 0.25rem;
+
+            &-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+
+            &-label {
+                font-size: var(--fs-base);
+            }
+        }
+    }
+
+    .project-modal__action-next {
+        gap: var(--space-2);
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
+
+@media (max-width: 30rem) {
+    .project-modal {
+        padding: 0;
+        max-height: 100vh;
+    }
+
+    .project-modal__card {
+        max-height: 99vh;
+    }
+
+    .project-modal__top {
+        padding-top: 2rem;
+        padding-inline: 2rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .project-modal__body {
+        padding: 1rem;
+    }
+
+    .project-modal__bottom {
+        padding-top: 0.5rem;
+        padding-bottom: 2rem;
+        padding-inline: 2rem;
+    }
+
+    .project-modal__grid {
+        gap: var(--space-7);
     }
 }

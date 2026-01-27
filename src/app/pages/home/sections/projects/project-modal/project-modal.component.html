@@ -1,77 +1,68 @@
 <div class="project-modal" (click)="onBackdropClick()">
-
     <div class="project-modal__card" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" role="dialog" aria-modal="true"
         [attr.aria-labelledby]="titleId" [attr.aria-describedby]="descId" (click)="onCardClick($event)">
-
-        <button #closeBtn class="project-modal__close" type="button" (click)="onCloseClick($event)"
-            aria-label="Close project details">
-            <app-icon name="close"></app-icon>
-        </button>
-
-        <div class="project-modal__grid">
-
-            <div class="project-modal__left">
-
-                <div class="project-modal__header">
-                    <p class="project-modal__index">{{ vm.indexLabel }}</p>
-                    <h3 class="project-modal__title" [id]="titleId">
-                        {{ vm.project.title }}
-                    </h3>
-                </div>
-
-                <div class="project-modal__content">
-
-                    <div class="project-modal__description">
-                        <h4 class="project-modal__subtitle">
-                            What is this project about?
-                        </h4>
-
-                        <p class="project-modal__desc" [id]="descId">
-                            {{ vm.description }}
-                        </p>
-                    </div>
-
-                    <ul class="project-modal__tech">
-                        <li class="project-modal__tech-item" *ngFor="let s of vm.stackItems">
-                            <app-icon class="project-modal__tech-icon" [name]="s.icon" aria-hidden="true"></app-icon>
-
-                            <span class="project-modal__tech-label">
-                                {{ s.label }}
-                            </span>
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="project-modal__actions">
-
-                    <app-link-button *ngIf="vm.project.repoUrl" class="project-modal__action"
-                        [href]="vm.project.repoUrl" target="_blank" rel="noopener noreferrer">
-                        GitHub
-                        <app-icon name="arrow-outward" class="outward" aria-hidden="true"></app-icon>
-                        <span class="sr-only">(opens in a new tab)</span>
-                    </app-link-button>
-
-                    <app-link-button *ngIf="vm.project.liveUrl" class="project-modal__action"
-                        [href]="vm.project.liveUrl" target="_blank" rel="noopener noreferrer">
-                        Live Test
-                        <app-icon name="arrow-outward" class="outward" aria-hidden="true"></app-icon>
-                        <span class="sr-only">(opens in a new tab)</span>
-                    </app-link-button>
-
-                </div>
-
-            </div>
-
-            <div class="project-modal__right">
-                <img class="project-modal__preview" [src]="vm.previewSrc" [alt]="vm.project.title + ' preview'" />
-            </div>
-
+        <div class="project-modal__top">
+            <button #closeBtn class="project-modal__close" type="button" (click)="onCloseClick($event)"
+                aria-label="Close project details">
+                <app-icon name="close"></app-icon>
+            </button>
         </div>
 
-        <button class="project-modal__next" type="button" (click)="onNextClick($event)">
-            <span>Next project </span> <app-icon name="arrow-forward" class="arrow-forward"></app-icon>
-        </button>
+        <div class="project-modal__body">
+            <div class="project-modal__grid">
+                <div class="project-modal__left">
+                    <div class="project-modal__header">
+                        <p class="project-modal__index">{{ vm.indexLabel }}</p>
+                        <h3 class="project-modal__title" [id]="titleId">
+                            {{ vm.project.title }}
+                        </h3>
+                    </div>
 
+                    <div class="project-modal__content">
+                        <div class="project-modal__description">
+                            <h4 class="project-modal__subtitle">What is this project about?</h4>
+                            <p class="project-modal__desc" [id]="descId">
+                                {{ vm.description }}
+                            </p>
+                        </div>
+
+                        <ul class="project-modal__tech">
+                            <li class="project-modal__tech-item" *ngFor="let s of vm.stackItems">
+                                <app-icon class="project-modal__tech-icon" [name]="s.icon"
+                                    aria-hidden="true"></app-icon>
+                                <span class="project-modal__tech-label">{{ s.label }}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="project-modal__actions">
+                        <app-link-button *ngIf="vm.project.repoUrl" class="project-modal__action"
+                            [href]="vm.project.repoUrl" target="_blank" rel="noopener noreferrer">
+                            GitHub
+                            <app-icon name="arrow-outward" class="outward" aria-hidden="true"></app-icon>
+                            <span class="sr-only">(opens in a new tab)</span>
+                        </app-link-button>
+
+                        <app-link-button *ngIf="vm.project.liveUrl" class="project-modal__action"
+                            [href]="vm.project.liveUrl" target="_blank" rel="noopener noreferrer">
+                            Live Test
+                            <app-icon name="arrow-outward" class="outward" aria-hidden="true"></app-icon>
+                            <span class="sr-only">(opens in a new tab)</span>
+                        </app-link-button>
+                    </div>
+                </div>
+
+                <div class="project-modal__right">
+                    <img class="project-modal__preview" [src]="vm.previewSrc" [alt]="vm.project.title + ' preview'" />
+                </div>
+            </div>
+        </div>
+
+        <div class="project-modal__bottom">
+            <button class="project-modal__next" type="button" (click)="onNextClick($event)">
+                <span>Next project </span>
+                <app-icon name="arrow-forward" class="arrow-forward"></app-icon>
+            </button>
+        </div>
     </div>
 </div>
