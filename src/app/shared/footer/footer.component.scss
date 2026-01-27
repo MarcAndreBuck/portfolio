@@ -1,43 +1,70 @@
 @use "./src/styles/mixins.scss" as *;
 
 :host {
-    @include dflex($dir: row, $justify: space-between);
     width: 100%;
-    max-width: 1440px;
-    // position: absolute;
+    max-width: 90rem;
+    padding-inline: var(--container-pad);
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-areas: "logo copy links";
+    align-items: center;
+    gap: 1rem;
 }
 
 .footer-left {
-    @include dflex($dir: column, $justify: space-between);
+    grid-area: logo;
+    justify-self: start;
+}
 
-    img {
-        width: 200px;
-        height: 140px;
+.footer-copy {
+    grid-area: copy;
+    justify-self: center;
+    text-align: center;
+    color: rgb(var(--color-primary-rgb)/1);
+}
+
+.footer-right {
+    grid-area: links;
+
+
+    justify-self: end;
+}
+
+
+.footer-left {
+    @include dflex($dir: column, $align: start, $justify: space-between);
+
+    .logo {
+        display: flex;
+        height: 5rem;
+        width: auto;
+        margin-left: -1em;
     }
 }
 
 .footer-right {
-    @include dflex($dir: column, $gap: 0.5rem, $align: start);
+    @include dflex($dir: column, $gap: var(--space-2), $align: start);
 
     a {
         @include dflex();
         position: relative;
 
         &:hover {
-            color: var(--color-primary);
+            color: rgb(var(--color-primary-rgb)/1);
         }
 
         &::after {
             content: '';
             position: absolute;
 
-            left: -12px;
+            left: -0.75rem;
             transform: scale(0);
-            width: 8px;
-            height: 8px;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 50%;
 
-            background-color: var(--color-primary);
+            background-color: rgb(var(--color-primary-rgb)/1);
 
             transition: ease;
         }
@@ -45,6 +72,29 @@
         &:hover::after,
         &:focus-visible::after {
             transform: scale(1);
+
+            color: var(--color-default);
         }
+    }
+}
+
+@media (max-width: 780px) {
+    :host {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "logo links"
+            "copy copy";
+
+        align-items: center;
+        gap: var(--space-4);
+        margin-inline: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    :host {
+        grid-template-columns: 1.8fr 1fr;
+    
     }
 }
