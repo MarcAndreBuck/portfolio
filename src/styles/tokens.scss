@@ -42,7 +42,7 @@
         --spacing-gap-sm: 0.75rem;
         --spacing-gap-md: 1.5rem;
         --spacing-gap-lg: 3rem;
-        --spacing-section: 6rem;
+        --spacing-section: clamp(4rem, 8vw, 7rem);
 
         --space-1: 0.25rem;
         --space-1-25: 0.3125rem;
