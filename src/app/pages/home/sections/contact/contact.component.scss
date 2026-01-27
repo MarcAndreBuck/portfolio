@@ -7,47 +7,51 @@
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  max-width: 1440px;
   width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad, clamp(1rem, 4vw, 3rem));
   align-items: start;
   justify-content: center;
+  padding-inline: var(--container-pad);
+  gap: 1rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: 56.25rem) {
     grid-template-columns: 1fr;
   }
 }
 
 .contact__left {
-  max-width: 520px;
-  @include dflex($gap: 40px, $dir: column, $align: start, $justify: start);
+  max-width: 32.5rem;
+  @include dflex($gap: var(--space-8), $dir: column, $align: start, $justify: start);
 }
 
 .contact__header {
-  @include dflex($gap: 20px, $dir: column, $align: start, $justify: start);
+  @include dflex($gap: var(--space-5), $dir: column, $align: start, $justify: start);
 }
 
 .contact__headline {
   color: var(--color-primary);
   font-family: var(--font-secondary);
   font-weight: 700;
-  font-size: 64px;
-  letter-spacing: -3%;
+  font-size: var(--fs-4xl);
+  letter-spacing: -0.03em;
 }
 
 .contact__content {
-  @include dflex($gap: 16px, $dir: column, $align: start, $justify: start);
+  @include dflex($gap: var(--space-4), $dir: column, $align: start, $justify: start);
 }
 
 .contact__subheadline {
   color: rgb(var(--color-primary-rgb) / 1);
   font-family: var(--font-secondary);
   font-weight: 700;
-  font-size: 24px;
+  font-size: var(--fs-xl);
   line-height: 1.2;
 }
 
 .contact__text {
-  font-size: 16px;
+  font-size: var(--fs-base);
   line-height: 1.2;
 
   span {
@@ -58,12 +62,12 @@
 
 .contact__form {
   display: grid;
-  gap: 40px;
+  gap: var(--space-8);
 }
 
 .contact__fields {
-  border-top: 1px solid rgb(var(--color-primary-rgb) / 0.5);
-  border-bottom: 1px solid rgb(var(--color-primary-rgb) / 0.5);
+  border-top: 0.0625rem solid rgb(var(--color-primary-rgb) / 0.5);
+  border-bottom: 0.0625rem solid rgb(var(--color-primary-rgb) / 0.5);
 }
 
 .field {
@@ -72,8 +76,8 @@
   padding: 2rem;
   transition: border-color 150ms ease;
 
-  border-top: 1px solid rgb(var(--color-primary-rgb) / 0.5);
-  border-bottom: 1px solid rgb(var(--color-primary-rgb) / 0.5);
+  border-top: 0.0625rem solid rgb(var(--color-primary-rgb) / 0.5);
+  border-bottom: 0.0625rem solid rgb(var(--color-primary-rgb) / 0.5);
 
   &:first-child {
     border-top: none;
@@ -117,35 +121,35 @@
   left: 2rem;
   bottom: 0.9rem;
 
-  font-size: 0.875rem;
+  font-size: var(--fs-sm);
   color: rgb(var(--color-warn) / 0.9);
   line-height: 1.2;
   white-space: nowrap;
 
-  &--check{
+  &--check {
     bottom: -1rem;
   }
 }
 
 .privacy-wrap {
-  @include dflex($gap: 0.5rem, $justify: start);
+  @include dflex($gap: var(--space-2), $justify: start);
   position: relative;
 }
 
 .check {
-  @include dflex($gap: 0.5rem, $justify: start);
+  @include dflex($gap: var(--space-2), $justify: start);
 }
 
 .check__input {
   position: absolute;
   opacity: 0;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
 }
 
 .check__box {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
 
   display: inline-flex;
   align-items: center;
@@ -157,8 +161,8 @@
 }
 
 .check__img {
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   display: block;
 }
 
@@ -167,8 +171,8 @@
 }
 
 .check__input:focus-visible+.check__box {
-  outline: 2px solid currentColor;
-  outline-offset: 4px;
+  outline: 0.125rem solid currentColor;
+  outline-offset: 0.25rem;
   border-radius: 50%;
 }
 
@@ -187,8 +191,8 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -5px;
-      height: 1px;
+      bottom: -0.3125rem;
+      height: 0.0625rem;
       background-color: rgb(var(--color-primary-rgb) / 1);
       opacity: 1;
 
@@ -210,4 +214,67 @@
 .submit {
   width: 100%;
   @include dflex();
+}
+
+
+@media(max-width: 30rem) {
+  .contact {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    gap: 4rem;
+  }
+
+  .contact__left {
+    gap: var(--space-7);
+  }
+
+  .contact__header {
+    gap: var(--space-4);
+  }
+
+  .contact__headline {
+    font-size: var(--fs-3xl);
+  }
+
+  .contact__content {
+    gap: var(--space-3);
+  }
+
+  .contact__subheadline {
+    font-size: var(--fs-lg);
+  }
+
+  .contact__form {
+    gap: var(--space-8);
+  }
+
+  .field {
+    gap: var(--space-4);
+    padding: 0.625rem;
+  }
+
+  .field__label {
+    font-size: var(--fs-lg);
+  }
+
+  .field__control {
+    font-size: var(--fs-base);
+  }
+
+  .check__text {
+    font-size: 0.9375rem;
+  }
+
+  .field__error {
+    position: relative;
+    left: 0;
+
+    &--check {
+      position: absolute;
+    }
+  }
+
+  .check__text a::after {
+    bottom: -0.125rem;
+  }
 }
