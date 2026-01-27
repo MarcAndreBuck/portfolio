@@ -15,7 +15,6 @@
     @include dflex($gap: var(--space-3), $dir: column);
 }
 
-/* ===== Content ===== */
 .hero__content {
     flex: 1;
     margin-inline: auto;
@@ -45,13 +44,11 @@
     @include dflex($gap: 3rem);
 }
 
-/* ===== Marquee ===== */
 .hero__marquee {
     position: relative;
     padding-bottom: 2.5%;
 }
 
-/* ===== Rails ===== */
 .hero__rails {
     position: absolute;
     left: clamp(1rem, 4vw, 6rem);
@@ -75,7 +72,6 @@
     @include dflex($dir: column, $gap: 1.5rem);
 }
 
-/* Scroll indicator */
 .hero__scroll {
     width: 1.875rem;
     height: 3.125rem;
@@ -89,18 +85,16 @@
     animation: floatY 1.8s ease-in-out infinite;
 }
 
-/* Lines */
 .hero__line {
     background-color: var(--color-primary);
     height: 100%;
-    width: 0.0625rem;
+    width: 1px;
 }
 
 .hero__line--muted {
     background-color: rgb(var(--color-default) / 1);
 }
 
-/* Social / Icons */
 .hero__social {
     @include dflex($dir: column, $gap: var(--space-3));
 }
@@ -139,7 +133,7 @@
     }
 }
 
-/* Email */
+
 .hero__email {
     font-family: var(--font-base);
     writing-mode: vertical-rl;
@@ -152,7 +146,6 @@
     }
 }
 
-/* ===== Animations ===== */
 @keyframes floatY {
     0% {
         transform: translateY(-0.125rem);
@@ -167,7 +160,6 @@
     }
 }
 
-/* ===== Breakpoints ===== */
 @media (max-width: 80rem) {
     .hero__title {
         font-size: 6.5rem;
