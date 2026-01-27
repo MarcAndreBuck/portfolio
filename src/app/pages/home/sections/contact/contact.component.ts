@@ -2,19 +2,40 @@ import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import { LanguageService } from '@/app/shared/i18n/language.service';
 import { ActionButtonComponent } from '@/app/shared/ui/action-button/action-button.component';
 import { IconComponent } from '@/app/shared/icons/icon.component';
 
+/**
+ * All available contact form fields.
+ */
 type ContactField = 'name' | 'email' | 'message' | 'privacy';
+
+/**
+ * Contact fields that contain text input.
+ */
 type TextField = Exclude<ContactField, 'privacy'>;
 
+/**
+ * Supported validation error keys used for i18n mapping.
+ */
 type ValidationErrorKey =
   | 'required'
   | 'email'
   | 'minlength'
   | 'requiredTrue'
   | 'generic';
+
+/**
+ * Payload sent to the contact API.
+ */
+type ContactPayload = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 @Component({
   selector: 'app-contact',
@@ -25,6 +46,7 @@ type ValidationErrorKey =
 })
 export class ContactComponent {
   private readonly formBuilder = inject(FormBuilder);
+  private readonly http = inject(HttpClient);
   readonly language = inject(LanguageService);
 
   /** True after the user tried to submit at least once. */
@@ -38,7 +60,10 @@ export class ContactComponent {
     privacy: false,
   };
 
-  /** Reactive form with blur-based validation for text fields and change-based for privacy. */
+  /**
+   * Reactive contact form.
+   * Text fields validate on blur, privacy checkbox validates on change.
+   */
   readonly contactForm = this.formBuilder.group(
     {
       name: this.formBuilder.control('', {
@@ -61,38 +86,38 @@ export class ContactComponent {
     { updateOn: 'blur' }
   );
 
-  /* ----------------------------------
-     Basic helpers
-  ---------------------------------- */
-
   /**
-   * Marks a field as "blurred once" to enable error display on that field.
-   * @param field Field name to mark as blurred.
+   * Marks a field as blurred once.
+   * Used to control when validation errors become visible.
+   *
+   * @param field Contact field name.
    */
   markFieldAsBlurred(field: ContactField): void {
     this.blurred[field] = true;
   }
 
   /**
-   * Returns the form control for the given field.
-   * @param field Field name.
-   * @returns The control instance or null.
+   * Returns the form control for a given field.
+   *
+   * @param field Contact field name.
+   * @returns Form control or null.
    */
   private getControl(field: ContactField) {
     return this.contactForm.get(field);
   }
 
   /**
-   * Returns true if errors for a field should be shown (blurred or submit tried).
-   * @param field Field name.
-   * @returns Whether validation feedback should be visible.
+   * Determines whether validation feedback should be shown.
+   *
+   * @param field Contact field name.
+   * @returns True if validation should be visible.
    */
   private shouldShowValidation(field: ContactField): boolean {
     return this.hasSubmitted || this.blurred[field];
   }
 
   /**
-   * True if all three text fields are valid.
+   * True if all text fields are valid.
    * Used to decide when to show the privacy checkbox error.
    */
   get areTextFieldsValid(): boolean {
@@ -104,9 +129,8 @@ export class ContactComponent {
   }
 
   /**
-   * Shows the privacy error only after all text fields are valid
-   * and the privacy checkbox is still unchecked.
-   * @returns Whether to show the privacy error.
+   * Determines whether the privacy checkbox error should be shown.
+   * Only visible after all text fields are valid.
    */
   private shouldShowPrivacyError(): boolean {
     const privacy = this.getControl('privacy');
@@ -114,26 +138,22 @@ export class ContactComponent {
   }
 
   /**
-   * Returns true if a field currently has a visible error.
-   * Privacy uses a special rule (only after all text fields are valid).
-   * @param field Field name.
-   * @returns Whether the field should show an error state.
+   * Returns whether a field currently has a visible validation error.
+   *
+   * @param field Contact field name.
+   * @returns True if the field should show an error state.
    */
   hasFieldError(field: ContactField): boolean {
     if (field === 'privacy') return this.shouldShowPrivacyError();
-
     const control = this.getControl(field);
     return !!control && this.shouldShowValidation(field) && control.invalid;
   }
 
-  /* ----------------------------------
-     Error handling (i18n)
-  ---------------------------------- */
-
   /**
-   * Maps control errors to a translation key.
-   * @param field Field name.
-   * @returns Error key or null if no visible error.
+   * Maps validation errors to translation keys.
+   *
+   * @param field Contact field name.
+   * @returns Validation error key or null.
    */
   private getErrorKey(field: ContactField): ValidationErrorKey | null {
     const control = this.getControl(field);
@@ -148,23 +168,21 @@ export class ContactComponent {
   }
 
   /**
-   * Returns the translated error message for a field.
-   * @param field Field name.
-   * @returns Localized error message or empty string.
+   * Returns the localized error message for a field.
+   *
+   * @param field Contact field name.
+   * @returns Translated error message or empty string.
    */
   getErrorMessage(field: ContactField): string {
     const key = this.getErrorKey(field);
     return key ? this.language.dict().contact.errors[key] : '';
   }
 
-  /* ----------------------------------
-     UX helpers
-  ---------------------------------- */
-
   /**
-   * Checks if a text field is empty (trimmed).
+   * Checks whether a text field is empty (trimmed).
+   *
    * @param field Text field name.
-   * @returns True if empty.
+   * @returns True if the field is empty.
    */
   private isEmptyTextField(field: TextField): boolean {
     const value = this.getControl(field)?.value;
@@ -172,18 +190,20 @@ export class ContactComponent {
   }
 
   /**
-   * Shows placeholder error for text fields only if empty and invalid.
+   * Shows placeholder error if the field is empty and invalid.
+   *
    * @param field Text field name.
-   * @returns Whether to show error inside the placeholder.
+   * @returns True if placeholder error should be shown.
    */
   showPlaceholderError(field: TextField): boolean {
     return this.hasFieldError(field) && this.isEmptyTextField(field);
   }
 
   /**
-   * Shows inline error text for text fields if invalid and not empty.
+   * Shows inline error text if the field is invalid but not empty.
+   *
    * @param field Text field name.
-   * @returns Whether to show an inline error label.
+   * @returns True if inline error should be shown.
    */
   showInlineError(field: TextField): boolean {
     return this.hasFieldError(field) && !this.isEmptyTextField(field);
@@ -191,6 +211,7 @@ export class ContactComponent {
 
   /**
    * Returns either the localized placeholder or the localized error message.
+   *
    * @param field Text field name.
    * @returns Placeholder text.
    */
@@ -200,14 +221,12 @@ export class ContactComponent {
       : this.language.dict().contact.placeholders[field];
   }
 
-  /* ----------------------------------
-     Submit
-  ---------------------------------- */
-
   /**
-   * Submits the form. Marks all fields blurred on invalid submit.
+   * Handles form submission.
+   * Marks all fields as blurred on invalid submit.
+   * Sends the contact payload to the backend on success.
    */
-  submit(): void {
+  async submit(): Promise<void> {
     this.hasSubmitted = true;
 
     if (this.contactForm.invalid) {
@@ -215,30 +234,56 @@ export class ContactComponent {
       return;
     }
 
-    // TODO: send form data
+    const payload = this.getPayload();
+    await this.sendContact(payload);
     this.resetFormState();
   }
 
   /**
-   * True if the form can be submitted (all fields valid + privacy checked).
+   * Returns true if the form is valid and can be submitted.
    */
   get canSubmitForm(): boolean {
     return this.contactForm.valid;
   }
 
   /**
-   * Marks every field as blurred so all relevant errors can show.
+   * Marks all fields as blurred.
    */
   private markAllFieldsAsBlurred(): void {
-    (Object.keys(this.blurred) as ContactField[]).forEach((field) => (this.blurred[field] = true));
+    (Object.keys(this.blurred) as ContactField[]).forEach(
+      (field) => (this.blurred[field] = true)
+    );
   }
 
   /**
-   * Resets the form and UI state after a successful submit.
+   * Resets the form and all related UI state.
    */
   private resetFormState(): void {
     this.contactForm.reset({ privacy: false });
     this.hasSubmitted = false;
-    (Object.keys(this.blurred) as ContactField[]).forEach((field) => (this.blurred[field] = false));
+    (Object.keys(this.blurred) as ContactField[]).forEach(
+      (field) => (this.blurred[field] = false)
+    );
+  }
+
+  /**
+   * Creates the contact payload from form values.
+   *
+   * @returns ContactPayload containing name, email and message.
+   */
+  private getPayload(): ContactPayload {
+    const { name, email, message } = this.contactForm.getRawValue();
+    return { name: name!, email: email!, message: message! };
+  }
+
+  /**
+   * Sends the contact request to the backend API.
+   *
+   * @param payload Contact data to send.
+   * @throws Error if the request fails.
+   */
+  private async sendContact(payload: ContactPayload): Promise<void> {
+    const url = 'https://marc-buck.de/api/sendMail.php';
+    await firstValueFrom(this.http.post<void>(url, payload));
   }
 }
