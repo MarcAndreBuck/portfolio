@@ -1,12 +1,15 @@
 @use "./src/styles/mixins.scss" as *;
 
+:host {
+    @include dflex();
+}
 
 .testimonials__title {
     font-family: var(--font-secondary);
     font-weight: 700;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-7);
     color: var(--color-primary);
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
     display: block;
     text-align: center;
 
@@ -20,7 +23,7 @@
 
 .stage {
     position: relative;
-    height: 274px;
+    height: 23.375rem;
     overflow: hidden;
 
     &::after {
@@ -42,9 +45,13 @@
     position: absolute;
     inset: 0;
     margin: auto;
-    width: min(720px, 80%);
+    width: min(45rem, 80%);
+    height: 80%;
+    min-height: 17.125rem;
+    display: flex;
+    flex-direction: column;
 
-    padding: 28px 32px;
+    padding: 1.75rem var(--space-7);
     border-radius: 22px;
     border: 1px solid rgb(var(--color-primary-rgb)/ 1);
     background: rgb(var(--color-primary-rgb)/ 0.30);
@@ -81,78 +88,75 @@
     &.is-hidden {
         opacity: 0;
         transform: translateX(0) scale(0.9);
-        filter: blur(8px);
+        filter: blur(0.5rem);
         z-index: 1;
     }
 
     &__text {
-        font-size: 1.125rem;
+        flex: 1;
+        font-size: var(--fs-md);
         line-height: 120%;
-        color: rgb(var(--color-default)/1);
+        color: rgb(var(--color-default) / 1);
+        margin: 0;
     }
 
     &__footer {
-        position: absolute;
-        left: 32px;
-        right: 32px;
-        bottom: 22px;
-        @include dflex($gap: 14px);
-        color: rgb(var(--color-default)/1);
-    }
-
-
-    .line {
-        flex: 1;
-        height: 2px;
-        background: rgb(var(--color-default)/1);
-        opacity: 0.8;
-        border-radius: 99px;
-    }
-
-    .sig {
-        font-size: 0.95rem;
+        margin-top: auto;
+        /* optional, schadet aber nicht */
+        @include dflex($gap: var(--space-3-5));
     }
 }
 
 
+.line {
+    flex: 1;
+    height: 0.125rem;
+    background: rgb(var(--color-default)/1);
+    opacity: 0.8;
+    border-radius: 99px;
+}
+
+.sig {
+    font-size: 0.95rem;
+}
 
 
 
 .nav {
     all: unset;
-    @include dflex($gap: 20px);
-    height: 18px;
-    width: 18px;
+    @include dflex($gap: var(--space-5));
+    height: 1.125rem;
+    width: 1.125rem;
     cursor: pointer;
 
     transition: transform 150ms ease, border-color 150ms ease;
 
     &--right:hover {
         color: var(--color-primary);
-        transform: scale(1.2) translateX(4px);
+        transform: scale(1.2) translateX(0.25rem);
     }
 
     &--left:hover {
         color: var(--color-primary);
-        transform: scale(1.2) translateX(-4px);
+        transform: scale(1.2) translateX(-0.25rem);
     }
 
     &:focus-visible {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 4px;
+        outline: 0.125rem solid var(--color-primary);
+        outline-offset: 0.25rem;
         border-radius: 50%;
     }
 }
 
 .dots {
-    @include dflex($gap: 20px, $dir: row);
-    margin-top: 40px;
+    @include dflex($gap: var(--space-5), $dir: row);
+    margin-top: var(--space-8);
 }
 
 .dot {
     all: unset;
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 999px;
     background: rgb(var(--color-default)/1);
     cursor: pointer;
@@ -164,15 +168,15 @@
     }
 
     &:focus-visible {
-        outline: 2px solid var(--color-primary);
-        outline-offset: 4px;
+        outline: 0.125rem solid var(--color-primary);
+        outline-offset: 0.25rem;
         border-radius: 50%;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
     .testimonials__title {
-        font-size: 1.5rem;
+        font-size: var(--fs-xl);
     }
 
     .carousel {
@@ -180,20 +184,31 @@
     }
 
     .stage {
-        height: 320px;
+        height: 20rem;
     }
 
     .card {
         height: auto;
-        padding: 20px 16px;
+        padding: var(--space-5) var(--space-4);
 
 
         &__text {
 
-            height: 90%;
+            height: 82%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
+        &__footer {
+            flex-direction: column;
+
+
+            .line {
+                width: 100%;
+                border: 1px solid;
+            }
+        }
+
     }
 }
