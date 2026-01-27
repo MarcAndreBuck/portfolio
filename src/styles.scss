@@ -81,6 +81,21 @@ a {
     opacity: 1;
 }
 
+
+
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgb(var(--color-primary-rgb) / 0.75) rgba(255, 255, 255, 0.05);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,
+            rgb(var(--color-primary-rgb) / 0.9),
+            rgb(var(--color-primary-rgb) / 0.6));
+}
+
 @media (max-width: 30rem) {
     .eyebrow {
         font-size: 1.125rem;
@@ -90,4 +105,3 @@ a {
         font-size: 3.5rem;
     }
 }
-
