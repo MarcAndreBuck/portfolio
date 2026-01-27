@@ -1,150 +1,273 @@
 @use "./src/styles/mixins.scss" as *;
 
+:host {
+    @include dflex();
+    width: 100%;
+    height: 100vh;
+    background: var(--gradient-accent), var(--color-bg-dark);
+}
+
 .hero {
     position: relative;
     overflow: hidden;
-    @include dflex($gap: 12px, $dir: column);
-    height: 100vh;
-    background: var(--gradient-accent), var(--color-bg-dark);
+    height: 100%;
+    max-width: var(--container-max);
+    @include dflex($gap: var(--space-3), $dir: column);
+}
 
-    .container {
-        flex: 1;
-        @include dflex($gap: 10px, $dir: column);
-        max-width: 1440px;
+/* ===== Content ===== */
+.hero__content {
+    flex: 1;
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+    @include dflex($gap: var(--space-3), $dir: column);
+}
 
-        h1 {
-            font-weight: 700;
-            font-size: 8rem;
-            letter-spacing: -2%;
-        }
+.hero__eyebrow {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: var(--font-size-hero-subtitle);
+}
 
-        h2 {
-            font-family: var(--font-secondary);
-            font-weight: 400;
-            font-size: 2.5rem;
-        }
+.hero__headline {
+    @include dflex($gap: var(--space-8), $dir: column);
+}
+
+.hero__title {
+    font-weight: 700;
+    font-size: var(--font-size-hero-title);
+    letter-spacing: -2%;
+    text-align: center;
+}
+
+.hero__actions {
+    z-index: 1;
+    @include dflex($gap: 3rem);
+}
+
+/* ===== Marquee ===== */
+.hero__marquee {
+    position: relative;
+    padding-bottom: 2.5%;
+}
+
+/* ===== Rails ===== */
+.hero__rails {
+    position: absolute;
+    left: clamp(1rem, 4vw, 6rem);
+    right: clamp(1rem, 4vw, 6rem);
+    bottom: 0;
+    @include dflex($justify: space-between, $align: end);
+}
+
+.hero__rail {
+    display: flex;
+}
+
+.hero__rail--left {
+    height: 19.5rem;
+    @include dflex($dir: column, $gap: 1.5rem);
+}
+
+.hero__rail--right {
+    height: 28.125rem;
+    width: 1.25rem;
+    @include dflex($dir: column, $gap: 1.5rem);
+}
+
+/* Scroll indicator */
+.hero__scroll {
+    width: 1.875rem;
+    height: 3.125rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 2rem;
+    @include dflex($dir: column);
+}
+
+.hero__scroll-icon {
+    height: var(--space-3);
+    animation: floatY 1.8s ease-in-out infinite;
+}
+
+/* Lines */
+.hero__line {
+    background-color: var(--color-primary);
+    height: 100%;
+    width: 0.0625rem;
+}
+
+.hero__line--muted {
+    background-color: rgb(var(--color-default) / 1);
+}
+
+/* Social / Icons */
+.hero__social {
+    @include dflex($dir: column, $gap: var(--space-3));
+}
+
+.hero__social-link--mail {
+    display: none;
+}
+
+.hero__icon {
+    width: var(--space-7);
+    height: var(--space-7);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+        color: rgb(var(--color-default) / 1);
     }
 
-    .marquee {
-        position: relative;
-        padding-bottom: 2.5%;
-    }
-
-    &-btn-section {
-        @include dflex($gap: 3rem, $align: space-between);
-        z-index: 1;
-    }
-
-    .lateral {
+    &::after {
+        content: "";
         position: absolute;
-        left: 6rem;
-        right: 6rem;
-        bottom: 0;
-        @include dflex($justify: space-between, $align: end);
-
-
-        .left {
-            display: flex;
-            height: 312px;
-            @include dflex($dir: column, $gap: 1.5rem);
-        }
-
-        .right {
-            height: 450px;
-            width: 20px;
-            @include dflex($dir: column, $gap: 1.5rem);
-
-            .social {
-                @include dflex($dir: column, $gap: 0.75rem);
-
-                .icons {
-                    width: 32px;
-                    height: 32px;
-                    color: var(--color-primary);
-                    display: flex;
-                    align-items: center;
-
-                    &:hover{
-                        color: rgb(var(--color-default)/1);
-                    }
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-
-                        right: -20px;
-                        transform: scale(0);
-                        width: 8px;
-                        height: 8px;
-                        border-radius: 50%;
-
-                        background-color: var(--color-primary);
-
-                        transition: ease;
-                    }
-
-                    &:hover::after,
-                    &:focus-visible::after {
-                        transform: scale(1);
-                    }
-                }
-
-                .mail {
-                    display: none;
-                }
-            }
-
-            .email {
-                font-family: var(--font-base);
-                writing-mode: vertical-rl;
-                transform: rotate(180deg);
-                white-space: nowrap;
-                text-decoration: none;
-
-                &:hover{
-                    color: var(--color-primary);
-                }
-            }
-
-            .line {
-                background-color: rgb(var(--color-default)/1);
-            }
-        }
-
-        .scroll-down {
-            width: 30px;
-            height: 50px;
-            border: 1px solid var(--color-primary);
-            border-radius: 2rem;
-            @include dflex($dir: column);
-
-            .scroll-down-icon {
-                height: 12px;
-                animation: floatY 1.8s ease-in-out infinite;
-            }
-        }
-
-        .line {
-            background-color: var(--color-primary);
-            height: 100%;
-            width: 1px;
-        }
-
-
+        right: -1.25rem;
+        transform: scale(0);
+        width: var(--space-2);
+        height: var(--space-2);
+        border-radius: 50%;
+        background-color: var(--color-primary);
+        transition: transform 150ms ease;
     }
 
+    &:hover::after,
+    &:focus-visible::after {
+        transform: scale(1);
+    }
+}
 
-    @keyframes floatY {
-        0% {
-            transform: translateY(-2px);
-        }
+/* Email */
+.hero__email {
+    font-family: var(--font-base);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    text-decoration: none;
 
-        33% {
-            transform: translateY(8px);
-        }
+    &:hover {
+        color: var(--color-primary);
+    }
+}
 
-        100% {
-            transform: translateY(-2px);
-        }
+/* ===== Animations ===== */
+@keyframes floatY {
+    0% {
+        transform: translateY(-0.125rem);
+    }
+
+    33% {
+        transform: translateY(var(--space-2));
+    }
+
+    100% {
+        transform: translateY(-0.125rem);
+    }
+}
+
+/* ===== Breakpoints ===== */
+@media (max-width: 80rem) {
+    .hero__title {
+        font-size: 6.5rem;
+    }
+
+    .hero__headline {
+        gap: 2.25rem;
+    }
+
+    .hero__rail--right {
+        height: 23.75rem;
+    }
+
+    .hero__rail--left {
+        height: 18.5rem;
+    }
+
+    .hero__email {
+        display: none;
+    }
+
+    .hero__social-link--mail {
+        display: flex;
+    }
+}
+
+@media (max-width: 64rem) {
+    .hero__title {
+        font-size: 5.25rem;
+    }
+
+    .hero__headline {
+        gap: var(--space-7);
+    }
+
+    .hero__actions {
+        gap: 2.5rem;
+    }
+
+    .hero__rail--right {
+        height: 21.25rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    .hero__title {
+        font-size: 4.25rem;
+    }
+
+    .hero__headline {
+        gap: 1.75rem;
+    }
+
+    .hero__actions {
+        gap: 2rem;
+    }
+
+    .hero__rail--right {
+        height: 20rem;
+    }
+}
+
+@media (max-width: 30rem) {
+    .hero__headline {
+        gap: var(--space-7);
+    }
+
+    .hero__title {
+        font-size: 3.875rem;
+    }
+
+    .hero__eyebrow {
+        font-size: 1.5rem;
+    }
+
+    .hero__actions {
+        gap: 1.5rem;
+    }
+
+    .hero__rail--right {
+        height: 16rem;
+    }
+}
+
+@media (max-width: 25rem) {
+    .hero__headline {
+        gap: var(--space-6);
+    }
+
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__actions {
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero__rail--right {
+        height: 256px;
     }
 }
