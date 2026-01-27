@@ -2,99 +2,234 @@
 
 :host {
     position: absolute;
-    @include dflex($dir: row, $justify: space-between, $align: center);
     top: 0;
     left: 0;
     width: 100%;
     height: var(--height-header);
-
     z-index: 100;
     background: var(--gradient-header);
-    overflow: hidden;
 
-    &>* {
-        padding: 0 6rem;
-    }
+    overflow-x: clip;
 }
 
-.lang-switch {
-    @include dflex();
+.header {
+    position: relative;
+    height: 100%;
+    max-width: 90rem;
+    display: grid;
+
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "nav logo";
+
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+    gap: var(--space-4);
+    align-items: center;
 }
 
-.lang-en,
-.lang-de {
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+.header__logo {
+    grid-area: logo;
+    display: block;
+    height: 5rem;
+    margin-left: auto;
 }
 
-.lang-de {
-    border-radius: 0 50px 50px 0;
-}
+.header__nav {
+    grid-area: nav;
+    @include dflex($dir: row, $gap: var(--space-6), $align: center);
 
-.lang-en {
-    border-radius: 50px 0 0 50px;
-
-}
-
-.lang-de,
-.lang-en {
-    &.is-active {
-        background-color: var(--color-primary);
-        color: rgb(var(--color-default)/1);
-    }
-}
-
-
-nav {
-    @include dflex($dir: row, $gap: 24px);
-
-    a {
+    .header__link {
         position: relative;
-        @include dflex($dir: row);
+        @include dflex($dir: row, $align: center);
+        text-decoration: none;
 
         &:active {
             color: var(--color-primary);
         }
 
         &::after {
-            content: '';
+            content: "";
             position: absolute;
+            left: 50%;
+            bottom: -1rem;
 
-            bottom: -16px;
-            transform: scale(0);
-            width: 8px;
-            height: 8px;
+            width: var(--space-2);
+            height: var(--space-2);
             border-radius: 50%;
 
             background-color: var(--color-primary);
 
-            transition: ease;
+            transform: translateX(-50%) scale(0);
+            transition: transform 150ms ease;
         }
 
         &:hover::after,
         &:active::after,
         &:focus-visible::after {
-            transform: scale(1);
+            transform: translateX(-50%) scale(1);
         }
 
-        &.is-active {
+        &.header__link--active {
             color: var(--color-primary);
 
             &::after {
-                transform: translateX(0) scale(1);
+                transform: translateX(-50%) scale(1);
             }
         }
-
-
     }
 }
 
-img {
-    height: 100%;
-    width: auto;
-    object-fit: contain;
-    display: block;
+.header__lang {
+    @include dflex($dir: row, $gap: 0, $align: center);
+}
+
+.header__lang-btn {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding: 0.35rem 0.7rem;
+    line-height: 1;
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    &.header__lang-btn--active {
+        background-color: var(--color-primary);
+        color: rgb(var(--color-default) / 1);
+    }
+}
+
+.header__lang-btn:first-child {
+    border-radius: 50px 0 0 50px;
+}
+
+.header__lang-btn:last-child {
+    border-radius: 0 50px 50px 0;
+    border-left: 0;
+}
+
+.header__menu-btn {
+    all: unset;
+    grid-area: menu-btn;
+    display: none;
+
+    background: transparent;
+    color: var(--color-default);
+    cursor: pointer;
+    width: 3rem;
+    height: 3rem;
+    align-self: center;
+    justify-self: end;
+
+    transition: transform 150ms ease;
+
+    &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+    }
+
+    &:hover {
+        color: rgb(var(--color-primary-rgb)/1);
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+.header__menu-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.header__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease;
+}
+
+.header__backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.header__menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+
+    right: var(--container-pad);
+    z-index: 120;
+
+    opacity: 0;
+    pointer-events: none;
+
+    background: var(--gradient-accent);
+
+    @include dflex($dir: column, $gap: var(--space-6), $align: flex-start);
+
+    width: fit-content;
+    height: fit-content;
+    padding: 2.5rem 4.8125rem;
+
+    border-radius: 30px;
+    border: 1px solid var(--color-primary);
+
+
+    transform: translateX(24px);
+    transition: opacity 160ms ease, transform 220ms ease;
+    will-change: transform, opacity;
+    font-size: var(--fs-md);
+
+    .header__link {
+
+        &:hover,
+        &:focus-visible,
+        &.header__link--active {
+            color: var(--color-primary);
+        }
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .header__lang {
+        margin-top: var(--space-2);
+        align-self: flex-start;
+    }
+
+    &.header__menu--open {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+}
+
+@media (max-width: 56.25rem) {
+    .header {
+        grid-template-columns: auto 1fr;
+        grid-template-areas: "logo menu-btn";
+    }
+
+    .header__nav {
+        display: none;
+    }
+
+    .header__menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

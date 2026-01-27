@@ -1,29 +1,73 @@
-<nav>
-    <div class="lang-switch" role="group" aria-label="Language">
+<div class="header">
+    <nav class="header__nav" aria-label="Primary">
+        <div class="header__lang" role="group" aria-label="Language">
 
-        <button type="button" class="lang-en" [class.is-active]="lang.isEn()" (click)="setLang('en')"
-            [attr.aria-pressed]="lang.isEn()">
-            EN
-        </button>
+            <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isEn()"
+                (click)="setLang('en')" [attr.aria-pressed]="lang.isEn()">
+                EN
+            </button>
 
-        <button type="button" class="lang-de" [class.is-active]="lang.isDe()" (click)="setLang('de')"
-            [attr.aria-pressed]="lang.isDe()">
-            DE
-        </button>
+            <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isDe()"
+                (click)="setLang('de')" [attr.aria-pressed]="lang.isDe()">
+                DE
+            </button>
+        </div>
+
+
+        <a class="header__link" [routerLink]="['/']" fragment="about"
+            [class.header__link--active]="activeFragment === 'about'">
+            About me
+        </a>
+
+        <a class="header__link" [routerLink]="['/']" fragment="skills"
+            [class.header__link--active]="activeFragment === 'skills'">
+            Skills
+        </a>
+
+        <a class="header__link" [routerLink]="['/']" fragment="projects"
+            [class.header__link--active]="activeFragment === 'projects'">
+            Projects
+        </a>
+    </nav>
+
+    <app-icon name="logo" class="header__logo logo"></app-icon>
+
+    <button class="header__menu-btn" type="button" aria-controls="header-menu" [attr.aria-expanded]="menuOpen()"
+        (click)="toggleMenu()">
+        <app-icon class="header__menu-icon" name="menu"></app-icon>
+    </button>
+
+    <div class="header__backdrop" [class.is-open]="menuOpen()" (click)="closeMenu()">
     </div>
 
+    <nav id="header-menu" class="header__menu" [class.header__menu--open]="menuOpen()" aria-label="Mobile">
 
-    <a [routerLink]="['/']" fragment="about" [class.is-active]="activeFragment === 'about'">
-        About me
-    </a>
+        <a class="header__link" [routerLink]="['/']" fragment="about"
+            [class.header__link--active]="activeFragment === 'about'" (click)="onNavClick()">
+            About me
+        </a>
 
-    <a [routerLink]="['/']" fragment="skills" [class.is-active]="activeFragment === 'skills'">
-        Skills
-    </a>
+        <a class="header__link" [routerLink]="['/']" fragment="skills"
+            [class.header__link--active]="activeFragment === 'skills'" (click)="onNavClick()">
+            Skills
+        </a>
 
-    <a [routerLink]="['/']" fragment="projects" [class.is-active]="activeFragment === 'projects'">
-        Projects
-    </a>
-</nav>
+        <a class="header__link" [routerLink]="['/']" fragment="projects"
+            [class.header__link--active]="activeFragment === 'projects'" (click)="onNavClick()">
+            Projects
+        </a>
 
-<img src="../../../assets/img/logo-green.png" alt="logo">
+        <div class="header__lang" role="group" aria-label="Language">
+
+            <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isEn()"
+                (click)="setLang('en')" [attr.aria-pressed]="lang.isEn()">
+                EN
+            </button>
+
+            <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isDe()"
+                (click)="setLang('de')" [attr.aria-pressed]="lang.isDe()">
+                DE
+            </button>
+        </div>
+    </nav>
+</div>
