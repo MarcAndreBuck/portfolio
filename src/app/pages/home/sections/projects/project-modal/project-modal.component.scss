@@ -33,6 +33,7 @@
 .project-modal__top {
     padding-top: 3.5rem;
     padding-inline: 3.5rem;
+    padding-bottom: 1rem;
 
     display: flex;
     justify-content: flex-end;
@@ -48,6 +49,7 @@
 }
 
 .project-modal__bottom {
+    padding-top: 1rem;
     padding-bottom: 3rem;
     padding-inline: 4rem;
     display: flex;
@@ -322,5 +324,11 @@
 
     .project-modal__grid {
         gap: var(--space-7);
+    }
+}
+
+@media (max-width: 30rem) {
+    .project-modal__preview {
+        height: 11rem;
     }
 }
