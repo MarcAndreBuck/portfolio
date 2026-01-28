@@ -10,7 +10,6 @@
   width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--container-pad, clamp(1rem, 4vw, 3rem));
   align-items: start;
   justify-content: center;
   padding-inline: var(--container-pad);
@@ -215,6 +214,61 @@
   width: 100%;
   @include dflex();
 }
+
+.contact__message {
+  position: fixed;
+  top: calc(var(--height-header) + 1.25rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+
+  width: 12.5rem;
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 1rem;
+
+  background: rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(0.625rem);
+
+  border: 1px solid rgb(var(--color-primary-rgb) / 0.45);
+  color: rgb(var(--color-primary-rgb) / 1);
+
+  text-align: center;
+  box-shadow: 0 0.625rem 1.75rem rgb(0 0 0 / 0.35);
+
+  animation: contact-toast-in 150ms ease-out;
+}
+
+.contact__message p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.contact__message.is-success {
+  border-color: rgb(var(--color-primary-rgb) / 0.75);
+}
+
+.contact__message.is-error {
+  border-color: rgb(229 72 77 / 0.7);
+}
+
+@keyframes contact-toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-6px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
 
 @media (max-width: 80rem) {
   .check__text {

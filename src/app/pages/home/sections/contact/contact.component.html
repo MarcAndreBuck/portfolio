@@ -106,4 +106,15 @@
     </app-action-button>
 
   </form>
+
+  <div class="contact__message" *ngIf="feedback !== 'idle'" [class.is-success]="feedback === 'success'"
+    [class.is-error]="feedback === 'error'" role="status" aria-live="polite">
+    <p>
+      {{
+      feedback === 'success'
+      ? language.dict().contact.messages.success
+      : language.dict().contact.messages.error
+      }}
+    </p>
+  </div>
 </section>

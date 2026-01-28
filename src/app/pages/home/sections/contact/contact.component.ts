@@ -1,7 +1,12 @@
 import { NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { ActionButtonComponent } from '@/app/shared/ui/action-button/action-button.component';
@@ -37,6 +42,9 @@ type ContactPayload = {
   message: string;
 };
 
+/** Feedback state shown after submit. */
+type FeedbackState = 'idle' | 'success' | 'error';
+
 /**
  * Email format that requires a real domain with dot and TLD.
  * Example: name@example.com
@@ -50,7 +58,13 @@ const EMAIL_EXAMPLE = 'name@example.com';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, RouterLink, ActionButtonComponent, IconComponent],
+  imports: [
+    ReactiveFormsModule,
+    NgIf,
+    RouterLink,
+    ActionButtonComponent,
+    IconComponent,
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -61,6 +75,9 @@ export class ContactComponent {
 
   /** True after the user tried to submit once. */
   hasSubmitted = false;
+
+  /** Success/error feedback shown briefly after submit. */
+  feedback: FeedbackState = 'idle';
 
   /** Tracks whether a field was blurred at least once. */
   blurred: Record<ContactField, boolean> = {
@@ -76,6 +93,9 @@ export class ContactComponent {
     email: 'required_email',
     message: 'required_message',
   };
+
+  /** Timer to auto-hide the feedback message. */
+  private feedbackTimer: ReturnType<typeof setTimeout> | null = null;
 
   /**
    * Reactive contact form.
@@ -117,23 +137,29 @@ export class ContactComponent {
   }
 
   /**
-   * Returns the form control for a given field.
+   * Handles form submission.
    *
-   * @param field Contact field name.
-   * @returns The form control or null.
+   * @returns Promise<void>
    */
-  private getControl(field: ContactField) {
-    return this.contactForm.get(field);
+  async submit(): Promise<void> {
+    this.hasSubmitted = true;
+    if (this.contactForm.invalid) return this.onInvalidSubmit();
+
+    try {
+      await this.sendContact(this.getPayload());
+      this.onSubmitSuccess();
+    } catch {
+      this.onSubmitError();
+    }
   }
 
   /**
-   * Determines whether validation feedback should be visible.
+   * Indicates whether the form can be submitted.
    *
-   * @param field Contact field name.
-   * @returns True if validation should be shown.
+   * @returns True if the form is valid.
    */
-  private shouldShowValidation(field: ContactField): boolean {
-    return this.hasSubmitted || this.blurred[field];
+  get canSubmitForm(): boolean {
+    return this.contactForm.valid;
   }
 
   /**
@@ -150,16 +176,6 @@ export class ContactComponent {
   }
 
   /**
-   * Determines whether the privacy checkbox error should be shown.
-   *
-   * @returns True if the privacy error should be visible.
-   */
-  private shouldShowPrivacyError(): boolean {
-    const privacy = this.getControl('privacy');
-    return !!privacy && this.areTextFieldsValid && privacy.invalid;
-  }
-
-  /**
    * Checks whether a field currently has a visible validation error.
    *
    * @param field Contact field name.
@@ -172,61 +188,28 @@ export class ContactComponent {
   }
 
   /**
-   * Maps Angular validation errors to translation keys.
+   * Returns the localized error message for a field.
    *
    * @param field Contact field name.
-   * @returns Validation message key or null.
+   * @returns Localized error message (always a string).
    */
-  private getErrorKey(field: ContactField): ValidationMessageKey | null {
-    const control = this.getControl(field);
-    if (!control || !this.hasFieldError(field)) return null;
-
-    if (field === 'privacy' && control.hasError('requiredTrue')) {
-      return 'requiredTrue';
-    }
-
-    if (field !== 'privacy' && control.hasError('required')) {
-      return this.requiredKeyByField[field];
-    }
-
-    if (field === 'email' && control.hasError('pattern')) {
-      return 'email_format';
-    }
-
-    if (field === 'email' && control.hasError('email')) {
-      return 'email';
-    }
-
-    if (control.hasError('minlength')) {
-      return 'minlength';
-    }
-
-    return 'generic';
-  }
-
-  /**
-  * Returns the localized error message for a field.
-  *
-  * @param field Contact field name.
-  * @returns Localized error message (always a string).
-  */
   getErrorMessage(field: ContactField): string {
     const key = this.getErrorKey(field);
     if (!key) return '';
-
     const entry = this.language.dict().contact.errors[key];
     return typeof entry === 'function' ? entry(EMAIL_EXAMPLE) : entry;
   }
 
   /**
-   * Checks whether a text field is empty (trimmed).
+   * Returns the placeholder or error message for a text field.
    *
    * @param field Text field name.
-   * @returns True if the field is empty.
+   * @returns Placeholder text.
    */
-  private isEmptyTextField(field: TextField): boolean {
-    const value = this.getControl(field)?.value;
-    return value === null || value === undefined || String(value).trim() === '';
+  getPlaceholder(field: TextField): string {
+    return this.showPlaceholderError(field)
+      ? this.getErrorMessage(field)
+      : this.language.dict().contact.placeholders[field];
   }
 
   /**
@@ -250,41 +233,157 @@ export class ContactComponent {
   }
 
   /**
-   * Returns the placeholder or error message for a field.
-   *
-   * @param field Text field name.
-   * @returns Placeholder text.
+   * Handles invalid submission by revealing errors.
    */
-  getPlaceholder(field: TextField): string {
-    return this.showPlaceholderError(field)
-      ? this.getErrorMessage(field)
-      : this.language.dict().contact.placeholders[field];
+  private onInvalidSubmit(): void {
+    this.markAllFieldsAsBlurred();
+    this.setFeedback('error');
   }
 
   /**
-   * Handles form submission.
-   *
-   * @returns Promise<void>
+   * Handles the success flow after sending the message.
    */
-  async submit(): Promise<void> {
-    this.hasSubmitted = true;
-
-    if (this.contactForm.invalid) {
-      this.markAllFieldsAsBlurred();
-      return;
-    }
-
-    await this.sendContact(this.getPayload());
+  private onSubmitSuccess(): void {
+    this.setFeedback('success');
     this.resetFormState();
   }
 
   /**
-   * Indicates whether the form can be submitted.
-   *
-   * @returns True if the form is valid.
+   * Handles the error flow after sending the message.
    */
-  get canSubmitForm(): boolean {
-    return this.contactForm.valid;
+  private onSubmitError(): void {
+    this.setFeedback('error');
+  }
+
+  /**
+   * Sets feedback and schedules auto-hide.
+   *
+   * @param state Feedback state.
+   */
+  private setFeedback(state: FeedbackState): void {
+    this.feedback = state;
+    this.resetFeedbackTimer();
+    if (state !== 'idle') this.scheduleFeedbackHide();
+  }
+
+  /**
+   * Clears any running feedback timer.
+   */
+  private resetFeedbackTimer(): void {
+    if (!this.feedbackTimer) return;
+    clearTimeout(this.feedbackTimer);
+    this.feedbackTimer = null;
+  }
+
+  /**
+   * Hides feedback after a short delay.
+   */
+  private scheduleFeedbackHide(ms = 3500): void {
+    this.feedbackTimer = setTimeout(() => (this.feedback = 'idle'), ms);
+  }
+
+  /**
+   * Returns the form control for a given field.
+   *
+   * @param field Contact field name.
+   * @returns The control or null.
+   */
+  private getControl(field: ContactField): AbstractControl | null {
+    return this.contactForm.get(field);
+  }
+
+  /**
+   * Determines whether validation feedback should be visible.
+   *
+   * @param field Contact field name.
+   * @returns True if validation should be shown.
+   */
+  private shouldShowValidation(field: ContactField): boolean {
+    return this.hasSubmitted || this.blurred[field];
+  }
+
+  /**
+   * Determines whether the privacy checkbox error should be shown.
+   *
+   * @returns True if the privacy error should be visible.
+   */
+  private shouldShowPrivacyError(): boolean {
+    const privacy = this.getControl('privacy');
+    return !!privacy && this.areTextFieldsValid && privacy.invalid;
+  }
+
+  /**
+   * Maps Angular validation errors to translation keys.
+   *
+   * @param field Contact field name.
+   * @returns Validation message key or null.
+   */
+  private getErrorKey(field: ContactField): ValidationMessageKey | null {
+    const control = this.getControl(field);
+    if (!control || !this.hasFieldError(field)) return null;
+
+    return (
+      this.getPrivacyErrorKey(field, control) ??
+      this.getRequiredErrorKey(field, control) ??
+      this.getEmailErrorKey(field, control) ??
+      this.getMinLengthErrorKey(control) ??
+      'generic'
+    );
+  }
+
+  /**
+   * Resolves the privacy checkbox error key.
+   */
+  private getPrivacyErrorKey(
+    field: ContactField,
+    control: AbstractControl
+  ): ValidationMessageKey | null {
+    if (field !== 'privacy') return null;
+    return control.hasError('requiredTrue') ? 'requiredTrue' : null;
+  }
+
+  /**
+   * Resolves the required-validator error key for text fields.
+   */
+  private getRequiredErrorKey(
+    field: ContactField,
+    control: AbstractControl
+  ): ValidationMessageKey | null {
+    if (field === 'privacy') return null;
+    if (!control.hasError('required')) return null;
+    return this.requiredKeyByField[field];
+  }
+
+  /**
+   * Resolves email-specific error keys.
+   */
+  private getEmailErrorKey(
+    field: ContactField,
+    control: AbstractControl
+  ): ValidationMessageKey | null {
+    if (field !== 'email') return null;
+    if (control.hasError('pattern')) return 'email_format';
+    return control.hasError('email') ? 'email' : null;
+  }
+
+  /**
+   * Resolves the minlength error key.
+   */
+  private getMinLengthErrorKey(
+    control: AbstractControl
+  ): ValidationMessageKey | null {
+    return control.hasError('minlength') ? 'minlength' : null;
+  }
+
+  /**
+   * Checks whether a text field is empty (trimmed).
+   *
+   * @param field Text field name.
+   * @returns True if the field is empty.
+   */
+  private isEmptyTextField(field: TextField): boolean {
+    const value = this.getControl(field)?.value;
+    return value === null || value === undefined || String(value).trim() === '';
   }
 
   /**

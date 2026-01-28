@@ -183,5 +183,9 @@ export const DE = {
             requiredTrue: 'Bitte akzeptiere die Datenschutzerklärung.',
             generic: 'Bitte prüfe deine Eingabe.',
         },
+        messages: {
+            success: 'Vielen Dank für deine Nachricht! Ich werde mich so schnell wie möglich bei dir melden.',
+            error: 'Beim Senden deiner Nachricht ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.',
+        },
     },
 } as const;

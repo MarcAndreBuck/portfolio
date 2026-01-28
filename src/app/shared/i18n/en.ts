@@ -182,5 +182,9 @@ export const EN = {
             requiredTrue: "Please accept the privacy policy.",
             generic: "Please check your input.",
         },
+        messages: {
+            success: 'Thank you for your message! I will get back to you as soon as possible.',
+            error: 'Something went wrong while sending your message. Please try again later.',
+        },
     },
 } as const;
