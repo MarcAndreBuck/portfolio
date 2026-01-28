@@ -4,7 +4,8 @@
     </h2>
 
     <div class="carousel">
-        <div class="stage" aria-live="polite" aria-atomic="true" aria-roledescription="carousel"
+        <div class="stage" aria-live="polite" aria-atomic="true"
+            [attr.aria-roledescription]="lang.dict().references.aria.carousel"
             aria-labelledby="testimonials-title">
             <article *ngFor="let t of references(); let i = index; trackBy: trackByIndex" class="card"
                 [class.is-active]="getCardState(i) === 'active'" [class.is-prev]="getCardState(i) === 'prev'"

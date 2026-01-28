@@ -1,8 +1,14 @@
 export const EN = {
     hero: {
+        eyebrow: 'Frontend Developer',
         buttons: {
             projects: 'Check my work',
             contact: 'Contact me',
+        },
+        aria: {
+            github: 'Open GitHub profile in new tab',
+            linkedin: 'Open LinkedIn profile in new tab',
+            mailTo: (email: string) => `Mail to ${email}`,
         },
         marquee: [
             'Available for remote work',
@@ -12,11 +18,36 @@ export const EN = {
         ],
     },
 
-    identity: {
-        email: 'kontakt@marc-buck.de',
-        name: 'Marc-André Buck',
-        postcode: '19230 Hagenow',
-        street: 'Rosenweg 5',
+    header: {
+        nav: {
+            about: 'About me',
+            skills: 'Skills',
+            projects: 'Projects',
+            contact: 'Contact',
+        },
+        primaryLabel: 'Primary',
+        languageLabel: 'Language',
+        mobileLabel: 'Mobile',
+    },
+
+    footer: {
+        email: 'Email',
+        legalNotice: 'Legal Notice',
+        privacyPolicy: 'Privacy Policy',
+        opensNewTab: '(opens in a new tab)',
+        opensEmail: '(opens email client)',
+    },
+
+    about: {
+        eyebrow: 'Who I Am',
+        title: 'About me',
+        intro: `I’m a passionate Frontend Developer with a strong focus on clean code, modern web technologies, and intuitive user experiences. I enjoy turning complex ideas into clear, functional, and visually appealing interfaces.`,
+        list: [
+            'Based in Germany — open to remote work and flexible collaboration.',
+            'Open-minded and curious — I love learning new technologies and improving continuously.',
+            'Problem-solver mindset — analytical, creative, persistent, and focused on clean, elegant solutions.',
+        ],
+        imageAlt: 'Portrait of Marc-André Buck',
     },
 
     skills: {
@@ -40,11 +71,17 @@ export const EN = {
             growthMindset: 'Growth mindset',
         },
         growthTip: {
-            title: 'I have a special interest in learning'
-        }
+            title: 'I have a special interest in learning',
+            items: {
+                react: 'React',
+                vue: 'Vue.js',
+            },
+        },
     },
 
     projects: {
+        eyebrow: 'Projects',
+        title: 'Featured Projects',
         intro: 'Explore a selection of my work here - interact with projects to see my skills in action.',
         actions: { live: 'Live', github: 'GitHub' },
         items: {
@@ -60,6 +97,16 @@ export const EN = {
                 description: 'Realtime app built with Angular + Firebase (auth/db).',
                 highlights: ['Realtime data', 'Auth flow', 'Clean UI'],
             },
+        },
+        aria: {
+            viewDetails: (title: string) => `View ${title} project details`,
+        },
+        modal: {
+            closeLabel: 'Close project details',
+            subtitle: 'What is this project about?',
+            opensNewTab: '(opens in a new tab)',
+            next: 'Next project',
+            previewAlt: (title: string) => `${title} preview`,
         },
     },
 
@@ -95,9 +142,17 @@ export const EN = {
             next: 'Next testimonial',
             goto: (index: number) => `Go to testimonial ${index}`,
             card: 'Activate testimonial',
+            carousel: 'carousel',
         },
     },
     contact: {
+        eyebrow: 'Contact me',
+        headlineLine1: "Let's work",
+        headlineLine2: 'together',
+        subheadline: 'Got a problem to solve?',
+        text1: 'Encourage people to contact you and describe what role you are interested in. Show that you will add value to their projects through your work.',
+        text2Lead: 'Need a Frontend developer?',
+        text2Accent: "Let's talk!",
         labels: {
             name: "What's your name?",
             email: "What's your email?",
@@ -123,155 +178,5 @@ export const EN = {
             requiredTrue: "Please accept the privacy policy.",
             generic: "Please check your input.",
         },
-    },
-
-
-    legalNotice: {
-        title: 'Impressum',
-        imprintTitle: 'Impressum',
-        exploringTitle: 'Board erkunden',
-        emailLabel: 'E-Mail:',
-        termsTitle: 'Nutzungsbedingungen',
-        termsAfterPortfolio: `  <h2 id="imprint-title" class="legal-notice__subtitle">Imprint</h2>
-
-            <ul class="legal-notice__list">
-                <li>{{ lang.dict().identity.name }}</li>
-                <li>{{ lang.dict().identity.street }}</li>
-                <li>{{ lang.dict().identity.postcode }}</li>
-            </ul>
-
-
-
-
-
-
-
-            <!-- Exploring the Board -->
-            <h2 id="exploring-title" class="legal-notice__subtitle">Exploring the Board</h2>
-            <p class="legal-notice__text">
-                Email:
-                <a class="email" [href]="'mailto:' + lang.dict().identity.email">
-                    {{ lang.dict().identity.email }}
-                </a>
-            </p>
-
-
-            <!-- Acceptance of terms -->
-            <h2 id="terms-title" class="legal-notice__subtitle">Acceptance of terms</h2>
-            <p class="legal-notice__text">
-                By accessing and using
-                <span class="legal-notice__highlight">Portfolio</span> (Product), you acknowledge and agree to the
-                following terms and conditions, and any policies, guidelines, or amendments thereto that may be
-                presented to you from time to time. We, the listed students, may update or change the terms and
-                conditions from time to time without notice.
-            </p>
-
-
-            <!-- Scope and ownership -->
-            <h2 id="scope-title" class="legal-notice__subtitle">Scope and ownership of the product</h2>
-            <p class="legal-notice__text">
-                <span class="legal-notice__highlight">Portfolio</span> has been developed as part of a student group
-                project in a web development bootcamp at the
-                <span class="legal-notice__highlight">Developer Akademie</span> GmbH. It has an educational purpose
-                and is not intended for extensive personal &amp; business usage.
-            </p>
-            <p class="legal-notice__text">
-                As such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect
-                of quality regarding this Product.
-            </p>
-            <p class="legal-notice__text">
-                The design of <span class="legal-notice__highlight">Portfolio</span> is owned by the
-                <span class="legal-notice__highlight">Developer Akademie</span> GmbH. Unauthorized use, reproduction,
-                modification, distribution, or replication of the design is strictly prohibited.
-            </p>
-
-
-            <!-- Proprietary rights -->
-            <h2 id="rights-title" class="legal-notice__subtitle">Proprietary rights</h2>
-            <p class="legal-notice__text">
-                Aside from the design owned by <span class="legal-notice__highlight">Developer Akademie</span> GmbH,
-                we, the listed students, retain all proprietary rights in
-                <span class="legal-notice__highlight">Portfolio</span>, including any associated copyrighted material,
-                trademarks, and other proprietary information.
-            </p>
-
-
-            <!-- Use of the product -->
-            <h2 id="use-title" class="legal-notice__subtitle">Use of the product</h2>
-            <p class="legal-notice__text">
-                <span class="legal-notice__highlight">Portfolio</span> is intended to be used for lawful purposes only,
-                in accordance with all applicable laws and regulations. Any use of
-                <span class="legal-notice__highlight">Portfolio</span> for illegal activities, or to harass, harm,
-                threaten, or intimidate another person, is strictly prohibited. You are solely responsible for your
-                interactions with other users of <span class="legal-notice__highlight">Portfolio</span>.
-            </p>
-
-
-            <!-- Disclaimer -->
-            <h2 id="disclaimer-title" class="legal-notice__subtitle">
-                Disclaimer of warranties and limitation of liability
-            </h2>
-            <p class="legal-notice__text">
-                <span class="legal-notice__highlight">Portfolio</span> is provided "as is" without warranty of any kind,
-                whether express or implied, including but not limited to the implied warranties of merchantability,
-                fitness for a particular purpose, and non-infringement. In no event will we, the listed students, or
-                the <span class="legal-notice__highlight">Developer Akademie</span>, be liable for any direct, indirect,
-                incidental, special, consequential, or exemplary damages, including but not limited to, damages for
-                loss of profits, goodwill, use, data, or other intangible losses, even if we have been advised of the
-                possibility of such damages, arising out of or in connection with the use or performance of
-                <span class="legal-notice__highlight">Portfolio</span>.
-            </p>
-
-
-            <!-- Indemnity -->
-            <h2 id="indemnity-title" class="legal-notice__subtitle">Indemnity</h2>
-            <p class="legal-notice__text">
-                You agree to indemnify, defend and hold harmless us, the listed students, the
-                <span class="legal-notice__highlight">Developer Akademie</span> and our affiliates, partners, officers,
-                directors, agents, and employees, from and against any claim, demand, loss, damages, cost, or
-                liability (including reasonable legal fees) arising out of or relating to your use of
-                <span class="legal-notice__highlight">Portfolio</span> and/or your breach of this Legal Notice.
-            </p>
-
-
-            <!-- Contact + Date -->
-            <h2 id="meta-title" class="sr-only">Meta</h2>
-
-            <p class="legal-notice__text">
-                For any questions or notices, please contact us at
-                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
-                    {{ lang.dict().identity.email }}
-                </a>
-            </p>
-
-            <p class="legal-notice__date">
-                Date: <time datetime="2025-07-26">July 26, 2025</time>
-            </p>
-`,
-        scopeTitle: 'Umfang und Eigentum',
-        scopeP1BeforeDA: '...',
-        scopeP1AfterDA: '...',
-        scopeP2: '...',
-        scopeP3AfterDA: '...',
-        rightsTitle: 'Schutzrechte',
-        rightsBeforeDA: '...',
-        rightsAfterDA: '...',
-        rightsEnd: '...',
-        useTitle: 'Nutzung des Produkts',
-        useBefore: '...',
-        useMiddle: '...',
-        useEnd: '.',
-        disclaimerTitle: 'Haftungsausschluss',
-        disclaimerBeforeDA: '...',
-        disclaimerAfterDA: '...',
-        disclaimerEnd: '.',
-        indemnityTitle: 'Freistellung',
-        indemnityBeforeDA: '...',
-        indemnityAfterDA: '...',
-        indemnityEnd: '...',
-        metaPrefix: 'Bei Fragen kontaktiere uns unter',
-        dateLabel: 'Datum:',
-        dateIso: '2025-07-26',
-        dateHuman: '26. Juli 2025',
     },
 } as const;

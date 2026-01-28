@@ -1,9 +1,9 @@
 <section class="hero">
   <div class="hero__content">
-    <span class="hero__eyebrow">Frontend Developer</span>
+    <span class="hero__eyebrow">{{ lang.dict().hero.eyebrow }}</span>
 
     <div class="hero__headline">
-      <h1 class="hero__title">Marc-André Buck</h1>
+      <h1 class="hero__title">{{ identity.name }}</h1>
 
       <div class="hero__actions">
         <app-link-button variant="marquee" href="#projects">
@@ -32,14 +32,15 @@
 
       <div class="hero__social">
         <a *ngFor="let link of socialLinks" class="hero__social-link"
-          [href]="link.label === 'GitHub' ? link.url : 'mailto:' + identity.email" [attr.aria-label]="link.ariaLabel"
+          [href]="link.label === 'GitHub' ? link.url : 'mailto:' + identity.email"
+          [attr.aria-label]="getSocialAria(link.label)"
           [target]="link.label !== 'Mail' ? '_blank' : undefined"
           [rel]="link.label !== 'Mail' ? 'noopener noreferrer' : undefined">
           <app-icon [name]="link.icon" class="hero__icon"></app-icon>
         </a>
 
         <a class="hero__social-link hero__social-link--mail" [attr.href]="'mailto:' + identity.email"
-          rel="noopener noreferrer" [attr.aria-label]="'Mail to ' + identity.email">
+          rel="noopener noreferrer" [attr.aria-label]="lang.dict().hero.aria.mailTo(identity.email)">
           <app-icon name="mail" class="hero__icon"></app-icon>
         </a>
       </div>

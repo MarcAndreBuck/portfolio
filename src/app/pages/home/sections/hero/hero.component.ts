@@ -18,4 +18,11 @@ export class HeroComponent {
   identity = IDENTITY;
   socialLinks = SOCIAL_LINKS;
   marqueeDuration = MARQUEE_DURATION;
+
+  getSocialAria(label: string): string {
+    const key = label.toLowerCase();
+    if (key === 'github') return this.lang.dict().hero.aria.github;
+    if (key === 'linkedin') return this.lang.dict().hero.aria.linkedin;
+    return label;
+  }
 }

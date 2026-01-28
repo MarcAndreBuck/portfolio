@@ -1,41 +1,39 @@
 <section class="about" id="about">
     <div class="about__grid">
         <figure class="about__media">
-            <img class="about__img" src="/assets/img/R55_0021.webp" alt="Portrait of Marc-André Buck"
+            <img class="about__img" src="/assets/img/R55_0021.webp" [attr.alt]="lang.dict().about.imageAlt"
                 loading="lazy" />
         </figure>
 
         <div class="about__content">
-            <p class="eyebrow">Who I Am</p>
+            <p class="eyebrow">{{ lang.dict().about.eyebrow }}</p>
 
             <article class="about__card">
-                <h2 class="about__title">About me</h2>
+                <h2 class="about__title">{{ lang.dict().about.title }}</h2>
 
                 <p class="about__text">
-                    I’m a passionate Frontend Developer with a strong focus on clean code, modern web
-                    technologies, and intuitive user experiences. I enjoy turning complex ideas into clear,
-                    functional, and visually appealing interfaces.
+                    {{ lang.dict().about.intro }}
                 </p>
 
                 <ul class="about__list">
                     <li class="about__item">
                         <app-icon name="location_on" class="about__icon"></app-icon>
-                        <p class="about__item-text">Based in Germany — open to remote work and flexible collaboration.
+                        <p class="about__item-text">
+                            {{ lang.dict().about.list[0] }}
                         </p>
                     </li>
 
                     <li class="about__item">
                         <app-icon name="cognition" class="about__icon"></app-icon>
                         <p class="about__item-text">
-                            Open-minded and curious — I love learning new technologies and improving continuously.
+                            {{ lang.dict().about.list[1] }}
                         </p>
                     </li>
 
                     <li class="about__item">
                         <app-icon name="new_releases" class="about__icon"></app-icon>
                         <p class="about__item-text">
-                            Problem-solver mindset — analytical, creative, persistent, and focused on clean, elegant
-                            solutions.
+                            {{ lang.dict().about.list[2] }}
                         </p>
                     </li>
                 </ul>

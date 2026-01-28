@@ -1,8 +1,8 @@
 <section class="projects" id="projects">
 
     <div class="projects__header">
-        <span class="eyebrow eyebrow--bold">Projects</span>
-        <h2>Featured Projects</h2>
+        <span class="eyebrow eyebrow--bold">{{ lang.dict().projects.eyebrow }}</span>
+        <h2>{{ lang.dict().projects.title }}</h2>
     </div>
 
     <p class="projects__intro">
@@ -14,7 +14,7 @@
             <button class="project-row" type="button" role="listitem"
                 *ngFor="let project of projects; trackBy: trackByProjectKey" (mouseenter)="onProjectHover(project.key)"
                 (mouseleave)="onProjectHoverEnd()" (click)="openProject(project, $event)"
-                [attr.aria-label]="'View ' + project.title + ' project details'">
+                [attr.aria-label]="lang.dict().projects.aria.viewDetails(project.title)">
                 <span class="project-row__title">{{ project.title }}</span>
 
                 <span class="project-row__stack">

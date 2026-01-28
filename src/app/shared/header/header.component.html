@@ -1,6 +1,6 @@
 <div class="header">
-    <nav class="header__nav" aria-label="Primary">
-        <div class="header__lang" role="group" aria-label="Language">
+    <nav class="header__nav" [attr.aria-label]="lang.dict().header.primaryLabel">
+        <div class="header__lang" role="group" [attr.aria-label]="lang.dict().header.languageLabel">
 
             <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isEn()"
                 (click)="setLang('en')" [attr.aria-pressed]="lang.isEn()">
@@ -16,17 +16,17 @@
 
         <a class="header__link" [routerLink]="['/']" fragment="about"
             [class.header__link--active]="activeFragment === 'about'">
-            About me
+            {{ lang.dict().header.nav.about }}
         </a>
 
         <a class="header__link" [routerLink]="['/']" fragment="skills"
             [class.header__link--active]="activeFragment === 'skills'">
-            Skills
+            {{ lang.dict().header.nav.skills }}
         </a>
 
         <a class="header__link" [routerLink]="['/']" fragment="projects"
             [class.header__link--active]="activeFragment === 'projects'">
-            Projects
+            {{ lang.dict().header.nav.projects }}
         </a>
     </nav>
 
@@ -40,24 +40,25 @@
     <div class="header__backdrop" [class.is-open]="menuOpen()" (click)="closeMenu()">
     </div>
 
-    <nav id="header-menu" class="header__menu" [class.header__menu--open]="menuOpen()" aria-label="Mobile">
+    <nav id="header-menu" class="header__menu" [class.header__menu--open]="menuOpen()"
+        [attr.aria-label]="lang.dict().header.mobileLabel">
 
         <a class="header__link" [routerLink]="['/']" fragment="about"
             [class.header__link--active]="activeFragment === 'about'" (click)="onNavClick()">
-            About me
+            {{ lang.dict().header.nav.about }}
         </a>
 
         <a class="header__link" [routerLink]="['/']" fragment="skills"
             [class.header__link--active]="activeFragment === 'skills'" (click)="onNavClick()">
-            Skills
+            {{ lang.dict().header.nav.skills }}
         </a>
 
         <a class="header__link" [routerLink]="['/']" fragment="projects"
             [class.header__link--active]="activeFragment === 'projects'" (click)="onNavClick()">
-            Projects
+            {{ lang.dict().header.nav.projects }}
         </a>
 
-        <div class="header__lang" role="group" aria-label="Language">
+        <div class="header__lang" role="group" [attr.aria-label]="lang.dict().header.languageLabel">
 
             <button type="button" class="header__lang-btn" [class.header__lang-btn--active]="lang.isEn()"
                 (click)="setLang('en')" [attr.aria-pressed]="lang.isEn()">

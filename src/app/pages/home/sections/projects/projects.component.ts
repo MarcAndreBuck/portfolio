@@ -14,6 +14,17 @@ type ProjectModalVm = {
   description: string;
   previewSrc: string;
   stackItems: StackItem[];
+  i18n: {
+    closeLabel: string;
+    subtitle: string;
+    opensNewTab: string;
+    next: string;
+    previewAlt: string;
+    actions: {
+      github: string;
+      live: string;
+    };
+  };
 };
 
 @Component({
@@ -208,6 +219,8 @@ export class ProjectsComponent {
    */
   private buildModalVm(project: Project): ProjectModalVm {
     const text = this.getProjectText(project.key);
+    const modalText = this.lang.dict().projects.modal;
+    const actionsText = this.lang.dict().projects.actions;
 
     return {
       project,
@@ -215,6 +228,17 @@ export class ProjectsComponent {
       description: text.description,
       previewSrc: this.getPreviewSrc(project.key),
       stackItems: this.getStackItems(project),
+      i18n: {
+        closeLabel: modalText.closeLabel,
+        subtitle: modalText.subtitle,
+        opensNewTab: modalText.opensNewTab,
+        next: modalText.next,
+        previewAlt: modalText.previewAlt(project.title),
+        actions: {
+          github: actionsText.github,
+          live: actionsText.live,
+        },
+      },
     };
   }
 

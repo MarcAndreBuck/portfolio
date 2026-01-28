@@ -1,5 +1,6 @@
 import { IconComponent } from '@/app/shared/icons/icon.component';
-import { Component } from '@angular/core';
+import { LanguageService } from '@/app/shared/i18n/language.service';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -9,5 +10,5 @@ import { Component } from '@angular/core';
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-
+  lang = inject(LanguageService);
 }

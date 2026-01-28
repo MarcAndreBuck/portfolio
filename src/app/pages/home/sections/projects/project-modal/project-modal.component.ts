@@ -24,6 +24,17 @@ type ProjectModalVm = {
   description: string;
   previewSrc: string;
   stackItems: StackItem[];
+  i18n: {
+    closeLabel: string;
+    subtitle: string;
+    opensNewTab: string;
+    next: string;
+    previewAlt: string;
+    actions: {
+      github: string;
+      live: string;
+    };
+  };
 };
 
 @Component({
