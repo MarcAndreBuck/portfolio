@@ -3,6 +3,7 @@ import type { IconName } from './icons/icons.templates';
 export const IDENTITY = {
   name: 'Marc-André Buck',
   email: 'kontakt@marc-buck.de',
+  phone: '+49 (0) 1721803982',
   street: 'Rosenweg 5',
   postcode: '19230 Hagenow',
   location: 'Hagenow, Germany',

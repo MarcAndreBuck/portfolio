@@ -1,6 +1,6 @@
 import { LanguageService } from '@/app/shared/i18n/language.service';
+import { IDENTITY } from '@/app/shared/identity.data';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-legal-notice',
@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './legal-notice.component.scss',
 })
 export class LegalNoticeComponent {
-  lang = inject(LanguageService)
+  lang = inject(LanguageService);
+  identity = IDENTITY;
 
 }
