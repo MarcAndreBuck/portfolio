@@ -39,7 +39,7 @@ export const PROJECTS: readonly Project[] = [
     stack: ['angular', 'ts', 'html', 'css', 'firebase'],
     previewPos: 'top',
     repoUrl: 'https://github.com/MarcAndreBuck/join_mpa',
-    liveUrl: 'https://marc-buck.dev/projects/join/index.htmll',
+    liveUrl: 'https://marc-buck.dev/projects/join/index.html',
   },
   {
     key: 'pollo',
