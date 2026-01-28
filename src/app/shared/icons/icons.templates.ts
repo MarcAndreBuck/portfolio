@@ -290,11 +290,6 @@ fill="currentColor"/>
 fill="currentColor"/>
 `
   },
-
-
-
-
-
 } as const;
 
 export type IconName = keyof typeof ICONS;
