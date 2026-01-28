@@ -50,7 +50,7 @@ type FeedbackState = 'idle' | 'success' | 'error';
  * Example: name@example.com
  */
 const EMAIL_REALISTIC_REGEX =
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 /** Example shown in the email format error message. */
 const EMAIL_EXAMPLE = 'name@example.com';
@@ -339,7 +339,11 @@ export class ContactComponent {
     control: AbstractControl
   ): ValidationMessageKey | null {
     if (field !== 'privacy') return null;
-    return control.hasError('requiredTrue') ? 'requiredTrue' : null;
+
+    if (control.hasError('requiredTrue')) return 'requiredTrue';
+    if (control.hasError('required')) return 'requiredTrue';
+
+    return null;
   }
 
   /**

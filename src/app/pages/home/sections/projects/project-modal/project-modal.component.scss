@@ -15,12 +15,14 @@
 
 .project-modal__card {
     position: relative;
+    max-width: min(90rem, 98vw);
+    width: 100%;
+
+    margin-inline: var(--container-pad);
 
     border-radius: 24px;
 
     max-height: calc(100vh - 3rem);
-    max-height: calc(100svh - 3rem);
-    max-height: calc(100dvh - 3rem);
 
     background: var(--gradient-accent);
     border: 1px solid rgb(var(--color-primary-rgb) / 1);
@@ -94,6 +96,9 @@
     grid-template-areas: "data preview";
     gap: var(--space-7);
     align-items: center;
+
+    height: min(99vh, 34rem);
+
 
     max-height: none;
     overflow: visible;

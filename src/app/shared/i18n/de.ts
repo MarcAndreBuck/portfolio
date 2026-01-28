@@ -175,7 +175,7 @@ export const DE = {
 
         errors: {
             required_name: 'Ups! Dein Name fehlt noch.',
-            required_email: 'Ups! Deine E-Mail-Adresse fehlt noch.',
+            required_email: 'Ups! Deine E-Mail-Adresse fehlt.',
             required_message: 'Was soll entwickelt werden?',
             email: 'Bitte gib eine gültige E-Mail-Adresse ein.',
             email_format: (example: string) => `E-Mail Format: ${example}`,

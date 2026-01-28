@@ -21,7 +21,7 @@
 }
 
 .contact__left {
-  max-width: 32.5rem;
+  max-width: 33.3rem;
   @include dflex($gap: var(--space-8), $dir: column, $align: start, $justify: start);
 }
 
@@ -35,6 +35,8 @@
   font-weight: 700;
   font-size: var(--fs-4xl);
   letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .contact__content {
@@ -92,6 +94,8 @@
 }
 
 .field__control {
+  padding: 0.25rem;
+  margin-left: -0.25rem;
   width: 100%;
   background: transparent;
   border: none;
@@ -111,6 +115,10 @@
   }
 }
 
+.field.is-error .field__control {
+  border: 1px solid rgb(var(--color-warn) / 0.4);
+}
+
 .field.is-error .field__control::placeholder {
   color: rgb(var(--color-warn) / 0.8);
 }
@@ -120,7 +128,7 @@
   left: 2rem;
   bottom: 0.9rem;
 
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   color: rgb(var(--color-warn) / 0.9);
   line-height: 1.2;
   white-space: nowrap;
@@ -177,7 +185,7 @@
 
 .check__text {
   font-weight: 400;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.2;
 
   a {
@@ -297,8 +305,6 @@
 
   .contact__headline {
     font-size: var(--fs-3xl);
-    overflow-wrap: break-word;
-    hyphens: auto;
   }
 
   .contact__content {
@@ -327,7 +333,7 @@
   }
 
   .check__text {
-    font-size: 0.9375rem;
+    font-size: 1rem;
   }
 
   .field__error {
