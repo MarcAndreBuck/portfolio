@@ -1,45 +1,106 @@
 @use "./src/styles/mixins.scss" as *;
 
 :host {
-
-    // padding-top: var(--height-header);
-    // padding-bottom: var(--height-footer);
     position: relative;
     overflow: hidden;
     @include dflex($gap: 24px, $dir: column);
+
     min-height: 100vh;
     background: var(--gradient-accent), var(--color-bg-dark);
-    color: var(--color-primary);
-    padding: var(--height-header) 50px var(--height-footer) 50px;
+    color: rgb(var(--color-primary-rgb) / 1);
+
+    padding-top: var(--height-header);
+    padding-bottom: var(--height-footer);
+    padding-inline: 50px;
 }
 
-span,
-h2{
-    color: rgb(var(--color-default)/1);
-}
-
-h1 {
+.legal-notice__title {
     font-size: 64px;
-    color: var(--color-primary);
+    color: rgb(var(--color-primary-rgb) / 1);
 }
 
-h2 {
+.legal-notice__subtitle {
     font-size: 20px;
+    color: rgb(var(--color-default) / 1);
 }
 
-span,
-p {
+.legal-notice__text {
     font-size: 1rem;
+    color: rgb(var(--color-primary-rgb) / 1);
 }
 
-.imprint{
-    padding-bottom: 1rem;
+.legal-notice__highlight {
+    font-size: 1rem;
+    color: rgb(var(--color-default) / 1);
 }
 
-.content {
+.legal-notice__header {
+    width: 100%;
+}
+
+.legal-notice__content {
+    width: 100%;
     @include dflex($gap: 24px, $dir: column, $align: start);
 }
 
-// .legal-notice__text{
-//     background-color: red;
-// }
+.legal-notice__section:first-of-type .legal-notice__subtitle {
+    padding-bottom: 1rem;
+}
+
+.legal-notice__section {
+    width: 100%;
+    @include dflex($gap: 12px, $dir: column, $align: start);
+}
+
+.legal-notice__list {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: rgb(var(--color-default) / 1);
+
+    li {
+        margin: 0.25rem 0;
+    }
+}
+
+.legal-notice__link {
+    color: rgb(var(--color-primary-rgb) / 1);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration: underline;
+    }
+}
+
+.legal-notice__meta {
+    margin-top: 0.5rem;
+}
+
+.legal-notice__date {
+    font-size: 1rem;
+    color: rgb(var(--color-default) / 1);
+}
+
+@media (max-width: 768px) {
+    :host {
+        padding-inline: 24px;
+    }
+
+    .legal-notice__title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    :host {
+        padding-inline: 16px;
+    }
+
+    .legal-notice__title {
+        font-size: 38px;
+    }
+
+    .legal-notice__subtitle {
+        font-size: 18px;
+    }
+}
