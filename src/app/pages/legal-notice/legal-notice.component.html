@@ -1,245 +1,272 @@
-<!-- <section class="legal-notice"> -->
+<section class="legal-notice">
+    @if (lang.isEn()) {
+    <header class="legal-notice__header">
+        <h1 class="legal-notice__title">Legal Notice</h1>
+    </header>
 
-@if (lang.isEn()) {
+    <div class="legal-notice__content">
 
-<h1 class="legal-notice__title">Legal Notice</h1>
+        <section class="legal-notice__section">
+            <h2 id="imprint-title" class="legal-notice__subtitle">Imprint</h2>
 
-<div class="content">
+            <ul class="legal-notice__list">
+                <li>{{ lang.dict().identity.name }}</li>
+                <li>{{ lang.dict().identity.street }}</li>
+                <li>{{ lang.dict().identity.postcode }}</li>
+            </ul>
+        </section>
 
-    <div>
-        <h2 id="imprint-title" class="imprint">Imprint</h2>
+        <section class="legal-notice__section">
+            <h2 id="contact-title" class="legal-notice__subtitle">Contact</h2>
 
-        <ul class="legal-notice__list">
-            <li>{{ lang.dict().identity.name }}</li>
-            <li>{{ lang.dict().identity.street }}</li>
-            <li>{{ lang.dict().identity.postcode }}</li>
-        </ul>
-        <br>
+            <p class="legal-notice__text">
+                Email:
+                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
+                </a>
+            </p>
+        </section>
 
+        <section class="legal-notice__section">
+            <h2 id="terms-title" class="legal-notice__subtitle">Acceptance of terms</h2>
 
+            <p class="legal-notice__text">
+                By accessing and using <span class="legal-notice__highlight">Portfolio</span> (Product), you acknowledge
+                and
+                agree to the following terms and conditions, and any policies, guidelines, or amendments thereto that
+                may be
+                presented to you from time to time. We, the listed students, may update or change the terms and
+                conditions
+                from time to time without notice.
+            </p>
+        </section>
 
-        <!-- Exploring the Board -->
-        <h2 id="exploring-title">Exploring the Board</h2>
-        <p>
-            Email:
-            <a class="email" [href]="'mailto:' + lang.dict().identity.email">
-                {{ lang.dict().identity.email }}
-            </a>
-        </p>
+        <section class="legal-notice__section">
+            <h2 id="scope-title" class="legal-notice__subtitle">Scope and ownership of the product</h2>
 
+            <p class="legal-notice__text">
+                <span class="legal-notice__highlight">Portfolio</span> has been developed as part of a student group
+                project
+                in a web development bootcamp at the
+                <span class="legal-notice__highlight">Developer Akademie</span> GmbH. It has an educational purpose and
+                is
+                not intended for extensive personal &amp; business usage.
+            </p>
+
+            <p class="legal-notice__text">
+                As such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect of
+                quality
+                regarding this Product.
+            </p>
+
+            <p class="legal-notice__text">
+                The design of <span class="legal-notice__highlight">Portfolio</span> is owned by the
+                <span class="legal-notice__highlight">Developer Akademie</span> GmbH. Unauthorized use, reproduction,
+                modification, distribution, or replication of the design is strictly prohibited.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="rights-title" class="legal-notice__subtitle">Proprietary rights</h2>
+
+            <p class="legal-notice__text">
+                Aside from the design owned by <span class="legal-notice__highlight">Developer Akademie</span> GmbH, we,
+                the
+                listed students, retain all proprietary rights in <span
+                    class="legal-notice__highlight">Portfolio</span>,
+                including any associated copyrighted material, trademarks, and other proprietary information.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="use-title" class="legal-notice__subtitle">Use of the product</h2>
+
+            <p class="legal-notice__text">
+                <span class="legal-notice__highlight">Portfolio</span> is intended to be used for lawful purposes only,
+                in
+                accordance with all applicable laws and regulations. Any use of
+                <span class="legal-notice__highlight">Portfolio</span> for illegal activities, or to harass, harm,
+                threaten,
+                or intimidate another person, is strictly prohibited. You are solely responsible for your interactions
+                with
+                other users of <span class="legal-notice__highlight">Portfolio</span>.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="disclaimer-title" class="legal-notice__subtitle">Disclaimer of warranties and limitation of
+                liability</h2>
+
+            <p class="legal-notice__text">
+                <span class="legal-notice__highlight">Portfolio</span> is provided "as is" without warranty of any kind,
+                whether express or implied, including but not limited to the implied warranties of merchantability,
+                fitness
+                for a particular purpose, and non-infringement. In no event will we, the listed students, or the
+                <span class="legal-notice__highlight">Developer Akademie</span>, be liable for any direct, indirect,
+                incidental, special, consequential, or exemplary damages, including but not limited to, damages for loss
+                of
+                profits, goodwill, use, data, or other intangible losses, even if we have been advised of the
+                possibility of
+                such damages, arising out of or in connection with the use or performance of
+                <span class="legal-notice__highlight">Portfolio</span>.
+            </p>
+        </section>
+
+        <section class="legal-notice__section legal-notice__meta">
+            <h2 id="indemnity-title" class="legal-notice__subtitle">Indemnity</h2>
+
+            <p class="legal-notice__text">
+                You agree to indemnify, defend and hold harmless us, the listed students, the
+                <span class="legal-notice__highlight">Developer Akademie</span> and our affiliates, partners, officers,
+                directors, agents, and employees, from and against any claim, demand, loss, damages, cost, or liability
+                (including reasonable legal fees) arising out of or relating to your use of
+                <span class="legal-notice__highlight">Portfolio</span> and/or your breach of this Legal Notice.
+            </p>
+
+            <p class="legal-notice__text">
+                For any questions or notices, please contact us at
+                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
+                </a>.
+            </p>
+
+            <p class="legal-notice__date">
+                Date: <time datetime="2025-07-26">July 26, 2025</time>
+            </p>
+        </section>
     </div>
 
+    } @else {
 
-    <div>
-        <h2 id="terms-title">Acceptance of terms</h2>
-        <p>
-            By accessing and using
-            <span>Portfolio</span> (Product), you acknowledge and agree to the
-            following terms and conditions, and any policies, guidelines, or amendments thereto that may be
-            presented to you from time to time. We, the listed students, may update or change the terms and
-            conditions from time to time without notice.
-        </p>
+    <header class="legal-notice__header">
+        <h1 class="legal-notice__title">Impressum</h1>
+    </header>
+
+    <div class="legal-notice__content">
+
+        <section class="legal-notice__section">
+            <h2 id="imprint-title" class="legal-notice__subtitle">Angaben gemäß § 5 TMG</h2>
+
+            <ul class="legal-notice__list">
+                <li>{{ lang.dict().identity.name }}</li>
+                <li>{{ lang.dict().identity.street }}</li>
+                <li>{{ lang.dict().identity.postcode }}</li>
+            </ul>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="contact-title" class="legal-notice__subtitle">Kontakt</h2>
+
+            <p class="legal-notice__text">
+                E-Mail:
+                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
+                </a>
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="terms-title" class="legal-notice__subtitle">Akzeptanz der Nutzungsbedingungen</h2>
+
+            <p class="legal-notice__text">
+                Durch den Zugriff auf und die Nutzung vom
+                <span class="legal-notice__highlight">Portfolio</span> (Produkt) erkennen Sie die nachfolgenden
+                Nutzungsbedingungen sowie alle dazugehörigen Richtlinien, Hinweise oder Änderungen an, die Ihnen
+                gegebenenfalls von Zeit zu Zeit zur Verfügung gestellt werden. Wir, die aufgeführten Studierenden,
+                behalten uns vor, diese Nutzungsbedingungen jederzeit und ohne vorherige Ankündigung zu ändern oder
+                anzupassen.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="scope-title" class="legal-notice__subtitle">Geltungsbereich und Eigentum am Produkt</h2>
+
+            <p class="legal-notice__text">Das 
+                <span class="legal-notice__highlight">Portfolio</span> wurde im Rahmen eines studentischen
+                Gruppenprojekts
+                eines Webentwicklungs-Bootcamps bei der
+                <span class="legal-notice__highlight">Developer Akademie GmbH</span> entwickelt. Das Projekt dient
+                ausschließlich Ausbildungs- und Lernzwecken und ist nicht für eine umfangreiche private oder
+                geschäftliche Nutzung vorgesehen.
+            </p>
+
+            <p class="legal-notice__text">
+                Aus diesem Grund können wir keinen Gewähr für eine dauerhafte Verfügbarkeit, Zuverlässigkeit,
+                Genauigkeit oder sonstige Qualitätsmerkmale dieses Produkts übernehmen.
+            </p>
+
+            <p class="legal-notice__text">
+                Das Design vom <span class="legal-notice__highlight">Portfolio</span> ist Eigentum der
+                <span class="legal-notice__highlight">Developer Akademie GmbH</span>. Eine unautorisierte Nutzung,
+                Vervielfältigung, Veränderung, Verbreitung oder Nachbildung des Designs ist ausdrücklich untersagt.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="rights-title" class="legal-notice__subtitle">Urheber- und Schutzrechte</h2>
+
+            <p class="legal-notice__text">
+                Abgesehen vom Design, welches Eigentum der
+                <span class="legal-notice__highlight">Developer Akademie GmbH</span> ist, behalten wir, die aufgeführten
+                Studierenden, sämtliche Schutz- und Eigentumsrechte am
+                <span class="legal-notice__highlight">Portfolio</span>, einschließlich aller zugehörigen
+                urheberrechtlich
+                geschützten Inhalte, Marken und sonstigen geschützten Informationen.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="use-title" class="legal-notice__subtitle">Nutzung des Produkts</h2>
+
+            <p class="legal-notice__text">Das
+                <span class="legal-notice__highlight">Portfolio</span> darf ausschließlich zu rechtmäßigen Zwecken und
+                unter Einhaltung aller geltenden Gesetze und Vorschriften genutzt werden. Jede Nutzung vom
+                <span class="legal-notice__highlight">Portfolio</span> für rechtswidrige Zwecke oder zur Belästigung,
+                Schädigung, Bedrohung oder Einschüchterung anderer Personen ist strengstens untersagt. Sie sind
+                allein verantwortlich für Ihre Interaktionen mit anderen Nutzern vom
+                <span class="legal-notice__highlight">Portfolio</span>.
+            </p>
+        </section>
+
+        <section class="legal-notice__section">
+            <h2 id="disclaimer-title" class="legal-notice__subtitle">Haftungsausschluss und Haftungsbeschränkung</h2>
+
+            <p class="legal-notice__text">Das
+                <span class="legal-notice__highlight">Portfolio</span> wird „wie besehen“ und ohne jegliche Garantie
+                bereitgestellt, weder ausdrücklich noch stillschweigend. Dies umfasst unter anderem Garantien der
+                Marktgängigkeit, der Eignung für einen bestimmten Zweck sowie der Nichtverletzung von Rechten Dritter.
+                In keinem Fall haften wir, die aufgeführten Studierenden, oder die
+                <span class="legal-notice__highlight">Developer Akademie GmbH</span> für direkte oder indirekte Schäden,
+                Neben-, Folge- oder Sonderschäden, einschließlich, aber nicht beschränkt auf entgangenen Gewinn,
+                Datenverlust, Nutzungsausfall oder sonstige immaterielle Verluste, selbst wenn wir auf die Möglichkeit
+                solcher Schäden hingewiesen wurden, die aus der Nutzung oder der Leistungsfähigkeit vom
+                <span class="legal-notice__highlight">Portfolio</span> entstehen.
+            </p>
+        </section>
+
+        <section class="legal-notice__section legal-notice__meta">
+            <h2 id="indemnity-title" class="legal-notice__subtitle">Freistellung</h2>
+
+            <p class="legal-notice__text">
+                Sie verpflichten sich, uns, die aufgeführten Studierenden, die
+                <span class="legal-notice__highlight">Developer Akademie GmbH</span> sowie deren verbundene Unternehmen,
+                Partner, Organe, Mitarbeitende und Beauftragte von sämtlichen Ansprüchen, Forderungen, Schäden,
+                Verlusten, Kosten oder Verbindlichkeiten (einschließlich angemessener Anwaltskosten) freizustellen,
+                die aus Ihrer Nutzung vom <span class="legal-notice__highlight">Portfolio</span> und/oder aus einem
+                Verstoß gegen dieses Impressum resultieren.
+            </p>
+
+            <p class="legal-notice__text">
+                Bei Fragen oder Hinweisen kontaktieren Sie uns bitte unter
+                <a class="legal-notice__link" [href]="'mailto:' + lang.dict().identity.email">
+                    {{ lang.dict().identity.email }}
+                </a>.
+            </p>
+
+            <p class="legal-notice__date">
+                Stand: <time datetime="2025-07-26">26. Juli 2025</time>
+            </p>
+        </section>
     </div>
-
-    <div>
-        <h2 id="scope-title">Scope and ownership of the product</h2>
-        <p>
-            <span>Portfolio</span> has been developed as part of a student group
-            project in a web development bootcamp at the
-            <span>Developer Akademie</span> GmbH. It has an educational purpose
-            and is not intended for extensive personal &amp; business usage.
-        </p>
-        <p>
-            As such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect
-            of quality regarding this Product.
-        </p>
-        <br>
-        <p>
-            The design of <span>Portfolio</span> is owned by the
-            <span>Developer Akademie</span> GmbH. Unauthorized use, reproduction,
-            modification, distribution, or replication of the design is strictly prohibited.
-        </p>
-    </div>
-
-
-    <div>
-        <h2 id="rights-title">Proprietary rights</h2>
-        <p>
-            Aside from the design owned by <span>Developer Akademie</span> GmbH,
-            we, the listed students, retain all proprietary rights in
-            <span>Portfolio</span>, including any associated copyrighted material,
-            trademarks, and other proprietary information.
-        </p>
-    </div>
-
-    <div>
-        <h2 id="use-title">Use of the product</h2>
-        <p>
-            <span>Portfolio</span> is intended to be used for lawful purposes only,
-            in accordance with all applicable laws and regulations. Any use of
-            <span>Portfolio</span> for illegal activities, or to harass, harm,
-            threaten, or intimidate another person, is strictly prohibited. You are solely responsible for your
-            interactions with other users of <span>Portfolio</span>.
-        </p>
-    </div>
-
-    <div>
-        <h2 id="disclaimer-title">
-            Disclaimer of warranties and limitation of liability
-        </h2>
-        <p>
-            <span>Portfolio</span> is provided "as is" without warranty of any kind,
-            whether express or implied, including but not limited to the implied warranties of merchantability,
-            fitness for a particular purpose, and non-infringement. In no event will we, the listed students, or
-            the <span>Developer Akademie</span>, be liable for any direct, indirect,
-            incidental, special, consequential, or exemplary damages, including but not limited to, damages for
-            loss of profits, goodwill, use, data, or other intangible losses, even if we have been advised of the
-            possibility of such damages, arising out of or in connection with the use or performance of
-            <span>Portfolio</span>.
-        </p>
-    </div>
-
-    <div>
-        <h2 id="indemnity-title">Indemnity</h2>
-        <p>
-            You agree to indemnify, defend and hold harmless us, the listed students, the
-            <span>Developer Akademie</span> and our affiliates, partners, officers,
-            directors, agents, and employees, from and against any claim, demand, loss, damages, cost, or
-            liability (including reasonable legal fees) arising out of or relating to your use of
-            <span>Portfolio</span> and/or your breach of this Legal Notice.
-        </p>
-
-        <br>
-        <p>
-            For any questions or notices, please contact us at
-            <a class="email" [href]="'mailto:' + lang.dict().identity.email">
-                {{ lang.dict().identity.email }}
-            </a>.
-        </p>
-        <br>
-        <p>
-            Date: <time datetime="2025-07-26">July 26, 2025</time>
-        </p>
-    </div>
-</div>
-
-
-
-} @else {
-<header class="legal-notice__header">
-    <h1 class="legal-notice__title">Impressum</h1>
-</header>
-
-<div class="legal-notice__content">
-    <!-- Imprint -->
-    <h2 id="imprint-title" class="legal-notice__subtitle">Angaben gemäß § 5 TMG</h2>
-
-    <ul class="legal-notice__list">
-        <li>{{ lang.dict().identity.name }}</li>
-        <li>{{ lang.dict().identity.street }}</li>
-        <li>{{ lang.dict().identity.postcode }}</li>
-    </ul>
-
-    <!-- Contact -->
-    <h2 id="exploring-title" class="legal-notice__subtitle">Kontakt</h2>
-    <p class="legal-notice__text">
-        E-Mail:
-        <a class="email" [href]="'mailto:' + lang.dict().identity.email">
-            {{ lang.dict().identity.email }}
-        </a>
-    </p>
-
-    <!-- Acceptance of terms -->
-    <h2 id="terms-title" class="legal-notice__subtitle">Akzeptanz der Nutzungsbedingungen</h2>
-    <p class="legal-notice__text">
-        Durch den Zugriff auf und die Nutzung von
-        <span class="legal-notice__highlight">Portfolio</span> (Produkt) erkennen Sie die nachfolgenden
-        Nutzungsbedingungen sowie alle dazugehörigen Richtlinien, Hinweise oder Änderungen an, die Ihnen
-        gegebenenfalls von Zeit zu Zeit zur Verfügung gestellt werden. Wir, die aufgeführten Studierenden,
-        behalten uns vor, diese Nutzungsbedingungen jederzeit und ohne vorherige Ankündigung zu ändern oder
-        anzupassen.
-    </p>
-
-    <!-- Scope and ownership -->
-    <h2 id="scope-title" class="legal-notice__subtitle">Geltungsbereich und Eigentum am Produkt</h2>
-    <p class="legal-notice__text">
-        <span class="legal-notice__highlight">Portfolio</span> wurde im Rahmen eines studentischen
-        Gruppenprojekts
-        eines Webentwicklungs-Bootcamps bei der
-        <span class="legal-notice__highlight">Developer Akademie</span> GmbH entwickelt. Das Projekt dient
-        ausschließlich Ausbildungs- und Lernzwecken und ist nicht für eine umfangreiche private oder
-        geschäftliche Nutzung vorgesehen.
-    </p>
-    <p class="legal-notice__text">
-        Aus diesem Grund können wir keine Gewähr für eine dauerhafte Verfügbarkeit, Zuverlässigkeit,
-        Genauigkeit oder sonstige Qualitätsmerkmale dieses Produkts übernehmen.
-    </p>
-    <p class="legal-notice__text">
-        Das Design von <span class="legal-notice__highlight">Portfolio</span> ist Eigentum der
-        <span class="legal-notice__highlight">Developer Akademie</span> GmbH. Eine unautorisierte Nutzung,
-        Vervielfältigung, Veränderung, Verbreitung oder Nachbildung des Designs ist ausdrücklich untersagt.
-    </p>
-
-    <!-- Proprietary rights -->
-    <h2 id="rights-title" class="legal-notice__subtitle">Urheber- und Schutzrechte</h2>
-    <p class="legal-notice__text">
-        Abgesehen vom Design, das Eigentum der
-        <span class="legal-notice__highlight">Developer Akademie</span> GmbH ist, behalten wir, die aufgeführten
-        Studierenden, sämtliche Schutz- und Eigentumsrechte an
-        <span class="legal-notice__highlight">Portfolio</span>, einschließlich aller zugehörigen
-        urheberrechtlich
-        geschützten Inhalte, Marken und sonstigen geschützten Informationen.
-    </p>
-
-    <!-- Use of the product -->
-    <h2 id="use-title" class="legal-notice__subtitle">Nutzung des Produkts</h2>
-    <p class="legal-notice__text">
-        <span class="legal-notice__highlight">Portfolio</span> darf ausschließlich zu rechtmäßigen Zwecken und
-        unter Einhaltung aller geltenden Gesetze und Vorschriften genutzt werden. Jede Nutzung von
-        <span class="legal-notice__highlight">Portfolio</span> für rechtswidrige Zwecke oder zur Belästigung,
-        Schädigung, Bedrohung oder Einschüchterung anderer Personen ist strengstens untersagt. Sie sind
-        allein verantwortlich für Ihre Interaktionen mit anderen Nutzern von
-        <span class="legal-notice__highlight">Portfolio</span>.
-    </p>
-
-    <!-- Disclaimer -->
-    <h2 id="disclaimer-title" class="legal-notice__subtitle">
-        Haftungsausschluss und Haftungsbeschränkung
-    </h2>
-    <p class="legal-notice__text">
-        <span class="legal-notice__highlight">Portfolio</span> wird „wie besehen“ und ohne jegliche Garantie
-        bereitgestellt, weder ausdrücklich noch stillschweigend. Dies umfasst unter anderem Garantien der
-        Marktgängigkeit, der Eignung für einen bestimmten Zweck sowie der Nichtverletzung von Rechten Dritter.
-        In keinem Fall haften wir, die aufgeführten Studierenden, oder die
-        <span class="legal-notice__highlight">Developer Akademie</span> für direkte oder indirekte Schäden,
-        Neben-, Folge- oder Sonderschäden, einschließlich, aber nicht beschränkt auf entgangenen Gewinn,
-        Datenverlust, Nutzungsausfall oder sonstige immaterielle Verluste, selbst wenn wir auf die Möglichkeit
-        solcher Schäden hingewiesen wurden, die aus der Nutzung oder der Leistungsfähigkeit von
-        <span class="legal-notice__highlight">Portfolio</span> entstehen.
-    </p>
-
-    <!-- Indemnity -->
-    <h2 id="indemnity-title" class="legal-notice__subtitle">Freistellung</h2>
-    <p class="legal-notice__text">
-        Sie verpflichten sich, uns, die aufgeführten Studierenden, die
-        <span class="legal-notice__highlight">Developer Akademie</span> sowie deren verbundene Unternehmen,
-        Partner, Organe, Mitarbeitende und Beauftragte von sämtlichen Ansprüchen, Forderungen, Schäden,
-        Verlusten, Kosten oder Verbindlichkeiten (einschließlich angemessener Anwaltskosten) freizustellen,
-        die aus Ihrer Nutzung von <span class="legal-notice__highlight">Portfolio</span> und/oder aus einem
-        Verstoß gegen dieses Impressum resultieren.
-    </p>
-
-    <!-- Contact + Date -->
-    <h2 id="meta-title" class="sr-only">Meta</h2>
-
-    <p class="legal-notice__text">
-        Bei Fragen oder Hinweisen kontaktieren Sie uns bitte unter
-        <a class="legal-notice__link" href="mailto:[Contact Email]">[Contact Email]</a>.
-    </p>
-
-    <p class="legal-notice__date">
-        Stand: <time datetime="2025-07-26">26. Juli 2025</time>
-    </p>
-</div>
-
-}
+    }
+</section>
