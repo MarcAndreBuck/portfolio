@@ -19,6 +19,8 @@
     border-radius: 24px;
 
     max-height: calc(100vh - 3rem);
+    max-height: calc(100svh - 3rem);
+    max-height: calc(100dvh - 3rem);
 
     background: var(--gradient-accent);
     border: 1px solid rgb(var(--color-primary-rgb) / 1);
@@ -43,6 +45,7 @@
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     padding-inline: 4rem;
     padding-block: 0;

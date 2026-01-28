@@ -4,6 +4,8 @@
     @include dflex();
     width: 100%;
     height: 100vh;
+    height: 100svh;
+    height: 100dvh;
     background: var(--gradient-accent), var(--color-bg-dark);
 }
 

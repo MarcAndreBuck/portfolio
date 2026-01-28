@@ -6,6 +6,8 @@
     @include dflex($gap: 24px, $dir: column);
 
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     background: var(--gradient-accent), var(--color-bg-dark);
     color: rgb(var(--color-primary-rgb) / 1);
 
