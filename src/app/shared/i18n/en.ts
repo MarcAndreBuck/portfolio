@@ -94,7 +94,7 @@ export const EN = {
                 highlights: ['Canvas rendering', 'Basic enemy AI', 'Mobile controls'],
             },
             bubble: {
-                description: 'Realtime app built with Angular + Firebase (auth/db).',
+                description: 'Comming Soon: Realtime app built with Angular + Firebase (auth/db).',
                 highlights: ['Realtime data', 'Auth flow', 'Clean UI'],
             },
         },

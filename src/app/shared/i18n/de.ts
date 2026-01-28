@@ -94,7 +94,7 @@ export const DE = {
                 highlights: ['Canvas-Rendering', 'Einfache Gegner-KI', 'Mobile Steuerung'],
             },
             bubble: {
-                description: 'Realtime-App mit Angular und Firebase (Auth/DB).',
+                description: 'Bald in Entwicklung: Realtime-App mit Angular und Firebase (Auth/DB).',
                 highlights: ['Echtzeit-Daten', 'Auth-Flow', 'Sauberes UI'],
             },
         },
