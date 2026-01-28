@@ -41,7 +41,7 @@ export const EN = {
     about: {
         eyebrow: 'Who I Am',
         title: 'About me',
-        intro: `I’m a passionate Frontend Developer with a strong focus on clean code, modern web technologies, and intuitive user experiences. I enjoy turning complex ideas into clear, functional, and visually appealing interfaces.`,
+        intro: `I'm a passionate Frontend Developer with a strong focus on clean code, modern web technologies, and intuitive user experiences. I enjoy turning complex ideas into clear, functional, and visually appealing interfaces.`,
         list: [
             'Based in Germany — open to remote work and flexible collaboration.',
             'Open-minded and curious — I love learning new technologies and improving continuously.',
@@ -126,7 +126,7 @@ export const EN = {
             },
             {
                 author: 'Daniel Hoffmann',
-                role: 'Product Owner · Developer Academy',
+                role: 'Product Owner',
                 text: 'Marc shows a very high level of intrinsic motivation. He challenges requirements in a constructive way and often contributes valuable improvements to the overall product.',
             },
             {
@@ -150,7 +150,8 @@ export const EN = {
         headlineLine1: "Let's work",
         headlineLine2: 'together',
         subheadline: 'Got a problem to solve?',
-        text1: 'Encourage people to contact you and describe what role you are interested in. Show that you will add value to their projects through your work.',
+        text1: `I'm currently looking for opportunities as a Frontend Developer, where I can contribute clean, accessible, and well-structured user interfaces.
+                If you're building a product that values quality, clarity, and thoughtful UX, I'd love to hear from you and help turn ideas into reliable, maintainable solutions.`,
         text2Lead: 'Need a Frontend developer?',
         text2Accent: "Let's talk!",
         labels: {
@@ -172,8 +173,11 @@ export const EN = {
         },
 
         errors: {
-            required: "Oops! It seems this field is missing.",
+            required_name: "Oops! it seems your name is missing.",
+            required_email: "Hoppla! your email is required",
+            required_message: "What do you need to develop?",
             email: "Please enter a valid email address.",
+            email_format: (example: string) => `Email format: ${example}`,
             minlength: "Please enter a bit more.",
             requiredTrue: "Please accept the privacy policy.",
             generic: "Please check your input.",

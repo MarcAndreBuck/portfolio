@@ -1,41 +1,51 @@
 import { NgIf } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
-import { LanguageService } from '@/app/shared/i18n/language.service';
 import { ActionButtonComponent } from '@/app/shared/ui/action-button/action-button.component';
 import { IconComponent } from '@/app/shared/icons/icon.component';
+import { LanguageService } from '@/app/shared/i18n/language.service';
 
-/**
- * All available contact form fields.
- */
+/** All contact form fields. */
 type ContactField = 'name' | 'email' | 'message' | 'privacy';
 
-/**
- * Contact fields that contain text input.
- */
+/** Fields with text input controls. */
 type TextField = Exclude<ContactField, 'privacy'>;
 
-/**
- * Supported validation error keys used for i18n mapping.
- */
-type ValidationErrorKey =
-  | 'required'
+/** Required-message keys per text field (i18n). */
+type RequiredKeyByField = {
+  name: 'required_name';
+  email: 'required_email';
+  message: 'required_message';
+};
+
+/** Keys used to resolve error messages from the dictionary. */
+type ValidationMessageKey =
+  | RequiredKeyByField[TextField]
   | 'email'
+  | 'email_format'
   | 'minlength'
   | 'requiredTrue'
   | 'generic';
 
-/**
- * Payload sent to the contact API.
- */
+/** Payload sent to the contact API. */
 type ContactPayload = {
   name: string;
   email: string;
   message: string;
 };
+
+/**
+ * Email format that requires a real domain with dot and TLD.
+ * Example: name@example.com
+ */
+const EMAIL_REALISTIC_REGEX =
+  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+/** Example shown in the email format error message. */
+const EMAIL_EXAMPLE = 'name@example.com';
 
 @Component({
   selector: 'app-contact',
@@ -45,14 +55,14 @@ type ContactPayload = {
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
-  private readonly formBuilder = inject(FormBuilder);
+  private readonly fb = inject(FormBuilder);
   private readonly http = inject(HttpClient);
   readonly language = inject(LanguageService);
 
-  /** True after the user tried to submit at least once. */
+  /** True after the user tried to submit once. */
   hasSubmitted = false;
 
-  /** Tracks whether a field was blurred at least once (per field). */
+  /** Tracks whether a field was blurred at least once. */
   blurred: Record<ContactField, boolean> = {
     name: false,
     email: false,
@@ -60,25 +70,36 @@ export class ContactComponent {
     privacy: false,
   };
 
+  /** Maps `required` validator to field-specific i18n keys. */
+  private readonly requiredKeyByField: RequiredKeyByField = {
+    name: 'required_name',
+    email: 'required_email',
+    message: 'required_message',
+  };
+
   /**
    * Reactive contact form.
    * Text fields validate on blur, privacy checkbox validates on change.
    */
-  readonly contactForm = this.formBuilder.group(
+  readonly contactForm = this.fb.group(
     {
-      name: this.formBuilder.control('', {
+      name: this.fb.control('', {
         validators: [Validators.required, Validators.minLength(2)],
         updateOn: 'blur',
       }),
-      email: this.formBuilder.control('', {
-        validators: [Validators.required, Validators.email],
+      email: this.fb.control('', {
+        validators: [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(EMAIL_REALISTIC_REGEX),
+        ],
         updateOn: 'blur',
       }),
-      message: this.formBuilder.control('', {
+      message: this.fb.control('', {
         validators: [Validators.required, Validators.minLength(10)],
         updateOn: 'blur',
       }),
-      privacy: this.formBuilder.control(false, {
+      privacy: this.fb.control(false, {
         validators: [Validators.requiredTrue],
         updateOn: 'change',
       }),
@@ -87,8 +108,7 @@ export class ContactComponent {
   );
 
   /**
-   * Marks a field as blurred once.
-   * Used to control when validation errors become visible.
+   * Marks a field as blurred.
    *
    * @param field Contact field name.
    */
@@ -100,25 +120,26 @@ export class ContactComponent {
    * Returns the form control for a given field.
    *
    * @param field Contact field name.
-   * @returns Form control or null.
+   * @returns The form control or null.
    */
   private getControl(field: ContactField) {
     return this.contactForm.get(field);
   }
 
   /**
-   * Determines whether validation feedback should be shown.
+   * Determines whether validation feedback should be visible.
    *
    * @param field Contact field name.
-   * @returns True if validation should be visible.
+   * @returns True if validation should be shown.
    */
   private shouldShowValidation(field: ContactField): boolean {
     return this.hasSubmitted || this.blurred[field];
   }
 
   /**
-   * True if all text fields are valid.
-   * Used to decide when to show the privacy checkbox error.
+   * Indicates whether all text fields are valid.
+   *
+   * @returns True if name, email and message are valid.
    */
   get areTextFieldsValid(): boolean {
     return !!(
@@ -130,7 +151,8 @@ export class ContactComponent {
 
   /**
    * Determines whether the privacy checkbox error should be shown.
-   * Only visible after all text fields are valid.
+   *
+   * @returns True if the privacy error should be visible.
    */
   private shouldShowPrivacyError(): boolean {
     const privacy = this.getControl('privacy');
@@ -138,10 +160,10 @@ export class ContactComponent {
   }
 
   /**
-   * Returns whether a field currently has a visible validation error.
+   * Checks whether a field currently has a visible validation error.
    *
    * @param field Contact field name.
-   * @returns True if the field should show an error state.
+   * @returns True if the field is invalid and should show an error.
    */
   hasFieldError(field: ContactField): boolean {
     if (field === 'privacy') return this.shouldShowPrivacyError();
@@ -150,32 +172,50 @@ export class ContactComponent {
   }
 
   /**
-   * Maps validation errors to translation keys.
+   * Maps Angular validation errors to translation keys.
    *
    * @param field Contact field name.
-   * @returns Validation error key or null.
+   * @returns Validation message key or null.
    */
-  private getErrorKey(field: ContactField): ValidationErrorKey | null {
+  private getErrorKey(field: ContactField): ValidationMessageKey | null {
     const control = this.getControl(field);
     if (!control || !this.hasFieldError(field)) return null;
 
-    if (field === 'privacy' && control.hasError('requiredTrue')) return 'requiredTrue';
-    if (control.hasError('required')) return 'required';
-    if (field === 'email' && control.hasError('email')) return 'email';
-    if (control.hasError('minlength')) return 'minlength';
+    if (field === 'privacy' && control.hasError('requiredTrue')) {
+      return 'requiredTrue';
+    }
+
+    if (field !== 'privacy' && control.hasError('required')) {
+      return this.requiredKeyByField[field];
+    }
+
+    if (field === 'email' && control.hasError('pattern')) {
+      return 'email_format';
+    }
+
+    if (field === 'email' && control.hasError('email')) {
+      return 'email';
+    }
+
+    if (control.hasError('minlength')) {
+      return 'minlength';
+    }
 
     return 'generic';
   }
 
   /**
-   * Returns the localized error message for a field.
-   *
-   * @param field Contact field name.
-   * @returns Translated error message or empty string.
-   */
+  * Returns the localized error message for a field.
+  *
+  * @param field Contact field name.
+  * @returns Localized error message (always a string).
+  */
   getErrorMessage(field: ContactField): string {
     const key = this.getErrorKey(field);
-    return key ? this.language.dict().contact.errors[key] : '';
+    if (!key) return '';
+
+    const entry = this.language.dict().contact.errors[key];
+    return typeof entry === 'function' ? entry(EMAIL_EXAMPLE) : entry;
   }
 
   /**
@@ -190,7 +230,7 @@ export class ContactComponent {
   }
 
   /**
-   * Shows placeholder error if the field is empty and invalid.
+   * Determines whether the placeholder error should be shown.
    *
    * @param field Text field name.
    * @returns True if placeholder error should be shown.
@@ -200,7 +240,7 @@ export class ContactComponent {
   }
 
   /**
-   * Shows inline error text if the field is invalid but not empty.
+   * Determines whether the inline error message should be shown.
    *
    * @param field Text field name.
    * @returns True if inline error should be shown.
@@ -210,7 +250,7 @@ export class ContactComponent {
   }
 
   /**
-   * Returns either the localized placeholder or the localized error message.
+   * Returns the placeholder or error message for a field.
    *
    * @param field Text field name.
    * @returns Placeholder text.
@@ -223,8 +263,8 @@ export class ContactComponent {
 
   /**
    * Handles form submission.
-   * Marks all fields as blurred on invalid submit.
-   * Sends the contact payload to the backend on success.
+   *
+   * @returns Promise<void>
    */
   async submit(): Promise<void> {
     this.hasSubmitted = true;
@@ -234,13 +274,14 @@ export class ContactComponent {
       return;
     }
 
-    const payload = this.getPayload();
-    await this.sendContact(payload);
+    await this.sendContact(this.getPayload());
     this.resetFormState();
   }
 
   /**
-   * Returns true if the form is valid and can be submitted.
+   * Indicates whether the form can be submitted.
+   *
+   * @returns True if the form is valid.
    */
   get canSubmitForm(): boolean {
     return this.contactForm.valid;
@@ -251,25 +292,25 @@ export class ContactComponent {
    */
   private markAllFieldsAsBlurred(): void {
     (Object.keys(this.blurred) as ContactField[]).forEach(
-      (field) => (this.blurred[field] = true)
+      (f) => (this.blurred[f] = true)
     );
   }
 
   /**
-   * Resets the form and all related UI state.
+   * Resets the form and UI state.
    */
   private resetFormState(): void {
     this.contactForm.reset({ privacy: false });
     this.hasSubmitted = false;
     (Object.keys(this.blurred) as ContactField[]).forEach(
-      (field) => (this.blurred[field] = false)
+      (f) => (this.blurred[f] = false)
     );
   }
 
   /**
-   * Creates the contact payload from form values.
+   * Creates the API payload from form values.
    *
-   * @returns ContactPayload containing name, email and message.
+   * @returns ContactPayload
    */
   private getPayload(): ContactPayload {
     const { name, email, message } = this.contactForm.getRawValue();
@@ -277,10 +318,10 @@ export class ContactComponent {
   }
 
   /**
-   * Sends the contact request to the backend API.
+   * Sends the contact request to the backend.
    *
-   * @param payload Contact data to send.
-   * @throws Error if the request fails.
+   * @param payload Contact data.
+   * @returns Promise<void>
    */
   private async sendContact(payload: ContactPayload): Promise<void> {
     const url = 'https://marc-buck.de/api/sendMail.php';

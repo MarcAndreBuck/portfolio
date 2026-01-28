@@ -2,8 +2,8 @@ export const DE = {
     hero: {
         eyebrow: 'Frontend Developer',
         buttons: {
-            projects: 'Check my work',
-            contact: 'Contact me',
+            projects: 'Meine Projekte',
+            contact: 'Kontakt',
         },
         aria: {
             github: 'GitHub-Profil in neuem Tab öffnen',
@@ -13,10 +13,11 @@ export const DE = {
         marquee: [
             'Remote verfügbar',
             'Frontend Developer',
-            'Wohnhaft in Deutschland',
-            'Offen für Angebote',
+            'Ansässig in Deutschland',
+            'Offen für neue Projekte',
         ],
     },
+
     header: {
         nav: {
             about: 'Über mich',
@@ -33,28 +34,30 @@ export const DE = {
         email: 'E-Mail',
         legalNotice: 'Impressum',
         privacyPolicy: 'Datenschutz',
-        opensNewTab: '(öffnet in einem neuen Tab)',
+        opensNewTab: '(öffnet in neuem Tab)',
         opensEmail: '(öffnet E-Mail-Programm)',
     },
+
     about: {
         eyebrow: 'Wer ich bin',
         title: 'Über mich',
-        intro: 'Ich bin ein leidenschaftlicher Frontend Developer mit einem starken Fokus auf Clean Code, moderne Web-Technologien und intuitive User Experiences. Ich liebe es, komplexe Ideen in klare, funktionale und visuell ansprechende Interfaces zu übersetzen.',
+        intro: `Ich bin ein leidenschaftlicher Frontend Developer mit starkem Fokus auf Clean Code, moderne Webtechnologien und intuitive Nutzererlebnisse. Ich liebe es, komplexe Ideen in klare, funktionale und visuell ansprechende Interfaces zu verwandeln.`,
         list: [
-            'Wohnhaft in Deutschland — offen für Remote-Arbeit und flexible Zusammenarbeit.',
+            'Ansässig in Deutschland — offen für Remote-Arbeit und flexible Zusammenarbeit.',
             'Offen und neugierig — ich lerne gerne neue Technologien und entwickle mich kontinuierlich weiter.',
             'Problemlöser-Mindset — analytisch, kreativ, ausdauernd und fokussiert auf saubere, elegante Lösungen.',
         ],
         imageAlt: 'Porträt von Marc-André Buck',
     },
+
     skills: {
-        eyebrow: 'Technologies',
+        eyebrow: 'Technologien',
         title: 'Skill Set',
-        intro: 'I work with modern web technologies...',
-        needAnother: 'You need',
-        needAnotherAccent: 'another skill?',
-        outro: `I'm always open to learning...`,
-        cta: `Let's talk`,
+        intro: `Meine Fähigkeiten liegen im modernen Frontend-Development mit HTML, CSS/SCSS, JavaScript und Angular - mit besonderem Fokus auf sauberen, wartbaren Code, responsives Design und barrierefreie Benutzeroberflächen. Ich erweitere mein Skillset kontinuierlich, indem ich neue Technologien, Tools und Best Practices verfolge und mich gerne an eine sich schnell wandelnde Weblandschaft anpasse.`,
+        needAnother: 'Du brauchst',
+        needAnotherAccent: 'noch einen Skill?',
+        outro: 'Melde dich gerne bei mir. Ich freue mich darauf, mein Wissen weiter auszubauen.',
+        cta: 'Kontakt aufnehmen',
         labels: {
             html: 'HTML',
             css: 'CSS',
@@ -63,12 +66,12 @@ export const DE = {
             angular: 'Angular',
             firebase: 'Firebase',
             git: 'Git',
-            restApi: 'REST-API',
+            restApi: 'REST API',
             scrum: 'Scrum',
-            growthMindset: 'Growth mindset',
+            growthMindset: 'Growth Mindset',
         },
         growthTip: {
-            title: 'Ich habe ein besonderes Interesse daran, zu lernen',
+            title: 'Was ich gerne lernen würde',
             items: {
                 react: 'React',
                 vue: 'Vue.js',
@@ -78,103 +81,107 @@ export const DE = {
 
     projects: {
         eyebrow: 'Projekte',
-        title: 'Ausgewählte Projekte',
-        intro: 'Entdecke eine Auswahl meiner Arbeiten – interagiere mit den Projekten, um meine Skills in Aktion zu sehen.',
+        title: 'Meine Projekte',
+        intro: 'Entdecke hier eine Auswahl meiner Arbeiten - interagiere mit den Projekten, um meine Skills in Aktion zu sehen.',
         actions: { live: 'Live', github: 'GitHub' },
         items: {
             join: {
-                description: 'Ein Kanban-Taskmanager mit Auth und Realtime-Sync.',
-                highlights: ['Auth + Firestore', 'Drag & Drop Workflow', 'Responsive UI'],
+                description: 'Ein Kanban-ähnlicher Task-Manager mit Authentifizierung und Realtime-Synchronisation.',
+                highlights: ['Auth + Firestore', 'Drag & Drop-Workflow', 'Responsives UI'],
             },
             pollo: {
-                description: 'Ein 2D-Browsergame mit Animationen, Kollisionen und Game-Loop.',
-                highlights: ['Canvas Rendering', 'Basic Enemy AI', 'Mobile Controls'],
+                description: 'Ein 2D-Browser-Game mit Animationen, Kollisionen und Game-Loop-Logik.',
+                highlights: ['Canvas-Rendering', 'Einfache Gegner-KI', 'Mobile Steuerung'],
             },
             bubble: {
-                description: 'Realtime App mit Angular + Firebase (Auth/DB).',
-                highlights: ['Realtime Daten', 'Auth Flow', 'Clean UI'],
+                description: 'Realtime-App mit Angular und Firebase (Auth/DB).',
+                highlights: ['Echtzeit-Daten', 'Auth-Flow', 'Sauberes UI'],
             },
         },
         aria: {
-            viewDetails: (title: string) => `Details zum Projekt ${title} ansehen`,
+            viewDetails: (title: string) => `Projektdetails zu ${title} ansehen`,
         },
         modal: {
             closeLabel: 'Projektdetails schließen',
             subtitle: 'Worum geht es in diesem Projekt?',
-            opensNewTab: '(öffnet in einem neuen Tab)',
+            opensNewTab: '(öffnet in neuem Tab)',
             next: 'Nächstes Projekt',
-            previewAlt: (title: string) => `Vorschau zu ${title}`,
+            previewAlt: (title: string) => `Vorschau von ${title}`,
         },
     },
 
-
     references: {
-        title: 'What my colleagues say about me',
+        title: 'Was Kolleg:innen über mich sagen',
 
         items: [
             {
                 author: 'Thomas Schulz',
                 role: 'Senior Frontend Developer · Projektkollege',
-                text: 'Marc arbeitet extrem strukturiert und denkt Probleme wirklich bis zum Ende durch. Besonders beeindruckt hat mich seine Fähigkeit, komplexe Anforderungen in sauberen, wartbaren Code zu übersetzen.',
+                text: 'Marc arbeitet sehr strukturiert und denkt Probleme konsequent bis zum Ende durch. Seine Fähigkeit, komplexe Anforderungen in sauberen und wartbaren Code zu übersetzen, ist beeindruckend.',
             },
             {
                 author: 'Lisa Becker',
-                role: 'UX/UI Designerin · Zusammenarbeit im Teamprojekt',
-                text: 'Die Zusammenarbeit mit Marc war sehr angenehm. Er hat ein starkes Gespür für saubere Interfaces und setzt Designvorgaben präzise um, ohne dabei die technische Qualität aus den Augen zu verlieren.',
+                role: 'UX/UI Designerin · Teamprojekt',
+                text: 'Die Zusammenarbeit mit Marc war großartig. Er hat ein starkes Gespür für saubere Interfaces und setzt Designs präzise um, ohne die technische Qualität aus den Augen zu verlieren.',
             },
             {
                 author: 'Daniel Hoffmann',
-                role: 'Product Owner · Entwickler Akademie',
-                text: 'Marc zeichnet sich durch eine sehr hohe Eigenmotivation aus. Er hinterfragt Anforderungen sinnvoll und bringt häufig eigene Verbesserungsvorschläge ein, die das Gesamtprodukt deutlich verbessern.',
+                role: 'Product Owner',
+                text: 'Marc zeigt ein sehr hohes Maß an intrinsischer Motivation. Er hinterfragt Anforderungen konstruktiv und bringt häufig wertvolle Verbesserungen für das Gesamtprodukt ein.',
             },
             {
                 author: 'Sarah Klein',
-                role: 'Fullstack Entwicklerin · Pair Programming',
-                text: 'Im Pair Programming ist Marc ein extrem verlässlicher Partner. Er erklärt ruhig, denkt logisch und bleibt auch bei schwierigen Bugs fokussiert und lösungsorientiert.',
+                role: 'Fullstack Developer · Pair Programming',
+                text: 'Marc ist ein sehr zuverlässiger Partner im Pair Programming. Er erklärt ruhig, denkt logisch und bleibt auch beim Debuggen komplexer Probleme fokussiert.',
             },
-        ],
+        ] as const,
+
         aria: {
-            list: 'Testimonials',
-            prev: 'Previous testimonial',
-            next: 'Next testimonial',
-            goto: (index: number) => `Go to testimonial ${index}`,
-            card: 'Activate testimonial',
+            list: 'Referenzen',
+            prev: 'Vorherige Referenz',
+            next: 'Nächste Referenz',
+            goto: (index: number) => `Zur Referenz ${index} wechseln`,
+            card: 'Referenz aktivieren',
             carousel: 'Karussell',
         },
     },
 
     contact: {
-        eyebrow: 'Kontaktiere mich',
+        eyebrow: 'Kontakt',
         headlineLine1: 'Lass uns',
         headlineLine2: 'zusammenarbeiten',
-        subheadline: 'Hast du ein Problem zu lösen?',
-        text1: 'Ermutige Menschen, dich zu kontaktieren und zu beschreiben, welche Rolle sie besetzen möchten. Zeig, welchen Mehrwert du ihren Projekten durch deine Arbeit bringst.',
+        subheadline: 'Du hast ein Problem zu lösen?',
+        text1: `Aktuell suche ich nach Möglichkeiten als Frontend Developer, bei denen ich saubere, barrierefreie und gut strukturierte Benutzeroberflächen umsetzen kann.
+            Wenn du an einem Produkt arbeitest, das Qualität, Klarheit und durchdachte UX schätzt, freue ich mich über deine Nachricht und helfe gerne dabei, Ideen in zuverlässige und wartbare Lösungen zu verwandeln.`,
         text2Lead: 'Du brauchst einen Frontend Developer?',
         text2Accent: 'Lass uns sprechen!',
         labels: {
-            name: "Wie ist dein Name?",
-            email: "Wie lautet deine E-Mail?",
-            message: "Wie kann ich dir helfen?",
+            name: 'Wie heißt du?',
+            email: 'Wie lautet deine E-Mail?',
+            message: 'Wie kann ich dir helfen?',
 
-            privacyTextA: "Ich habe die ",
-            privacyLink: "Datenschutzerklärung",
-            privacyTextB: " gelesen und stimme der Verarbeitung meiner Daten zu.",
+            privacyTextA: 'Ich habe die ',
+            privacyLink: 'Datenschutzerklärung',
+            privacyTextB: ' gelesen und stimme der Verarbeitung meiner Daten zu.',
 
-            submit: "Absenden",
+            submit: 'Nachricht senden :)',
         },
 
         placeholders: {
-            name: "Dein Name kommt hier rein",
-            email: "deinemail@email.de",
-            message: "Hallo Marc, ich interessiere mich für…",
+            name: 'Dein Name',
+            email: 'deinname@email.de',
+            message: 'Hallo Marc, ich interessiere mich für …',
         },
 
         errors: {
-            required: "Ups! Dieses Feld fehlt noch.",
-            email: "Bitte gib eine gültige E-Mail-Adresse ein.",
-            minlength: "Bitte gib etwas mehr ein.",
-            requiredTrue: "Bitte akzeptiere die Datenschutzerklärung.",
-            generic: "Bitte prüfe deine Eingabe.",
+            required_name: 'Ups! Dein Name fehlt noch.',
+            required_email: 'Ups! Deine E-Mail-Adresse fehlt noch.',
+            required_message: 'Was soll entwickelt werden?',
+            email: 'Bitte gib eine gültige E-Mail-Adresse ein.',
+            email_format: (example: string) => `E-Mail Format: ${example}`,
+            minlength: 'Die Nachricht ist zu kurz',
+            requiredTrue: 'Bitte akzeptiere die Datenschutzerklärung.',
+            generic: 'Bitte prüfe deine Eingabe.',
         },
     },
 } as const;
