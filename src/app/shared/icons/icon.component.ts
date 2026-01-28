@@ -2,7 +2,13 @@ import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ICONS, IconDefinition, IconName } from './icons.templates';
 
-type SafeIconDefinition = IconDefinition & { safeContent: SafeHtml };
+/**
+ * Icon definition with sanitized SVG content.
+ */
+type SafeIconDefinition = IconDefinition & {
+  /** Sanitized SVG markup safe for binding via [innerHTML]. */
+  safeContent: SafeHtml;
+};
 
 @Component({
   selector: 'app-icon',
@@ -12,11 +18,21 @@ type SafeIconDefinition = IconDefinition & { safeContent: SafeHtml };
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent {
+  /** Name of the icon to render. */
   @Input({ required: true }) name!: IconName;
 
-  private sanitizer = inject(DomSanitizer);
-  private cache = new Map<IconName, SafeIconDefinition>();
+  /** Angular DOM sanitizer for safe SVG rendering. */
+  private readonly sanitizer = inject(DomSanitizer);
 
+  /** In-memory cache for sanitized icon definitions. */
+  private readonly cache = new Map<IconName, SafeIconDefinition>();
+
+  /**
+   * Returns the sanitized icon definition for the current icon name.
+   * Results are cached to avoid repeated sanitization.
+   *
+   * @returns Safe icon definition including sanitized SVG content.
+   */
   get definition(): SafeIconDefinition {
     const cached = this.cache.get(this.name);
     if (cached) return cached;

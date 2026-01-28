@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LegalNoticeComponent } from './pages/legal-notice/legal-notice.component';
 import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.component';
 
+/** Application routes for main pages. */
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'legal-notice', component: LegalNoticeComponent },
