@@ -107,7 +107,6 @@
 
     &__footer {
         margin-top: auto;
-        /* optional, schadet aber nicht */
         @include dflex($gap: var(--space-3-5));
     }
 }

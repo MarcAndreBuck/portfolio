@@ -99,4 +99,11 @@
     :host {
         grid-template-columns: 1.8fr 1fr;
     }
+
+    .footer-right {
+        a {
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+    }
 }

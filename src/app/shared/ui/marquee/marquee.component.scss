@@ -72,3 +72,12 @@
         }
     }
 }
+
+@media (max-width: 780px) {
+    .marquee {
+        &__item,
+        &__sep {
+            font-size: var(--fs-xl);
+        }
+    }
+}
