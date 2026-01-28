@@ -324,7 +324,7 @@ export class ContactComponent {
    * @returns Promise<void>
    */
   private async sendContact(payload: ContactPayload): Promise<void> {
-    const url = 'https://marc-buck.de/api/sendMail.php';
+    const url = 'https://marc-buck.dev/api/sendMail.php';
     await firstValueFrom(this.http.post<void>(url, payload));
   }
 }
