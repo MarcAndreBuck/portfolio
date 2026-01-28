@@ -52,6 +52,19 @@ type FeedbackState = 'idle' | 'success' | 'error';
 const EMAIL_REALISTIC_REGEX =
   /^(?=.*[a-zA-Z0-9])[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+/**
+ * Ensures that the input contains at least two letters.
+ * Prevents values that consist only of whitespace, digits, or special characters.
+ */
+const NAME_MIN_2_LETTERS_REGEX =
+  /^(?=(?:.*[A-Za-zÀ-ÖØ-öø-ÿ]){2,}).+$/;
+
+/**
+ * Ensures that the input contains at least one non-whitespace character.
+ * Prevents values that consist only of spaces, tabs or line breaks.
+ */
+const NOT_ONLY_WHITESPACE_REGEX = /^(?=.*\S).+$/;
+
 /** Example shown in the email format error message. */
 const EMAIL_EXAMPLE = 'name@example.com';
 
@@ -104,7 +117,7 @@ export class ContactComponent {
   readonly contactForm = this.fb.group(
     {
       name: this.fb.control('', {
-        validators: [Validators.required, Validators.minLength(2)],
+        validators: [Validators.required, Validators.minLength(2), Validators.pattern(NAME_MIN_2_LETTERS_REGEX)],
         updateOn: 'blur',
       }),
       email: this.fb.control('', {
@@ -116,7 +129,7 @@ export class ContactComponent {
         updateOn: 'blur',
       }),
       message: this.fb.control('', {
-        validators: [Validators.required, Validators.minLength(10)],
+        validators: [Validators.required, Validators.minLength(10), Validators.pattern(NOT_ONLY_WHITESPACE_REGEX)],
         updateOn: 'blur',
       }),
       privacy: this.fb.control(false, {

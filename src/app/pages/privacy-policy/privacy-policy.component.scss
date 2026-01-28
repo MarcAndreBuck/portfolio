@@ -6,8 +6,6 @@
     @include dflex($gap: 24px, $dir: column);
 
     min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
     background: var(--gradient-accent), var(--color-bg-dark);
     color: rgb(var(--color-primary-rgb) / 1);
 
@@ -18,7 +16,13 @@
 
 .privacy-policy {
     width: 100%;
-    max-width: 72rem;
+    max-width: var(--container-max);
+    margin-inline: var(--container-pad);
+}
+
+.privacy-policy__title {
+    font-size: 64px;
+    color: rgb(var(--color-primary-rgb) / 1);
 }
 
 .privacy-policy h2,

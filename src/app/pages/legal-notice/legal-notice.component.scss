@@ -2,18 +2,20 @@
 
 :host {
     position: relative;
-    overflow: hidden;
-    @include dflex($gap: 24px, $dir: column);
-
+    @include dflex($dir: column);
     min-height: 100vh;
-    min-height: 100svh;
-    min-height: 100dvh;
+
     background: var(--gradient-accent), var(--color-bg-dark);
     color: rgb(var(--color-primary-rgb) / 1);
 
     padding-top: var(--height-header);
     padding-bottom: var(--height-footer);
-    padding-inline: 50px;
+}
+
+.legal-notice {
+    max-width: var(--container-max);
+    margin-inline: var(--container-pad);
+    @include dflex($gap: 32px, $dir: column, $align: start);
 }
 
 .legal-notice__title {
