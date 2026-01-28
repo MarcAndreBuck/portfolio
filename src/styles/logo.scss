@@ -1,11 +1,13 @@
 .initials {
     fill: rgb(var(--color-primary-rgb)/1);
     stroke: transparent;
+    stroke-width: 2px;
 }
 
 .name {
     fill: rgb(var(--color-default)/1);
     stroke: transparent;
+    stroke-width: 2px;
 }
 
 .logo:hover {
