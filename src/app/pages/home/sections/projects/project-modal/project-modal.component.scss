@@ -181,16 +181,18 @@
 
 .project-modal__actions {
     @include dflex($gap: var(--space-7));
+    width: auto;
 }
 
-.project-modal__action .outward {
+.project-modal__actions .outward {
     position: relative;
     height: 1em;
+    width: 1em;
     color: rgb(var(--color-primary-rgb) / 1);
     transition: transform 150ms ease, color 150ms ease;
 }
 
-.project-modal__action:hover .outward {
+.project-modal__actions:hover .outward {
     transform: translate(0.25rem, -0.25rem);
 }
 
