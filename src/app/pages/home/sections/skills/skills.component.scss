@@ -113,7 +113,7 @@
 
 .growth-tip {
     position: absolute;
-    left: 50%;
+    left: 10%;
     bottom: calc(100%);
     transform: translateX(-35%) translateY(0.5rem);
 
@@ -138,7 +138,7 @@
 .growth-tip::after {
     content: '';
     position: absolute;
-    left: 35%;
+    left: 60%;
     bottom: -0.5rem;
     width: 1rem;
     height: 1rem;

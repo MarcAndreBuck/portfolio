@@ -1,6 +1,6 @@
 export const DE = {
     hero: {
-        eyebrow: 'Frontend Developer',
+        eyebrow: 'Fullstack Developer',
         buttons: {
             projects: 'Meine Projekte',
             contact: 'Kontakt',
@@ -13,6 +13,8 @@ export const DE = {
         marquee: [
             'Remote verfügbar',
             'Frontend Developer',
+            'Backend Developer',
+            'Fullstack Developer',
             'Ansässig in Deutschland',
             'Offen für neue Projekte',
         ],
@@ -41,7 +43,7 @@ export const DE = {
     about: {
         eyebrow: 'Wer ich bin',
         title: 'Über mich',
-        intro: `Ich bin ein leidenschaftlicher Frontend Developer mit starkem Fokus auf Clean Code, moderne Webtechnologien und intuitive Nutzererlebnisse. Ich liebe es, komplexe Ideen in klare, funktionale und visuell ansprechende Interfaces zu verwandeln.`,
+        intro: `Ich bin ein leidenschaftlicher Fullstack Developer mit Fokus auf Clean Code, moderne Webtechnologien und gut strukturierte Anwendungen. Ich entwickle intuitive und responsive Benutzeroberflächen mit Angular und TypeScript sowie REST-APIs und Backend-Systeme mit Python, Django und Django REST Framework. Dabei lege ich besonderen Wert auf wartbaren Code, eine klare Architektur und zuverlässige Lösungen.`,
         list: [
             'Ansässig in Deutschland — offen für Remote-Arbeit und flexible Zusammenarbeit.',
             'Offen und neugierig — ich lerne gerne neue Technologien und entwickle mich kontinuierlich weiter.',
@@ -53,7 +55,7 @@ export const DE = {
     skills: {
         eyebrow: 'Technologien',
         title: 'Skill Set',
-        intro: `Meine Fähigkeiten liegen im modernen Frontend-Development mit HTML, CSS/SCSS, JavaScript und Angular - mit besonderem Fokus auf sauberen, wartbaren Code, responsives Design und barrierefreie Benutzeroberflächen. Ich erweitere mein Skillset kontinuierlich, indem ich neue Technologien, Tools und Best Practices verfolge und mich gerne an eine sich schnell wandelnde Weblandschaft anpasse.`,
+        intro: `Meine Fähigkeiten liegen in der modernen Fullstack-Entwicklung mit Angular, TypeScript, Python und Django. Dabei verbinde ich responsive und benutzerfreundliche Frontends mit strukturierten REST-APIs und zuverlässigen Backend-Systemen. Besonderen Wert lege ich auf Clean Code, wartbare Architekturen und den kontinuierlichen Ausbau meines technischen Skillsets.`,
         needAnother: 'Du brauchst',
         needAnotherAccent: 'noch einen Skill?',
         outro: 'Melde dich gerne bei mir. Ich freue mich darauf, mein Wissen weiter auszubauen.',
@@ -69,6 +71,12 @@ export const DE = {
             restApi: 'REST API',
             scrum: 'Scrum',
             growthMindset: 'Growth Mindset',
+            python: 'Python',
+            django: 'Django',
+            drf: 'DRF',
+            postgresql: 'PostgreSQL',
+            redis: 'Redis',
+            docker: 'Docker',
         },
         growthTip: {
             title: 'Was ich gerne lernen würde',
@@ -93,9 +101,13 @@ export const DE = {
                 description: 'Ein 2D-Browser-Game mit Animationen, Kollisionen und Game-Loop-Logik.',
                 highlights: ['Canvas-Rendering', 'Einfache Gegner-KI', 'Mobile Steuerung'],
             },
-            bubble: {
-                description: 'Bald in Entwicklung: Realtime-App mit Angular und Firebase (Auth/DB).',
-                highlights: ['Echtzeit-Daten', 'Auth-Flow', 'Sauberes UI'],
+            coderr: {
+                description: 'Eine Freelancer-Plattform mit Benutzerprofilen, Angeboten, Bestellungen und Kundenbewertungen.',
+                highlights: ['Django REST Framework', 'REST API', 'Docker'],
+            },
+            videoflix: {
+                description: 'Ein Backend für eine Video-Streaming-Plattform mit Benutzerverwaltung und Videoverarbeitung.',
+                highlights: ['Django REST Framework', 'PostgreSQL + Redis', 'Docker'],
             },
         },
         aria: {
@@ -115,24 +127,19 @@ export const DE = {
 
         items: [
             {
-                author: 'Thomas Schulz',
-                role: 'Senior Frontend Developer · Projektkollege',
-                text: 'Marc arbeitet sehr strukturiert und denkt Probleme konsequent bis zum Ende durch. Seine Fähigkeit, komplexe Anforderungen in sauberen und wartbaren Code zu übersetzen, ist beeindruckend.',
+                author: 'Florian',
+                role: 'Service Techniker für Wasserstoffsysteme · Ehemaliger Kollege',
+                text: 'Freundlich, teamfähig, wissbegierig, engagiert und zielorientiert - und dabei immer für einen Spaß zu haben. Die Zusammenarbeit mit Marc macht einfach Spaß.',
             },
             {
-                author: 'Lisa Becker',
-                role: 'UX/UI Designerin · Teamprojekt',
-                text: 'Die Zusammenarbeit mit Marc war großartig. Er hat ein starkes Gespür für saubere Interfaces und setzt Designs präzise um, ohne die technische Qualität aus den Augen zu verlieren.',
+                author: 'Philipp M.',
+                role: 'Servicetechniker im Außendienst · Ehemaliger Kollege bei Cummins',
+                text: 'Die Zusammenarbeit mit Marc war für mich weit mehr als nur ein gewöhnliches kollegiales Miteinander. Wir haben unzählige Stunden, lange Abende und teilweise ganze Nächte gemeinsam gearbeitet, Lösungen gesucht und selbst in den schwierigsten Situationen nie den Humor verloren.',
             },
             {
-                author: 'Daniel Hoffmann',
-                role: 'Product Owner',
-                text: 'Marc zeigt ein sehr hohes Maß an intrinsischer Motivation. Er hinterfragt Anforderungen konstruktiv und bringt häufig wertvolle Verbesserungen für das Gesamtprodukt ein.',
-            },
-            {
-                author: 'Sarah Klein',
-                role: 'Fullstack Developer · Pair Programming',
-                text: 'Marc ist ein sehr zuverlässiger Partner im Pair Programming. Er erklärt ruhig, denkt logisch und bleibt auch beim Debuggen komplexer Probleme fokussiert.',
+                author: 'Nico Eenhuis',
+                role: 'Servicetechniker · Ehemaliger Kollege',
+                text: 'Marc ist ein unglaublich zuverlässiger, belastbarer und charakterstarker Mensch. Er kann zuhören, hinterfragt Dinge, denkt mit und schafft es, Gespräche zu führen, die nachhaltig im Gedächtnis bleiben. Ich schätze ihn sowohl fachlich als auch menschlich sehr.',
             },
         ] as const,
 
@@ -151,9 +158,10 @@ export const DE = {
         headlineLine1: 'Lass uns',
         headlineLine2: 'zusammenarbeiten',
         subheadline: 'Du hast ein Problem zu lösen?',
-        text1: `Aktuell suche ich nach Möglichkeiten als Frontend Developer, bei denen ich saubere, barrierefreie und gut strukturierte Benutzeroberflächen umsetzen kann.
-            Wenn du an einem Produkt arbeitest, das Qualität, Klarheit und durchdachte UX schätzt, freue ich mich über deine Nachricht und helfe gerne dabei, Ideen in zuverlässige und wartbare Lösungen zu verwandeln.`,
-        text2Lead: 'Du brauchst einen Frontend Developer?',
+        text1: `Aktuell suche ich nach Möglichkeiten als Fullstack Developer, bei denen ich moderne Frontends und zuverlässige Backend-Systeme entwickeln kann.
+                Wenn du an einem Produkt arbeitest, das Qualität, klare Strukturen und wartbaren Code schätzt, freue ich mich über deine Nachricht und helfe gerne dabei, Ideen in zuverlässige und durchdachte Lösungen zu verwandeln.`,
+
+        text2Lead: 'Du brauchst einen Fullstack Developer?',
         text2Accent: 'Lass uns sprechen!',
         labels: {
             name: 'Wie heißt du?',

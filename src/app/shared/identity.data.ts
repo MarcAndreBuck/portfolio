@@ -14,19 +14,19 @@ export const IDENTITY = {
   phone: '+49 (0) 1721803982',
 
   /** Street and house number. */
-  street: 'Rosenweg 5',
+  street: 'Hauptstr.12',
 
   /** Postal code and city. */
-  postcode: '19230 Hagenow',
+  postcode: '19230 Hoort',
 
   /** Display location string. */
-  location: 'Hagenow, Germany',
+  location: 'Hoort, Germany',
 
   /** Professional role or title. */
-  role: 'Frontend Developer',
+  role: 'Fullstack Developer',
 
   /** Year the portfolio was created. */
-  yearOfConstruct: 2025,
+  yearOfConstruct: 2026,
 } as const;
 
 /**

@@ -1,7 +1,7 @@
 import type { SkillKey } from '@/app/shared/skills/skills.data';
 
 /** Unique identifier for a project. */
-export type ProjectKey = 'join' | 'pollo' | 'bubble';
+export type ProjectKey = 'join' | 'pollo' | 'coderr' | 'videoflix';
 
 /** Vertical alignment of the project preview image. */
 export type PreviewPos = 'top' | 'center' | 'bottom';
@@ -50,10 +50,19 @@ export const PROJECTS: readonly Project[] = [
     liveUrl: 'https://marc-buck.dev/projects/el_pollo_loco/index.html',
   },
   {
-    key: 'bubble',
-    title: 'DA Bubble',
-    stack: ['angular', 'firebase', 'ts'],
+    key: 'coderr',
+    title: 'Coderr',
+    stack: ['python', 'django', 'drf', 'docker'],
+    previewPos: 'center',
+    repoUrl: 'https://github.com/MarcAndreBuck/coderr-backend',
+    liveUrl: 'https://coderr.marc-buck.dev',
+  },
+  {
+    key: 'videoflix',
+    title: 'Videoflix',
+    stack: ['python', 'django', 'drf', 'postgresql', 'redis', 'docker'],
     previewPos: 'bottom',
-    repoUrl: 'https://github.com/MarcAndreBuck/',
+    repoUrl: 'https://github.com/MarcAndreBuck/videoflix_backend',
+    liveUrl: 'https://videoflix.marc-buck.dev',
   },
 ] as const;

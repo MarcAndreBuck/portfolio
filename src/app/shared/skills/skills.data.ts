@@ -13,7 +13,13 @@ export type SkillKey =
   | 'git'
   | 'restApi'
   | 'scrum'
-  | 'growthMindset';
+  | 'growthMindset'
+  | 'python'
+  | 'django'
+  | 'drf'
+  | 'postgresql'
+  | 'redis'
+  | 'docker';
 
 /**
  * Describes a single skill item.
@@ -42,5 +48,11 @@ export const SKILLS: SkillItem[] = [
   { key: 'git', icon: 'git-hub', label: 'Git' },
   { key: 'restApi', icon: 'api', label: null },
   { key: 'scrum', icon: 'scrum', label: 'Scrum' },
+  { key: 'python', icon: 'python', label: 'Python' },
+  { key: 'django', icon: 'django', label: 'Django' },
+  { key: 'drf', icon: 'drf', label: 'DRF' },
+  { key: 'postgresql', icon: 'postgresql', label: 'PostgreSQL' },
+  { key: 'redis', icon: 'redis', label: 'Redis' },
+  { key: 'docker', icon: 'docker', label: 'Docker' },
   { key: 'growthMindset', icon: 'grow', label: null },
 ] as const;
